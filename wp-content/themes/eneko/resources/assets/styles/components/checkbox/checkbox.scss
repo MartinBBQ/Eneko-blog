@@ -1,0 +1,30 @@
+.checkbox {
+    $size: 0.8rem;
+    width: $size;
+    height: $size;
+    background-color: $grey--lightest;
+    border-radius: $box-radius;
+    transition: background-color .2s $easeOutQuart;
+    &:not(.has-color) {
+        &.is-active, .is-active & {
+            background-color: $blue;
+        }
+    }
+    &--grey {
+        background-color: $grey--box;
+    }
+    &--blue {
+        background-color: $blue;
+
+    }
+    &--yellow {
+        background-color: $yellow;
+
+    }
+    &--red {
+        background-color: $red;
+    }
+    &--green {
+        background-color: $green;
+    }
+}

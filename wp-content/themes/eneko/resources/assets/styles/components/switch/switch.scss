@@ -1,0 +1,21 @@
+.switch {
+    margin: 0 $dropdown--xPadding;
+    margin-left: 0;
+    max-height: 3.2rem;
+    border-radius: 0.2rem;
+    font-family: $graphik--semiBold;
+    cursor: pointer;
+    user-select: none;
+    @extend %flex-center-y;
+    &::after {
+        $size: 0.4rem;
+        content: '';
+        border: $size solid transparent;
+        border-top-color: $black;
+        transform: translate3d(0,$size/2,0);
+        margin-left: 0.5rem;
+    }
+    span {
+        @extend %filter-border;
+    }
+}

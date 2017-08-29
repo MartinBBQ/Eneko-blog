@@ -1,0 +1,19 @@
+.menu-profile {
+    display: flex;
+    align-items: center;
+    &__image {
+        margin-right: 1rem;
+        @extend %user-avatar;
+        img {
+            @extend %visually-hidden;
+        }
+    }
+    &__toggleDropdown {
+        position: relative;
+        display: flex;
+        align-items: center;
+        border: 0.4rem solid transparent;
+        border-top-color: $white;
+        transform: translate3d(0,50%,0);
+    }
+}

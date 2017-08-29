@@ -1,0 +1,10 @@
+.link {
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+    transition: box-shadow 0.2s ease;
+    @include link-color($blue);
+    &--black {
+        @include link-color($black);
+    }
+}

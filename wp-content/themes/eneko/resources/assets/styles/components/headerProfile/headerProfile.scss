@@ -1,0 +1,51 @@
+.headerProfile {
+    &__avatar {
+        $size: 9.6rem;
+        width: $size;
+        height: $size;
+        border: 2px solid $white;
+        margin-right: 3.2rem;
+        background-color: $grey;
+        border-radius: 100%;
+        cursor: pointer;
+        @extend %regular-background;
+    }
+    &__container {
+        @extend %container;
+        display: flex;
+        flex-wrap: wrap;
+    }
+    &__name {
+        font-size: 5.6rem;
+        color: $white;
+        margin-top: 1rem;
+        margin-bottom: 1.9rem;
+        font-family: $akkurat--light;
+        font-weight: normal;
+        line-height: 1;
+    }
+    &__description {
+        font-size: 1.6rem;
+        font-weight: normal;
+        color: $white;
+        opacity: 0.8;
+    }
+    &__socials {
+        margin-left: 1.6rem;
+    }
+    &__social {
+        margin-right: 0.8rem;
+        > svg, path {
+            fill: $white;
+        }
+        > svg {
+            $size: 1.6rem;
+            width: $size;
+            height: $size;
+        }
+    }
+    &__group {
+        display: flex;
+        flex-wrap: wrap;
+    }
+}

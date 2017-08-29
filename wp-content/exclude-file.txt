@@ -1,0 +1,25 @@
+## File Types
+- .svn
+- .git
+- wp-config.php
+- configuration.php
+- Thumbs.db
+- .DS_Store
+- .htaccess
+- nbproject/
+- BDD/
+- cron_config.php
+- php_errors.log
+- exclude-file.txt
+
+## wp-content folders
+- wp-content/upgrade/
+- wp-content/uploads/
+
+## Grunt
+- node_modules
+- package.json
+- package_sample.json
+
+## Styles
+- *.scss

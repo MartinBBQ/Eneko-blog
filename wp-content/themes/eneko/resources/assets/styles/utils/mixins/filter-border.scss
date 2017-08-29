@@ -1,0 +1,16 @@
+@mixin filter-border() {
+    position: relative;
+    &::before {
+        content: '';
+        position: absolute;
+        background-color: $black;
+        left: 0;
+        bottom: -0.5rem;
+        height: 0.2rem;
+        width: 100%;
+    }
+}
+
+%filter-border {
+    @include filter-border;
+}

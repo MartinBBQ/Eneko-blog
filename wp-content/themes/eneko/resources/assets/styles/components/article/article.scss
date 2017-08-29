@@ -1,0 +1,38 @@
+.article {
+	box-shadow: 0 0 0 1px $article--border;
+	border-radius: 0.4rem;
+	display: flex;
+	justify-content: space-between;
+	&:not(:first-child) {
+		margin-top: 4rem;
+	}
+	.button {
+		text-transform: uppercase;
+	}
+	> a {
+		display: block;
+		width: 100%;
+	}
+	&__wrapper {
+		padding: 4rem;
+	}
+	&__title {
+		line-height: 1.42;
+		font-size: 2.4rem;
+		margin: 1.6rem 0;
+		font-weight: normal;
+	}
+	&__image {
+		@extend %regular-background;
+		flex-basis: 29rem;
+		max-width: 29rem;
+		img {
+			@extend %visually-hidden;
+		}
+	}
+	&__bottom {
+		font-size: 1.2rem;
+		font-family: $graphik--semiBold;
+		text-transform: uppercase;
+	}
+}

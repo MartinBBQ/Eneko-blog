@@ -1,0 +1,29 @@
+.informations {
+    display: flex;
+	justify-content: space-between;
+    flex-wrap: wrap;
+    &__title {
+        color: $white;
+        font-size: 1rem;
+        text-transform: uppercase;
+        margin-bottom: 0.8rem;
+        margin-top: 0;
+        font-weight: normal;
+        font-family: $graphik--medium;
+    }
+    &__group {
+        margin-top: 4rem;
+        .informations__buttonContainer {
+            &:not(:first-child) {
+                margin-top: 0.8rem;
+            }
+        }
+    }
+    &__more {
+        color: $white;
+        opacity: 0.8;
+        font-size: 1.4rem;
+        margin-top: 1.6rem;
+        cursor: pointer;
+    }
+}

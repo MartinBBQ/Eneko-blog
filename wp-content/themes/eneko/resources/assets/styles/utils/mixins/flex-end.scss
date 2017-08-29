@@ -1,0 +1,9 @@
+@mixin flex-end {
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+}
+
+%flex-end {
+	@include flex-end;
+}

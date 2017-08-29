@@ -1,0 +1,21 @@
+.filters {
+    font-size: 1.2rem;
+    display: flex;
+    justify-content: space-between;
+	align-items: center;
+    width: 100%;
+    border-radius: $box-radius;
+    @include media('<tablet-xs') {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+	&__group {
+		display: flex;
+		svg {
+			$size: 2.4rem;
+			height: $size;
+			width: $size;
+			cursor: pointer;
+		}
+	}
+}

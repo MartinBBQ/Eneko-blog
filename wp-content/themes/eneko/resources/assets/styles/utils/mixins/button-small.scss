@@ -1,0 +1,10 @@
+@mixin button-small() {
+    padding: 0.4rem 0.8rem;
+    font-size: 1.4rem;
+    border-radius: 0.2rem;
+    min-height: 2.8rem;
+}
+
+%button-small {
+    @include button-small;
+}

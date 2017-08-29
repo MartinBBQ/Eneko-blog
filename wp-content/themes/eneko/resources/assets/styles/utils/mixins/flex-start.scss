@@ -1,0 +1,9 @@
+@mixin flex-start {
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+}
+
+%flex-start {
+	@include flex-start;
+}

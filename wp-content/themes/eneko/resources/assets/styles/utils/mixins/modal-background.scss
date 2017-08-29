@@ -1,0 +1,13 @@
+@mixin modal-background($color: $black,$tranparentize: 0.4) {
+    width: 100vw;
+    height: 100vh;
+    left: 0;
+    top: 0;
+    position: fixed;
+    background-color: transparentize($color,$tranparentize);
+    z-index: $layer--2;
+}
+
+%modal-background {
+    @include modal-background;
+}

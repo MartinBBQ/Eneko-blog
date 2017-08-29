@@ -1,0 +1,13 @@
+@mixin button-color($color) {
+    color: $color;
+    &:hover:not(.button--filled):not(:disabled):not(.disabled-hover), &.button--medium {
+        background-color: transparentize($color,0.93);
+    }
+    &.button--semiFilled {
+        font-family: $graphik--semiBold;
+        font-size: 1.6rem;
+        &:hover:not(:disabled):not(.disabled-hover) {
+            background-color: transparentize($color,0.93);
+        }
+    }
+}

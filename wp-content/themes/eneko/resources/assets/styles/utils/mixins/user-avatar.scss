@@ -1,0 +1,11 @@
+@mixin user-avatar($size: 2.4rem) {
+    // Don't squeeze the image
+    min-width: $size;
+    height: $size;
+    border-radius: 100%;
+    @extend %regular-background;
+}
+
+%user-avatar {
+    @include user-avatar(3.2rem);
+}

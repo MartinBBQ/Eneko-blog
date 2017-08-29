@@ -1,0 +1,12 @@
+.options {
+    padding: 1.4rem;
+    box-shadow: $standard-box-border;
+    background-color: $white;
+    &__item {
+        font-size: 1.4rem;
+        &--important {
+            color: $red;
+            font-family: $graphik--semiBold;
+        }
+    }
+}

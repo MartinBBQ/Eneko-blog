@@ -1,0 +1,5 @@
+@mixin dropdown-color($color) {
+    color: $color;
+    border: 1px solid;
+    @extend %button-small;
+}

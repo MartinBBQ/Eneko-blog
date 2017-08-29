@@ -1,0 +1,7 @@
+@function asset($base, $path) {
+	@return url($base + $path);
+}
+
+@function getFontUrl($fontName, $base: $fontPath) {
+	@return asset($base,$fontName);
+}

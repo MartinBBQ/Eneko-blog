@@ -1,0 +1,34 @@
+@font-face {
+    font-family: $akkurat;
+    src: url("#{$fontPath}/#{$akkurat}.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: $akkurat--light;
+    src: url("#{$fontPath}/#{$akkurat--light}.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: $akkurat--bold;
+    src: url("#{$fontPath}/#{$akkurat--bold}.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: $graphik;
+    src: url("#{$fontPath}/#{$graphik}.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: $graphik--semiBold;
+    src: url("#{$fontPath}/#{$graphik--semiBold}.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: $graphik--bold;
+    src: url("#{$fontPath}/#{$graphik--bold}.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: $graphik--medium;
+    src: url("#{$fontPath}/#{$graphik--medium}.ttf") format("truetype");
+}

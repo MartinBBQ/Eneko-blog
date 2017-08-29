@@ -1,0 +1,17 @@
+$phone-xs: 320px !default;
+$phone-md: 380px !default;
+$phone-lg: 480px !default;
+$tablet-xs: 550px !default;
+$tablet: 768px !default;
+$desktop: 1024px !default;
+$large: 1250px !default;
+
+$breakpoints: (
+		phone: $phone-xs,
+		phone-md: $phone-md,
+		phone-lg: $phone-lg,
+        tablet-xs: $tablet-xs,
+		tablet: $tablet,
+		desktop: $desktop,
+		large: $large
+);

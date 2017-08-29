@@ -1,0 +1,8 @@
+@mixin flex-center-y {
+    display: flex;
+    align-items: center;
+}
+
+%flex-center-y {
+    @include flex-center-y;
+}

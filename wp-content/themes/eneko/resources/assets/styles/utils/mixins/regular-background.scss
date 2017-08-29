@@ -1,0 +1,9 @@
+@mixin regular-background() {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+%regular-background {
+    @include regular-background;
+}
