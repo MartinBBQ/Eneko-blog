@@ -150,11 +150,17 @@ function getCustomQuery($args){
 	}
 	$args['paged'] = $paged;
 	$query = new \WP_Query($args);
-	wp_reset_query();
 	return $query;
 }
 
-function getArticleBottom() {
+function getHomeCover() {
+	$homeId = get_option( 'page_on_front' );
+	$homePost = get_post($homeId);
+	$thumb = wp_get_attachment_image_src( get_post_thumbnail_id($homePost->ID), 'full');
+	return $thumb[0];
+}
+
+function getArticleNameAndDate() {
 	$fullName = get_the_author_meta('first_name').' '.get_the_author_meta('last_name');
 	$date = get_the_date('d M Y');
 	if(!empty($fullName)) {

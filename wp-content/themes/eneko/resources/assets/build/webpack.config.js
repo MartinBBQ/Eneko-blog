@@ -37,12 +37,12 @@ let webpackConfig = {
 	},
 	module: {
 		rules: [
-			{
-				enforce: 'pre',
-				test: /\.js$/,
-				include: config.paths.assets,
-				use: 'eslint',
-			},
+			// {
+			// 	enforce: 'pre',
+			// 	test: /\.js$/,
+			// 	include: config.paths.assets,
+			// 	use: 'eslint',
+			// },
 			{
 				enforce: 'pre',
 				test: /\.(js|s?[ca]ss)$/,

@@ -15,10 +15,10 @@
         <h1 class="section__title">Flux d'actualités</h1>
         @include('partials.filters')
         <div class="section__list">
-            @php($loop = App\getCustomQuery(['post_type'=> 'post', 'posts_per_page' => 2]))
+            @php($loop = App\getCustomQuery(['post_type'=> 'post', 'posts_per_page' => 4]))
                 @while ($loop->have_posts()) @php($loop->the_post())
                     @include('partials.content')
-                    @endwhile
+                @endwhile
                     {{wp_reset_query()}}
         </div>
         <div class="section__nav">

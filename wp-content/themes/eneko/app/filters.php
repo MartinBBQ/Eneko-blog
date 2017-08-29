@@ -73,5 +73,48 @@ add_filter('user_contactmethods', function ($profile_fields) {
 	// Add new fields
 	$profile_fields['twitter'] = 'Twitter';
 	$profile_fields['facebook'] = 'Facebook';
+	$profile_fields['group'] = 'Groupe Politique';
 	return $profile_fields;
 });
+
+add_action( 'show_user_profile', __NAMESPACE__.'\extra_user_profile_fields' );
+add_action( 'edit_user_profile', __NAMESPACE__.'\extra_user_profile_fields' );
+
+function extra_user_profile_fields( $user ) {
+	?>
+	<h3><?php _e("Couverture", "blank"); ?></h3>
+	<table class="form-table">
+		<tr>
+			<th scope="row">Photo de couverture</th>
+			<td><input type="file" name="cover" value="" />
+				<?php
+				$cover = get_user_meta( $user->ID, 'my_document', true );
+				var_dump($cover);
+				if (!empty($cover)) {
+//					$cover = $cover['url'];
+					echo "<img src='$cover' />";
+				} else {
+					echo $cover;
+				}
+				?>
+			</td>
+		</tr>
+	</table>
+
+	<?php
+}
+
+add_action( 'personal_options_update', __NAMESPACE__.'\yoursite_save_extra_user_profile_fields' );
+add_action( 'edit_user_profile_update', __NAMESPACE__.'\yoursite_save_extra_user_profile_fields' );
+
+function yoursite_save_extra_user_profile_fields( $user_id ) {
+	if ( !current_user_can( 'edit_user', $user_id ) )
+		return false;
+	var_dump($_FILES['cover'], UPLOAD_ERR_OK);
+	if( $_FILES['cover']['error'] === UPLOAD_ERR_OK ) {
+		$_POST['action'] = 'wp_handle_upload';
+		$upload_overrides = array( 'test_form' => false );
+		$upload = wp_handle_upload( $_FILES['cover'], $upload_overrides );
+		update_user_meta( $user_id, 'cover', $upload );
+	}
+}

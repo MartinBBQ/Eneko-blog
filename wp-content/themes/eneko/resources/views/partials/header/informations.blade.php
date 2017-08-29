@@ -1,26 +1,47 @@
 <div class="informations">
-    <div class="informations__group">
-        <h5 class="informations__title">Groupe politique</h5>
-        <div class="informations__tags">
-            <button type="button" class="button button--gold button--tag disabled-hover">La République en Marche</button>
-        </div>
-    </div>
-    <div class="informations__group">
-        <h5 class="informations__title">Commission</h5>
-        <div class="informations__tags">
-            <button type="button" class="button button--white button--tag disabled-hover">Finances, économie générale</button>
-        </div>
-    </div>
-    <div class="informations__group">
-        <h5 class="informations__title">Statistiques</h5>
-        <div class="informations__tags">
-            <div class="informations__buttonContainer">
-                <button type="button" class="button button--white button--tag disabled-hover">4 interventions en commission</button>
+    @php($politicalGroup = get_the_author_meta('group'))
+        @if(!empty($politicalGroup))
+            <div class="informations__group">
+                <h5 class="informations__title">Groupe politique</h5>
+                <div class="informations__tags">
+                    <button type="button" class="button button--gold button--tag disabled-hover">{{$politicalGroup}}</button>
+                </div>
             </div>
-            <div class="informations__buttonContainer">
-                <button type="button" class="button button--white button--tag disabled-hover">1 question écrite</button>
+        @endif
+        @php($loop = App\getCustomQuery(['post_type'=> 'commissions', 'posts_per_page' => -1]))
+            <div class="informations__group">
+                <h5 class="informations__title">Commission</h5>
+                <div class="informations__tags">
+                    @while ($loop->have_posts()) @php($loop->the_post())
+                        <div class="informations__buttonContainer">
+                            <button type="button" class="button button--white button--tag disabled-hover">{{get_the_title()}}</button>
+                        </div>
+                        @endwhile
+                        {{wp_reset_query()}}
+                </div>
             </div>
-            <div class="informations__more">Voir plus de statistiques…</div>
-        </div>
-    </div>
+            @php
+                $loop = App\getCustomQuery(['post_type'=> 'stats', 'posts_per_page' => -1]);
+                $i = 0;
+            @endphp
+            <div class="informations__group">
+                <h5 class="informations__title">Statistiques</h5>
+                <div class="informations__tags">
+                    @while ($loop->have_posts())
+                        @php($loop->the_post())
+                            @if($i<2)
+                                <div class="informations__buttonContainer">
+                                    <button type="button" class="button button--white button--tag disabled-hover">{{get_the_title()}}</button>
+                                </div>
+                            @else
+                                <div class="informations__buttonContainer is-hidden">
+                                    <button type="button" class="button button--white button--tag disabled-hover">{{get_the_title()}}</button>
+                                </div>
+                            @endif
+                            @php($i++)
+                    @endwhile
+                                {{wp_reset_query()}}
+                                <div class="informations__more">Voir plus de statistiques…</div>
+                </div>
+            </div>
 </div>

@@ -3,6 +3,7 @@
     background-color: $blue;
     padding-top: 8.9rem;
 	font-size: 1.4rem;
+	@extend %regular-background;
 	&__wrapper {
 		@extend %container;
 		margin-top: auto;

@@ -2,11 +2,13 @@
     <a href="{{get_the_permalink()}}">
     <div class="article__wrapper">
         @foreach(get_the_terms(get_post(),'category') as $term)
-            <span class="button button--small button--filled-blue">{{$term->name}}</span>
+            <div class="article__buttonContainer">
+                <span class="button button--small button--filled-blue">{{$term->name}}</span>
+            </div>
         @endforeach
         <h2 class="article__title">{{get_the_title()}}</h2>
         <div class="article__bottom">
-            {{App\getArticleBottom()}}
+            {{App\getArticleNameAndDate()}}
         </div>
     </div>
     @php($thumb = get_the_post_thumbnail_url(get_post(),'full'))

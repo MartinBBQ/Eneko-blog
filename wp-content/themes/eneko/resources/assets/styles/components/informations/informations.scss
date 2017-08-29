@@ -26,4 +26,9 @@
         margin-top: 1.6rem;
         cursor: pointer;
     }
+	&__buttonContainer {
+		&.is-hidden {
+			display: none;
+		}
+	}
 }
