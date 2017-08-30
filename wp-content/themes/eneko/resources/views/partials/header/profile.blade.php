@@ -1,10 +1,11 @@
 <div class="headerProfile">
     <div class="headerProfile__container">
         @php
-            $url = get_avatar_url( get_the_author_meta('user_email'), 'full');
-            $fullName = get_the_author_meta('first_name').' '.get_the_author_meta('last_name');
-            $twitter = get_the_author_meta('twitter');
-            $facebook = get_the_author_meta('facebook');
+            $authorId = get_post()->post_author;
+            $url = get_avatar_url( get_the_author_meta('user_email', $authorId), 'full');
+            $fullName = get_the_author_meta('first_name',$authorId).' '.get_the_author_meta('last_name',$authorId);
+            $twitter = get_the_author_meta('twitter',$authorId);
+            $facebook = get_the_author_meta('facebook',$authorId);
         @endphp
         <div class="headerProfile__avatar" style="background-image: url({{$url}});">
             <img src="{{$url}}" class="visually-hidden" alt="Photo de {{$fullName}}">
@@ -13,7 +14,7 @@
             <h1 class="headerProfile__name">{{$fullName}}</h1>
             <div class="headerProfile__group">
                 <div class="headerProfile__description">
-                    {{get_the_author_meta('description')}}
+                    {{get_the_author_meta('description', $authorId)}}
                 </div>
                 <div class="headerProfile__socials">
                     @if(!empty($twitter))

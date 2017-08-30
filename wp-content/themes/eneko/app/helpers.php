@@ -154,7 +154,7 @@ function getCustomQuery($args){
 }
 
 function getHomeCover() {
-	$homeId = get_option( 'page_on_front' );
+	$homeId = get_option('page_on_front');
 	$homePost = get_post($homeId);
 	$thumb = wp_get_attachment_image_src( get_post_thumbnail_id($homePost->ID), 'full');
 	return $thumb[0];
