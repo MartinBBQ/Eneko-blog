@@ -1,7 +1,7 @@
 <div class="headerProfile">
     <div class="headerProfile__container">
         @php
-            $authorId = get_post()->post_author;
+            $authorId = \App\getOwnerId();
             $url = get_avatar_url( get_the_author_meta('user_email', $authorId), 'full');
             $fullName = get_the_author_meta('first_name',$authorId).' '.get_the_author_meta('last_name',$authorId);
             $twitter = get_the_author_meta('twitter',$authorId);

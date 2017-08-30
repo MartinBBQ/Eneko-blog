@@ -170,3 +170,16 @@ function getArticleNameAndDate() {
 	}
 }
 
+function getOwnerId() {
+	$admins = get_users([
+		'roles' => 'administrator'
+	]);
+	foreach($admins as $admin) {
+		$adminId = $admin->data->ID;
+		$isOwner = get_the_author_meta('isOwner', $adminId);
+		if($isOwner) {
+			return $adminId;
+		}
+	}
+}
+

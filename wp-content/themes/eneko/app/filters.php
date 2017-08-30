@@ -70,9 +70,46 @@ add_filter('comments_template', function ($comments_template) {
 });
 
 add_filter('user_contactmethods', function ($fields) {
+	if(!current_user_can('administrator')) {
+		return;
+	}
 	$fields['twitter'] = 'Twitter';
 	$fields['facebook'] = 'Facebook';
 	$fields['group'] = 'Groupe Politique';
 	return $fields;
 });
 
+
+function is_owner( $user ) {
+	if( !current_user_can('administrator')) {
+		return;
+	}
+	$isChecked = !empty(get_the_author_meta( 'isOwner', $user->ID));
+	?>
+	<h3><?php _e('Propriété'); ?></h3>
+	<table class="form-table">
+		<tr>
+			<th>
+				<label for="isOwner"><?php _e("La page m'appartient"); ?>
+				</label>
+			</th>
+			<td>
+				<input type="checkbox" name="isOwner" <?php echo $isChecked ? 'checked' : '' ?> />
+			</td>
+		</tr>
+	</table>
+
+<?php }
+
+
+function save_ownership_option( $user_id ) {
+	if ( !current_user_can( 'edit_user', $user_id ) ) {
+		return false;
+	}
+	update_user_meta( $user_id, 'isOwner', $_POST['isOwner'] );
+
+}
+add_action( 'show_user_profile', __NAMESPACE__.'\\is_owner' );
+add_action( 'edit_user_profile', __NAMESPACE__.'\\is_owner' );
+add_action( 'personal_options_update', __NAMESPACE__.'\\save_ownership_option' );
+add_action( 'edit_user_profile_update', __NAMESPACE__.'\\save_ownership_option' );
