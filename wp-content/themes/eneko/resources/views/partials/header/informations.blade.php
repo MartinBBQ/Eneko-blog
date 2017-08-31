@@ -7,7 +7,7 @@
         <div class="informations__group">
             <h5 class="informations__title">Groupe politique</h5>
             <div class="informations__tags">
-                <button type="button" class="button button--gold button--tag disabled-hover">{{$politicalGroup}}</button>
+                <button type="button" class="button button--light-blue button--tag disabled-hover">{{$politicalGroup}}</button>
             </div>
         </div>
     @endif

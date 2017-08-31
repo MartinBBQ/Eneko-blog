@@ -183,3 +183,53 @@ function getOwnerId() {
 	}
 }
 
+function getPermanenceAddress(array $fullAddress) {
+	return explode(',',$fullAddress['address'])[0];
+}
+
+function date_fr($format,$date) {
+	$date_en = date($format,$date);
+	$text_en = array(
+		"Monday", "Tuesday", "Wednesday", "Thursday",
+		"Friday", "Saturday", "Sunday", "January",
+		"February", "March", "April", "May",
+		"June", "July", "August", "September",
+		"October", "November", "December"
+	);
+	$text_fr = array(
+		"Lundi", "Mardi", "Mercredi", "Jeudi",
+		"Vendredi", "Samedi", "Dimanche", "Janvier",
+		"F&eacute;vrier", "Mars", "Avril", "Mai",
+		"Juin", "Juillet", "Ao&ucirc;t", "Septembre",
+		"Octobre", "Novembre", "D&eacute;cembre"
+	);
+	$date_fr = str_replace($text_en, $text_fr, $date_en);
+
+	$text_en = array(
+		"Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun",
+		"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul",
+		"Aug", "Sep", "Oct", "Nov", "Dec"
+	);
+	$text_fr = array(
+		"Lun", "Mar", "Mer", "Jeu", "Ven", "Sam", "Dim",
+		"Jan", "F&eacute;v", "Mar", "Avr", "Mai", "Jui",
+		"Jui", "Ao&ucirc;", "Sep", "Oct", "Nov", "D&eacute;c"
+	);
+	$date_fr = str_replace($text_en, $text_fr, $date_fr);
+
+	return $date_fr;
+}
+
+function getNextPermanenceDate(array $dates) {
+	if(is_array($dates)) {
+		usort($dates, function ($a,$b) {
+			return strtotime($a['day']) - strtotime($b['day']);
+		});
+		$nextDate  = $dates[0];
+		$dayFr = date_fr('l j F',strtotime($nextDate['day']));
+		$startHour = $nextDate['starting_hour'];
+		$endHour = $nextDate['ending_hour'];
+		$sentence = $dayFr.' '.$startHour.' - '.$endHour;
+		return $sentence;
+	}
+}

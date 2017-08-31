@@ -113,3 +113,14 @@ add_action( 'show_user_profile', __NAMESPACE__.'\\is_owner' );
 add_action( 'edit_user_profile', __NAMESPACE__.'\\is_owner' );
 add_action( 'personal_options_update', __NAMESPACE__.'\\save_ownership_option' );
 add_action( 'edit_user_profile_update', __NAMESPACE__.'\\save_ownership_option' );
+
+
+function my_acf_google_map_api( $api ){
+
+	$api['key'] = 'AIzaSyDjRxzT1bBBLsRDCUAixJ4B_yUCyk7Ucgc';
+
+	return $api;
+
+}
+
+add_filter('acf/fields/google_map/api', __NAMESPACE__.'\\my_acf_google_map_api');
