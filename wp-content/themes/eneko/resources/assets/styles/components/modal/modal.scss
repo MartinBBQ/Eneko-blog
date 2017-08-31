@@ -6,10 +6,30 @@
     width: 100%;
     height: 100vh;
     cursor: pointer;
+	pointer-events: none;
+	opacity: 0;
     @extend %flex-center;
+	&.is-marginless {
+		.modal__main,.modal__inner {
+			padding: 0;
+		}
+	}
+	&.is-open {
+		pointer-events: auto;
+		opacity: 1;
+		&::before {
+			background-color: transparentize($white,0.15);
+		}
+		.modal__main {
+			transform: translate3d(0,0,0);
+			opacity: 1;
+		}
+	}
     &::before {
         content: '';
-        @extend %modal-background;
+        @include modal-background($white,0.15);
+		background-color: transparent;
+		transition: background-color .3s $easeInOutSine;
     }
     &.is-small {
         .modal__main {
@@ -20,15 +40,24 @@
     &__main {
         @extend %container;
         border-radius: $standard-radius;
-        box-shadow: $standard-box-border;
+        //box-shadow: $standard-box-border;
         width: 75vw;
         z-index: $layer--5;
         background-color: $white;
         cursor: auto;
-    }
-
+		opacity: 0;
+		transform: translate3d(0,4rem,0);
+		transition: transform .6s $easeInOutQuart, opacity .6s $easeInOutQuart;
+	}
+	&__background {
+		width: 100%;
+		height: 21rem;
+		border-top-left-radius: $standard-radius;
+		border-top-right-radius: $standard-radius;
+		@extend %regular-background;
+	}
     &__content {
-        p {
+        p:not(.modal__address):not(.modal__nextLabel) {
             margin-top: 0;
             margin-bottom: 3rem;
         }
@@ -49,4 +78,52 @@
             margin-right: 1.6rem;
         }
     }
+	&__externalContent {
+		padding: 4rem;
+	}
+	&__location {
+		font-size: 3.2rem;
+		line-height: 3.5rem;
+		font-weight: normal;
+		margin-top: 0;
+		margin-bottom: 1.6rem;
+	}
+	&__address {
+		text-transform: uppercase;
+		display: flex;
+		flex-direction: column;
+		margin-bottom: 2.2rem;
+		&::after {
+			content: '';
+			height: 0.2rem;
+			width: 2.4rem;
+			background-color: $black;
+			margin-top: 0.9rem;
+			display: block;
+		}
+		span {
+			font-size: 1.6rem;
+			&:not(:first-child) {
+				margin-top: 0.8rem;
+			}
+		}
+	}
+	&__nextDate {
+		font-size: 1.6rem;
+		color: $blue--dark;
+		font-family: $graphik--semiBold;
+	}
+	&__listItem {
+		font-size: 1.6rem;
+		line-height: 1.8rem;
+		&:not(:first-child) {
+			margin-top: 0.8rem;
+		}
+		span {
+			font-family: $graphik--semiBold;
+		}
+	}
+	&__nextLabel {
+		text-transform: uppercase;
+	}
 }

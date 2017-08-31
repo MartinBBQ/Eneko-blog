@@ -187,6 +187,10 @@ function getPermanenceAddress(array $fullAddress) {
 	return explode(',',$fullAddress['address'])[0];
 }
 
+function getPermanenceLocation(array $fullAddress) {
+	return explode(',',$fullAddress['address'])[1];
+}
+
 function date_fr($format,$date) {
 	$date_en = date($format,$date);
 	$text_en = array(
@@ -220,16 +224,34 @@ function date_fr($format,$date) {
 	return $date_fr;
 }
 
+function getNextPermanenceRawDate(array $dates) {
+	usort($dates, function ($a,$b) {
+		return strtotime($a['day']) - strtotime($b['day']);
+	});
+	return $dates;
+}
 function getNextPermanenceDate(array $dates) {
 	if(is_array($dates)) {
-		usort($dates, function ($a,$b) {
-			return strtotime($a['day']) - strtotime($b['day']);
-		});
-		$nextDate  = $dates[0];
-		$dayFr = date_fr('l j F',strtotime($nextDate['day']));
-		$startHour = $nextDate['starting_hour'];
-		$endHour = $nextDate['ending_hour'];
-		$sentence = $dayFr.' '.$startHour.' - '.$endHour;
+		$nextDate  = getNextPermanenceRawDate($dates)[0];
+		$sentence = getPermanenceDateToString($nextDate);
 		return $sentence;
 	}
+}
+
+function getPermanenceDateToString($date) {
+	$dayFr = date_fr('l j F',strtotime($date['day']));
+	$startHour = $date['starting_hour'];
+	$endHour = $date['ending_hour'];
+	$sentence = [
+		'day' => $dayFr,
+		'hour' => $startHour.' - '.$endHour
+	];
+	return $sentence;
+}
+function getPermanenceDates(array $dates) {
+	$sortedDates = getNextPermanenceRawDate($dates);
+	unset($sortedDates[0]);
+	return array_map(function ($date) {
+		return getPermanenceDateToString($date);
+	}, $dates,[]);
 }
