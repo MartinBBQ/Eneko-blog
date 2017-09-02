@@ -8,7 +8,6 @@
         <main class="u-main">
           @yield('content')
         </main>
-        @include('partials.sidebar')
     </div>
     @php(do_action('get_footer'))
     @include('partials.footer')

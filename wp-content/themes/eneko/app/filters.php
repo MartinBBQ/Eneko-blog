@@ -117,8 +117,7 @@ add_action( 'edit_user_profile_update', __NAMESPACE__.'\\save_ownership_option' 
 
 function my_acf_google_map_api( $api ){
 
-	$api['key'] = 'AIzaSyDjRxzT1bBBLsRDCUAixJ4B_yUCyk7Ucgc';
-
+	$api['key'] = get_option('google_api_key');
 	return $api;
 
 }

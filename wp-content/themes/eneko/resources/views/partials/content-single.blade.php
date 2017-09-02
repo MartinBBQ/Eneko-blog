@@ -22,3 +22,4 @@
         </div>
     </div>
 </article>
+@include('partials.sidebar')

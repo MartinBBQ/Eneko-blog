@@ -253,5 +253,5 @@ function getPermanenceDates(array $dates) {
 	unset($sortedDates[0]);
 	return array_map(function ($date) {
 		return getPermanenceDateToString($date);
-	}, $dates,[]);
+	}, $sortedDates,[]);
 }
