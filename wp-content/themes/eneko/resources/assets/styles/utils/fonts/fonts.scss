@@ -32,3 +32,10 @@
     font-family: $graphik--medium;
     src: url("#{$fontPath}/#{$graphik--medium}.ttf") format("truetype");
 }
+
+@font-face {
+	font-family: $material;
+	font-style: normal;
+	font-weight: 400;
+	src: url("../fonts/MaterialIcons-Regular.ttf") format('truetype');
+}

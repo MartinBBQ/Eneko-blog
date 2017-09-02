@@ -1,0 +1,39 @@
+.datebook {
+	flex-grow: 1;
+	&__month {
+		color: $blue--light;
+		font-size: 4.8rem;
+		font-family: $graphik--semiBold;
+		margin: 0;
+		text-transform: uppercase;
+	}
+	&__head {
+		display: flex;
+		margin-bottom: 5.4rem;
+		justify-content: space-between;
+	}
+	&__arrows {
+		display: flex;
+	}
+	&__arrow {
+		$size: 4.8rem;
+		height:	$size;
+		width: $size;
+		border: 1px solid $grey--datebook;
+		border-radius: 100%;
+		cursor: pointer;
+		transition: background-color .25s ease, color .25s ease;
+		color: $grey--datebook;
+		@extend %flex-center;
+		&:not(:last-child) {
+			margin-right: 1.6rem;
+		}
+		&:hover {
+			background-color: $grey--datebook;
+			color: $white;
+		}
+		i {
+			font-size: 4rem;
+		}
+	}
+}

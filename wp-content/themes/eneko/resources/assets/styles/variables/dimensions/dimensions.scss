@@ -20,3 +20,8 @@ $modal--paddings: 4rem 3.6rem;
 
 // Filters
 $filters--maxHeight: 3.2rem;
+
+// Event
+$event--paddingY : 4rem;
+$event--paddingX : 5.6rem;
+$event--paddings: $event--paddingY $event--paddingX;

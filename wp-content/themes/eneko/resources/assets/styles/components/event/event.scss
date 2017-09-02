@@ -1,0 +1,115 @@
+.event {
+	$transparent-black: transparentize($black,0.9);
+	display: flex;
+	flex-direction: column;
+	$radius: 0.4rem;
+	border: 1px solid $transparent-black;
+	cursor: pointer;
+	&:first-child {
+		border-top-left-radius: $radius;
+		border-top-right-radius: $radius;
+	}
+	&:not(:last-child) {
+		border-bottom: none;
+	}
+	&:last-child {
+		border-bottom-left-radius: $radius;
+		border-bottom-right-radius: $radius;
+	}
+	&__top {
+		padding: $event--paddings;
+		display: flex;
+	}
+	&__date {
+		display: flex;
+		align-items: center;
+		flex-direction: column;
+		flex-grow: 0;
+		color: $blue--light;
+		margin-right: 9rem;
+	}
+	&__day {
+		font-size: 4.8rem;
+		font-family: $graphik--semiBold;
+	}
+	&__month {
+		font-size: 2.4rem;
+		font-family: $graphik--semiBold;
+		text-transform: uppercase;
+	}
+	&__header {
+		flex-grow: 1;
+	}
+	&__title {
+		font-size: 2.4rem;
+		text-transform: uppercase;
+		font-family: $graphik--semiBold;
+		margin-top: 0;
+		margin-bottom: 1.6rem;
+	}
+	&__hours {
+
+	}
+	&__place {
+
+	}
+	&__background {
+		height: 35rem;
+		@extend %regular-background;
+	}
+	&__content, &__col {
+		padding: 3.2rem $event--paddingX;
+	}
+	&__content {
+		font-size: 1.6rem;
+		line-height: 2.6rem;
+		h1,h2,h3 {
+			font-size: 2.4rem;
+		}
+		h1,h2,h3,h4,h5,h6 {
+			margin-top: 0;
+			font-family: $graphik--semiBold;
+			font-weight: normal;
+			margin-bottom: 1.2rem;
+		}
+		.is-thumbless & {
+			padding-top: 0;
+		}
+	}
+	&__bottom {
+		display: flex;
+		border-top: 1px solid $transparent-black;
+		padding: 0 $event--paddingX;
+		.event__icon {
+			margin-right: 1.4rem;
+			margin-bottom: 1.4rem;
+		}
+	}
+	&__col {
+		flex-basis: 50%;
+		&:first-child {
+			border-right: 1px solid $transparent-black;
+			padding-left: 0;
+		}
+	}
+	&__subtitle {
+		font-size: 2.4rem;
+		font-family: $graphik--semiBold;
+	}
+	&__subcontent {
+		line-height: 2.6rem;
+		font-size: 1.6rem;
+	}
+	&__group {
+		@extend %flex-center-y;
+		font-size: 2.4rem;
+		> * {
+			flex-basis: 50%;
+		}
+	}
+	&__collapsible {
+	}
+	&__wrapper {
+		display: flex;
+	}
+}

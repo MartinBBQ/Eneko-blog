@@ -233,12 +233,12 @@ function getNextPermanenceRawDate(array $dates) {
 function getNextPermanenceDate(array $dates) {
 	if(is_array($dates)) {
 		$nextDate  = getNextPermanenceRawDate($dates)[0];
-		$sentence = getPermanenceDateToString($nextDate);
+		$sentence = getDateToString($nextDate);
 		return $sentence;
 	}
 }
 
-function getPermanenceDateToString($date) {
+function getDateToString($date) {
 	$dayFr = date_fr('l j F',strtotime($date['day']));
 	$startHour = $date['starting_hour'];
 	$endHour = $date['ending_hour'];
@@ -252,6 +252,6 @@ function getPermanenceDates(array $dates) {
 	$sortedDates = getNextPermanenceRawDate($dates);
 	unset($sortedDates[0]);
 	return array_map(function ($date) {
-		return getPermanenceDateToString($date);
+		return getDateToString($date);
 	}, $sortedDates,[]);
 }
