@@ -33,19 +33,20 @@
     &__socials {
         margin-left: 1.6rem;
     }
-    &__social {
-        margin-right: 0.8rem;
-        > svg, path {
-            fill: $white;
-        }
-        > svg {
-            $size: 1.6rem;
-            width: $size;
-            height: $size;
-        }
-    }
     &__group {
         display: flex;
         flex-wrap: wrap;
     }
+}
+
+.social {
+	margin-right: 0.8rem;
+	> svg, path {
+		fill: $white;
+	}
+	> svg {
+		$size: 1.6rem;
+		width: $size;
+		height: $size;
+	}
 }
