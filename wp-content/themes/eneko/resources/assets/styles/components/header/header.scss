@@ -12,11 +12,14 @@
 		justify-content: space-between;
 		height: 100%;
 	}
-    &__tabs {
+    &__tabs,&__menu {
         margin-top: auto;
         display: flex;
     }
-    &__tab {
+	&__menu {
+		margin-bottom: 0;
+	}
+    &__tab,.menu-item {
         font-size: 1.6rem;
         color: $white;
         position: relative;
@@ -34,7 +37,7 @@
             transform: translate3d(0,-50%,0);
             display: none;
         }
-        &.is-active {
+        &.is-active,&.current_page_item {
             font-family: $graphik--semiBold;
             &::after {
                 display: block;
