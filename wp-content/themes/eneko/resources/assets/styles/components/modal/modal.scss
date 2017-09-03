@@ -9,6 +9,7 @@
 	pointer-events: none;
 	opacity: 0;
     @extend %flex-center;
+	transition: opacity 0.35s ease;
 	&.is-marginless {
 		.modal__main,.modal__inner {
 			padding: 0;
@@ -17,6 +18,7 @@
 	&.is-open {
 		pointer-events: auto;
 		opacity: 1;
+		transition: opacity 0.15s ease;
 		&::before {
 			background-color: transparentize($white,0.15);
 		}

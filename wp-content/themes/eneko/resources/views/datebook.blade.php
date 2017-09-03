@@ -11,9 +11,12 @@
         </div>
         {!! get_search_form(false) !!}
     @endif
-    <section class="datebook">
+    <section data-current-month="{{date('n')}}" class="datebook">
         <div class="datebook__head">
-            <h2 class="datebook__month">{{\App\date_fr('F',time())}} {{date('Y')}}</h2>
+            <h2 class="datebook__month">
+                <span>{{\App\date_fr('F',time())}}</span>
+                {{date('Y')}}
+            </h2>
             <div class="datebook__arrows">
                 <div class="datebook__arrow is-left">
                     <i class="material-icons">chevron_left</i>

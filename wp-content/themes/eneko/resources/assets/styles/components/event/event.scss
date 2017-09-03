@@ -5,6 +5,9 @@
 	$radius: 0.4rem;
 	border: 1px solid $transparent-black;
 	cursor: pointer;
+	&.is-hidden {
+		display: none;
+	}
 	&:first-child {
 		border-top-left-radius: $radius;
 		border-top-right-radius: $radius;
@@ -105,11 +108,20 @@
 		font-size: 2.4rem;
 		> * {
 			flex-basis: 50%;
+			display: flex;
+			i {
+				margin-right: 2rem;
+			}
 		}
 	}
 	&__collapsible {
+		height: 0;
+		overflow: hidden;
 	}
 	&__wrapper {
+		display: flex;
+	}
+	&__icon {
 		display: flex;
 	}
 }

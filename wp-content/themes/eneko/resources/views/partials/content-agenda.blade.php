@@ -1,14 +1,14 @@
 @php
     $cfs = CFS();
     $fullDate = $cfs->get('date');
-    $day = date('j',$fullDate);
+    $day = date('j',strtotime($fullDate));
     $start = $cfs->get('starting_hour');
     $fullAddress = get_field('place') ? get_field('place') : [];
     $end = $cfs->get('ending_hour');
     $month = \App\date_fr('F',strtotime($fullDate));
     $imageUrl = get_the_post_thumbnail_url();
 @endphp
-<article class="event {{has_post_thumbnail() ? 'has-thumb' : 'is-thumbless'}}">
+<article data-month="{{date('n',strtotime($fullDate))}}" class="event is-closed {{has_post_thumbnail() ? 'has-thumb' : 'is-thumbless'}}">
     <div class="event__top">
         <div class="event__date">
             <div class="event__day">
@@ -22,11 +22,15 @@
             <h3 class="event__title">{{get_the_title()}}</h3>
             <div class="event__group">
                 <div class="event__hours">
-                    <span class="event__icon"></span>
+                    <span class="event__icon">
+                        <i class="material-icons">query_builder</i>
+                    </span>
                     {{$start}} - {{$end}}
                 </div>
                 <div class="event__place">
-                    <span class="event__icon"></span>
+                    <span class="event__icon">
+                        <i class="material-icons">location_on</i>
+                    </span>
                     {{\App\getPermanenceLocation($fullAddress)}}
                 </div>
             </div>
@@ -50,7 +54,7 @@
                     <div class="event__subtitle">DATE</div>
                 </div>
                 <div class="event__subcontent">
-                    {{\App\date_fr('l',strtotime(date('l',$fullDate)))}} {{$day}} {{$month}}
+                    {{\App\date_fr('l',strtotime(date('l',$fullDate)))}} {{$day}} {{$month}} - {{$start}} - {{$end}}
                 </div>
             </div>
             <div class="event__col">
