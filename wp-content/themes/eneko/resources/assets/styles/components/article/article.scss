@@ -3,6 +3,7 @@
 	border-radius: 0.4rem;
 	display: flex;
 	justify-content: space-between;
+	flex-grow: 1;
 	&:not(:first-child) {
 		margin-top: 4rem;
 	}
@@ -42,6 +43,19 @@
 			margin-top: 0.7rem;
 		}
 	}
+	&.is-url-article {
+		background-color: $blue--light;
+		.button {
+			background-color: transparent;
+			border-color: $white;
+		}
+		.article__title,.article__bottom {
+			color: $white;
+		}
+		.article_image {
+			display: none;
+		}
+	}
 	.button {
 		text-transform: uppercase;
 	}
@@ -70,6 +84,10 @@
 		@extend %regular-background;
 		flex-basis: 29rem;
 		max-width: 29rem;
+		display: none;
+		.article.has-post-thumbnail:not(.is-url-article) & {
+			display: block;
+		}
 		img {
 			@extend %visually-hidden;
 		}
@@ -80,7 +98,8 @@
 		text-transform: uppercase;
 	}
 	&__head {
-		display: flex;
+		display: flex;//
+
 		flex-direction: column;
 	}
 	&__buttonContainer {

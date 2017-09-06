@@ -255,3 +255,12 @@ function getPermanenceDates(array $dates) {
 		return getDateToString($date);
 	}, $sortedDates,[]);
 }
+
+function getArticleClasses() {
+	$classes = ['article'];
+	$url = CFS()->get('url');
+	if($url) {
+		array_push($classes, 'is-url-article');
+	}
+	return $classes;
+}

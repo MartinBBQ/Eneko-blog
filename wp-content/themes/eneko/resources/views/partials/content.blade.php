@@ -1,12 +1,27 @@
-<article @php(post_class('article'))>
-    <a href="{{get_the_permalink()}}">
+@php
+    $articleUrl = CFS()->get('url');
+    if(!empty($articleUrl)) {
+        $url = $articleUrl;
+        $result = wp_remote_get('http://back.eneko.co/api/openGraph/url?url='.$url);
+        $title = $result['http_response']->get_response_object()->body;
+        $title = json_decode($title)->response->title;
+        // To get external links.
+        $url = '//'.$url;
+        $isCustomArticle = true;
+    } else {
+        $url = get_the_permalink();
+        $title = get_the_title();
+    }
+@endphp
+<article @php(post_class(\App\getArticleClasses()))>
+    <a {{$isCustomArticle ? 'target="_blank"' : ''}} href="{{$url}}">
     <div class="article__wrapper">
         @foreach(get_the_terms(get_post(),'category') as $term)
             <div class="article__buttonContainer">
                 <span class="button button--small button--filled-blue">{{$term->name}}</span>
             </div>
         @endforeach
-        <h2 class="article__title">{{get_the_title()}}</h2>
+        <h2 class="article__title">{{$title}}</h2>
         <div class="article__bottom">
             {{App\getArticleNameAndDate()}}
         </div>
