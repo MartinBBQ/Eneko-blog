@@ -1,5 +1,12 @@
 @php
     $articleUrl = CFS()->get('url');
+    $terms = get_the_terms(get_post(),'category');
+    $termSlugs = [];
+    $termNames = [];
+    foreach($terms as $term) {
+        array_push($termSlugs,$term->slug);
+        array_push($termNames,$term->name);
+    }
     if(!empty($articleUrl)) {
         $url = $articleUrl;
         $result = wp_remote_get('http://back.eneko.co/api/openGraph/url?url='.$url);
@@ -13,17 +20,17 @@
         $title = get_the_title();
     }
 @endphp
-<article @php(post_class(\App\getArticleClasses()))>
+<article data-category="{{implode(' ',$termSlugs)}}" @php(post_class(\App\getArticleClasses()))>
     <a {{$isCustomArticle ? 'target="_blank"' : ''}} href="{{$url}}">
     <div class="article__wrapper">
-        @foreach(get_the_terms(get_post(),'category') as $term)
+        @foreach($termNames as $term)
             <div class="article__buttonContainer">
-                <span class="button button--small button--filled-blue">{{$term->name}}</span>
+                <span class="button button--small button--filled-blue">{{$term}}</span>
             </div>
         @endforeach
         <h2 class="article__title">{{$title}}</h2>
         <div class="article__bottom">
-            {{App\getArticleNameAndDate()}}
+            {{App\getArticleNameAndDate(true)}}
         </div>
     </div>
     @php($thumb = get_the_post_thumbnail_url(get_post(),'full'))

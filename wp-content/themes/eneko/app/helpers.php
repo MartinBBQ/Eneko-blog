@@ -160,10 +160,10 @@ function getHomeCover() {
 	return $thumb[0];
 }
 
-function getArticleNameAndDate() {
+function getArticleNameAndDate($excludeName = false) {
 	$fullName = get_the_author_meta('first_name').' '.get_the_author_meta('last_name');
 	$date = get_the_date('d M Y');
-	if(!empty($fullName)) {
+	if(!empty($fullName) && !$excludeName) {
 		return $fullName.' - '.$date;
 	} else {
 		return $date;

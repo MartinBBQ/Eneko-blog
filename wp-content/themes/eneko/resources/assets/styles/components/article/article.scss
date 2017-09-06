@@ -4,8 +4,11 @@
 	display: flex;
 	justify-content: space-between;
 	flex-grow: 1;
-	&:not(:first-child) {
-		margin-top: 4rem;
+	&:not(:last-child) {
+		margin-bottom: 4rem;
+	}
+	&.is-hidden {
+		display: none;
 	}
 	&.is-single {
 		display: flex;
@@ -45,6 +48,7 @@
 	}
 	&.is-url-article {
 		background-color: $blue--light;
+		border: none;
 		.button {
 			background-color: transparent;
 			border-color: $white;

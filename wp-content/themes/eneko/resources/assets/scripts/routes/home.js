@@ -1,3 +1,5 @@
+import Dropdown from '../components/Dropdown';
+import List from '../components/List';
 
 export default {
 	init() {
@@ -8,6 +10,8 @@ export default {
 		document
 			.querySelector('.informations__more')
 			.addEventListener('click',this.displayAllStats.bind(this));
+		this.dropdown = new Dropdown(document.querySelector('.dropdown'));
+		this.list = new List(document.querySelector('.section'));
 	},
 	displayAllStats(ev) {
 		const $target = ev.currentTarget;
