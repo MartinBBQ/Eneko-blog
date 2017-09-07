@@ -3,7 +3,6 @@
 --}}
 
 @extends('layouts.app')
-
 @section('content')
     @if (!have_posts())
         <div class="alert alert-warning">

@@ -1,5 +1,6 @@
 @php
     $articleUrl = CFS()->get('url');
+    $isCustomArticle = false;
     $terms = get_the_terms(get_post(),'category');
     $termSlugs = [];
     $termNames = [];

@@ -13,16 +13,27 @@ export default class List {
 	}
 	sortList(ev) {
 		const filter = ev.detail.filter;
-		console.log(filter);
+		let registerFilter = true;
 		Array.from(this.$articles).forEach($el => {
 			const { classList } = $el;
-			console.log($el.getAttribute('data-category'));
-			if(!$el.getAttribute('data-category').includes(filter)) {
-				classList.toggle('is-hidden',true);
+			if(this.currentFilter!==filter) {
+				if(!$el.getAttribute('data-category').includes(filter)) {
+					classList.toggle('is-hidden',true);
+				} else {
+					classList.toggle('is-hidden',false);
+				}
 			} else {
-				classList.toggle('is-hidden',false);
+				if(!$el.getAttribute('data-category').includes(filter)) {
+					classList.toggle('is-hidden',false);
+				}
+				registerFilter = false;
 			}
 		})
+		if(registerFilter) {
+			this.currentFilter = filter;
+		} else {
+			this.currentFilter = '';
+		}
 	}
 	setListeners() {
 		eventBus.addEventListener(DROPDOWN_TOGGLE,this.sortList.bind(this))
