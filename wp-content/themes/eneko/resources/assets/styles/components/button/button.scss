@@ -32,6 +32,12 @@
 	&--light-blue {
 		color: $blue--light;
 		border: 1px solid;
+		transition: color .25s ease, background-color .25s ease,border-color .25s ease;
+		&:hover {
+			background-color: $blue--light;
+			border-color: $blue--light;
+			color: $white;
+		}
 	}
 	&--white {
 		color: $white;

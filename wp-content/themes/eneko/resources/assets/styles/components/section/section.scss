@@ -21,4 +21,25 @@
 			border-radius: 0.2rem;
 		}
 	}
+	.alert {
+		font-size: 2.3rem;
+		margin-bottom: 2rem;
+	}
+	.search-field {
+		text-align: left;
+		color: $grey;
+		&:hover {
+			background-color: transparent;
+			color: $grey;
+		}
+	}
+	.search-submit, .search-field {
+		@extend .button;
+		@extend .button--light-blue;
+		padding: 0.6rem 0.8rem;
+		background-color: transparent;
+	}
+	.screen-reader-text {
+		display: none;
+	}
 }
