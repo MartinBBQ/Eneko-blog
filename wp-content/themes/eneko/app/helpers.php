@@ -170,6 +170,14 @@ function getArticleNameAndDate($excludeName = false) {
 	}
 }
 
+function scrapeImage($text) {
+	$pattern = '/src=[\'"]?([^\'" >]+)[\'" >]/';
+	preg_match($pattern, $text, $link);
+	$link = $link[1];
+	$link = urldecode($link);
+	return $link;
+
+}
 function getOwnerId() {
 	$admins = get_users([
 		'roles' => 'administrator'
