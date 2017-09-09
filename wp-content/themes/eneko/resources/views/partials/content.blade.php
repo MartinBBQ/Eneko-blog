@@ -21,7 +21,7 @@
         $siteName = str_replace('www.','', $siteName);
         if(!$result instanceof WP_Error) {
             $title = $result['http_response']->get_response_object()->body;
-            $title = json_decode($title)->response->title;
+            $title = json_decode($title)->response->title ?? 'Article de presse';
         } else {
             $title = '';
             $result = false;
