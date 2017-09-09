@@ -2,6 +2,10 @@
     display: flex;
 	justify-content: space-between;
     flex-wrap: wrap;
+	@include media('<large'){
+		//flex-direction: column;
+		margin-bottom: 4rem;
+	}
     &__title {
         color: $white;
         font-size: 1rem;
@@ -13,6 +17,7 @@
     }
     &__group {
         margin-top: 4rem;
+		margin-right: 2rem;
         .informations__buttonContainer {
             &:not(:first-child) {
                 margin-top: 0.8rem;
@@ -30,5 +35,8 @@
 		&.is-hidden {
 			display: none;
 		}
+	}
+	.button {
+		text-align: left;
 	}
 }

@@ -9,6 +9,9 @@
 	position: relative;
 	cursor: pointer;
 	@extend %regular-background;
+	@include media('<tablet-xs') {
+		height: 20rem;
+	}
 	&::after {
 		content: '';
 		position: absolute;

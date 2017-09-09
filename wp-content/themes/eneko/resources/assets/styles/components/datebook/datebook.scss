@@ -6,14 +6,34 @@
 		font-family: $graphik--semiBold;
 		margin: 0;
 		text-transform: uppercase;
+		span {
+			margin-right: 1.2rem;
+		}
+		@extend %flex-center-y;
+		@include media('<tablet') {
+			font-size: 4rem;
+		}
+		@include media('<phone-lg') {
+			font-size: 3rem;
+		}
 	}
 	&__head {
 		display: flex;
 		margin-bottom: 5.4rem;
 		justify-content: space-between;
+		align-items: center;
+		@include media('<phone-lg') {
+			flex-direction: column;
+			margin-bottom: 3.4rem;
+		}
 	}
 	&__arrows {
 		display: flex;
+		margin-left: 2.5rem;
+		@include media('<phone-lg') {
+			margin-top: 1.6rem;
+			margin-left: 0;
+		}
 	}
 	&__arrow {
 		$size: 4.8rem;
@@ -25,6 +45,11 @@
 		transition: background-color .25s ease, color .25s ease;
 		color: $grey--datebook;
 		@extend %flex-center;
+		@include media('<tablet') {
+			$size: 4rem;
+			height:	$size;
+			width: $size;
+		}
 		&:not(:last-child) {
 			margin-right: 1.6rem;
 		}
@@ -34,6 +59,12 @@
 		}
 		i {
 			font-size: 4rem;
+		}
+	}
+	&__list {
+		border-radius: 0.4rem;
+		&.has-border {
+			border-bottom: 1px solid $transparent-black;
 		}
 	}
 }

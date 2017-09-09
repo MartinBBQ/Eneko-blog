@@ -12,6 +12,9 @@
 	&__group {
 		display: flex;
 		&--search {
+			@include media('<tablet-xs') {
+				margin-top: 0.8rem;
+			}
 			&.is-open {
 				svg {
 					display: none;
@@ -22,6 +25,20 @@
 			}
 			form {
 				display: none;
+				@include media('<tablet-xs') {
+					display: block;
+				}
+				.screen-reader-text {
+					@include media('<tablet-xs') {
+						margin-top: 1rem;
+					}
+				}
+				input[type="search"] {
+					@include media('<tablet-xs') {
+						width: 100%;
+						margin-bottom: 0.8rem;
+					}
+				}
 			}
 		}
 		svg {
@@ -29,6 +46,9 @@
 			height: $size;
 			width: $size;
 			cursor: pointer;
+			@include media('<tablet-xs') {
+				display: none;
+			}
 		}
 	}
 }

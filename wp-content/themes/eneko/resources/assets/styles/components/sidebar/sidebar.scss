@@ -2,4 +2,9 @@
 	margin-left: 5.8rem;
 	flex-basis: 25rem;
 	flex-shrink: 0;
+	@include media('<tablet'){
+		margin-left: 0;
+		order: -1;
+		margin-bottom: 4.8rem;
+	}
 }

@@ -4,6 +4,12 @@
     padding-top: 8.9rem;
 	font-size: 1.4rem;
 	@extend %regular-background;
+	@include media('<large'){
+		height: auto;
+	}
+	@include media('<tablet-xs'){
+		padding-top: 4rem;
+	}
 	&__wrapper {
 		@extend %container;
 		margin-top: auto;
@@ -17,6 +23,11 @@
         display: flex;
     }
 	&__menu {
+		@include media('<large'){
+			flex-direction: column;
+		}
+	}
+	&__menu {
 		margin-bottom: 0;
 	}
     &__tab,.menu-item {
@@ -27,7 +38,8 @@
         padding-bottom: 2.4rem;
         text-transform: uppercase;
         cursor: pointer;
-        &::after {
+		@extend %flex-center-y;
+        &::before {
             content: '';
             position: absolute;
             top: 100%;
@@ -36,10 +48,15 @@
             width: 100%;
             transform: translate3d(0,-50%,0);
             display: none;
+			@include media('<large'){
+				position: static;
+				width: 2rem;
+				margin-right: 1.5rem;
+			}
         }
         &.is-active,&.current_page_item {
             font-family: $graphik--semiBold;
-            &::after {
+            &::before {
                 display: block;
             }
         }

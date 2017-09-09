@@ -14,6 +14,9 @@
         @extend %container;
         display: flex;
         flex-wrap: wrap;
+		@include media('<large'){
+			padding-left: 0;
+		}
     }
     &__name {
         font-size: 5.6rem;
@@ -23,19 +26,33 @@
         font-family: $akkurat--light;
         font-weight: normal;
         line-height: 1;
+		@include media('<phone-lg') {
+			font-size: 4.5rem;
+		}
     }
     &__description {
         font-size: 1.6rem;
         font-weight: normal;
         color: $white;
         opacity: 0.8;
+		@include media('<phone-lg') {
+			font-size: 1.5rem;
+		}
     }
     &__socials {
         margin-left: 1.6rem;
+		@include media('<phone-lg') {
+			flex-direction: column;
+			margin-left: 0;
+			margin-top: 1.6rem;
+		}
     }
     &__group {
         display: flex;
         flex-wrap: wrap;
+		@include media('<phone-lg') {
+			flex-direction: column;
+		}
     }
 }
 

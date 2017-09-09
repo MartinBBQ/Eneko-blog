@@ -7,8 +7,9 @@
     $end = $cfs->get('ending_hour');
     $month = \App\date_fr('F',strtotime($fullDate));
     $imageUrl = get_the_post_thumbnail_url();
+    $id = get_the_ID();
 @endphp
-<article data-month="{{date('n',strtotime($fullDate))}}" class="event is-closed {{has_post_thumbnail() ? 'has-thumb' : 'is-thumbless'}}">
+<article data-id="{{$id}}" data-month="{{date('n',strtotime($fullDate))}}" class="event is-closed {{has_post_thumbnail() ? 'has-thumb' : 'is-thumbless'}}">
     <div class="event__top">
         <div class="event__date">
             <div class="event__day">

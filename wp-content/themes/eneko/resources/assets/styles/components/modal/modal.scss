@@ -10,6 +10,10 @@
 	opacity: 0;
     @extend %flex-center;
 	transition: opacity 0.35s ease;
+	font-size: 1rem;
+	@include media('<phone-lg') {
+		font-size: 0.95rem;
+	}
 	&.is-marginless {
 		.modal__main,.modal__inner {
 			padding: 0;
@@ -44,12 +48,17 @@
         border-radius: $standard-radius;
         //box-shadow: $standard-box-border;
         width: 75vw;
+		max-height: 85vh;
+		overflow: auto;
         z-index: $layer--5;
         background-color: $white;
         cursor: auto;
 		opacity: 0;
 		transform: translate3d(0,4rem,0);
 		transition: transform .6s $easeInOutQuart, opacity .6s $easeInOutQuart;
+		@include media('<tablet-xs') {
+			width: 85vw;
+		}
 	}
 	&__background {
 		width: 100%;
@@ -84,7 +93,7 @@
 		padding: 4rem;
 	}
 	&__location {
-		font-size: 3.2rem;
+		font-size: 3.2em;
 		line-height: 3.5rem;
 		font-weight: normal;
 		margin-top: 0;
@@ -95,6 +104,10 @@
 		display: flex;
 		flex-direction: column;
 		margin-bottom: 2.2rem;
+		font-size: 1rem;
+		@include media('<phone-lg') {
+			font-size: 0.95rem;
+		}
 		&::after {
 			content: '';
 			height: 0.2rem;
@@ -104,19 +117,23 @@
 			display: block;
 		}
 		span {
-			font-size: 1.6rem;
+			font-size: 1.6em;
 			&:not(:first-child) {
 				margin-top: 0.8rem;
 			}
 		}
 	}
 	&__nextDate {
-		font-size: 1.6rem;
+		font-size: 1.6em;
 		color: $blue--dark;
 		font-family: $graphik--semiBold;
 	}
+	&__list {
+		max-height: 30rem;
+		overflow: auto;
+	}
 	&__listItem {
-		font-size: 1.6rem;
+		font-size: 1.6em;
 		line-height: 1.8rem;
 		&:not(:first-child) {
 			margin-top: 0.8rem;
@@ -127,5 +144,14 @@
 	}
 	&__nextLabel {
 		text-transform: uppercase;
+		font-size: 1.6em;
+	}
+	&__nextDate, &__listItem {
+		@include media('<phone-lg') {
+			span {
+				display: block;
+			}
+			flex-direction: column;
+		}
 	}
 }

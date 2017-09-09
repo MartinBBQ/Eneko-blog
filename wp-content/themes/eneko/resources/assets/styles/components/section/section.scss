@@ -5,6 +5,10 @@
 		font-weight: normal;
 		margin-bottom: 3.4rem;
 		margin-top:0;
+		@include media('<phone-lg') {
+			font-size: 3.2rem;
+			margin-bottom: 1.8rem;
+		}
 	}
 	&__list {
 		margin: 2.4rem 0;

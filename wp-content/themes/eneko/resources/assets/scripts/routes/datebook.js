@@ -10,12 +10,13 @@ export default {
 		// Body has datebook class aswell (page slug)
 		this.$el = document.body.querySelector('.datebook');
 		this.monthList = ['Janvier', 'Février', 'Mars',
-		'Avril', 'Mai', 'Juin', 'Juillet', 'Août',
-		'Septembre', 'Octobre', 'Novembre', 'Décembre'
+			'Avril', 'Mai', 'Juin', 'Juillet', 'Août',
+			'Septembre', 'Octobre', 'Novembre', 'Décembre'
 		],
-		this.$monthEl = this.$el.querySelector('.datebook__month > span');
+			this.$monthEl = this.$el.querySelector('.datebook__month > span');
 		this.currentMonth = this.$el.getAttribute('data-current-month');
 		this.$events = this.$el.querySelectorAll('.event');
+		this.$list = this.$el.querySelector('.datebook__list');
 	},
 	setListeners() {
 		this.$el
@@ -50,13 +51,26 @@ export default {
 		this.sortEvents();
 	},
 	sortEvents() {
-		Array.from(this.$events).forEach($el => {
+		const hiddenClass = 'is-hidden';
+		const { $events } = this;
+		let hiddenItems = 0;
+		Array.from($events).forEach($el => {
 			if($el.getAttribute('data-month')==this.currentMonth) {
-				$el.classList.toggle('is-hidden',false);
+				$el.classList.toggle(hiddenClass,false);
+				hiddenItems--;
 			} else {
-				$el.classList.toggle('is-hidden',true);
+				$el.classList.toggle(hiddenClass,true);
+				hiddenItems++;
 			}
 		});
+		if($events[$events.length-1].classList.contains(hiddenClass)) {
+			this.$list.classList.toggle('has-border',true);
+		} else {
+			this.$list.classList.toggle('has-border',false);
+		}
+		if(hiddenItems==$events.length) {
+			this.$list.classList.toggle('has-border',false);
+		}
 	},
 	slideToggle(ev) {
 		const $target = ev.currentTarget;
@@ -67,7 +81,7 @@ export default {
 		if(!$target.classList.contains(toggleClass)){
 			TweenLite.to($content, timing, tweenConfig);
 			$target.classList.add(toggleClass);
-		} else{
+		} else {
 			TweenLite.set($content, { height:"auto" });
 			TweenLite.from($content, timing, tweenConfig);
 			$target.classList.remove(toggleClass);

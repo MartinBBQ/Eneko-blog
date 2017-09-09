@@ -21,21 +21,37 @@
 	&__top {
 		padding: $event--paddings;
 		display: flex;
+		@include media('<tablet') {
+			padding: $event--paddingY 4rem;
+		}
+		@include media('<phone-lg') {
+			flex-direction: column;
+			padding: $event--paddingY 3rem;
+		}
 	}
 	&__date {
-		display: flex;
-		align-items: center;
+		@extend %flex-center;
 		flex-direction: column;
 		flex-grow: 0;
 		color: $blue--light;
 		margin-right: 9rem;
+		font-size: 1rem;
+		@include media('<tablet') {
+			font-size: 0.9rem;
+			margin-right: 4rem;
+		}
+		@include media('<phone-lg') {
+			align-items: flex-start;
+			margin-bottom: 1.8rem;
+			font-size: 0.8rem;
+		}
 	}
 	&__day {
-		font-size: 4.8rem;
+		font-size: 4.8em;
 		font-family: $graphik--semiBold;
 	}
 	&__month {
-		font-size: 2.4rem;
+		font-size: 2.4em;
 		font-family: $graphik--semiBold;
 		text-transform: uppercase;
 	}
@@ -48,12 +64,20 @@
 		font-family: $graphik--semiBold;
 		margin-top: 0;
 		margin-bottom: 1.6rem;
+		@include media('<tablet') {
+			font-size: 2.1rem;
+		}
+		@include media('<phone-lg') {
+			font-size: 1.8rem;
+		}
 	}
 	&__hours {
 
 	}
 	&__place {
-
+		@include media('<tablet') {
+			margin-top: 0.8rem;
+		}
 	}
 	&__background {
 		height: 35rem;
@@ -61,6 +85,12 @@
 	}
 	&__content, &__col {
 		padding: 3.2rem $event--paddingX;
+		@include media('<tablet') {
+			padding: 3.2rem 4rem;
+		}
+		@include media('<phone-lg') {
+			padding: 2.8rem;
+		}
 	}
 	&__content {
 		font-size: 1.6rem;
@@ -82,6 +112,9 @@
 		display: flex;
 		border-top: 1px solid $transparent-black;
 		padding: 0 $event--paddingX;
+		@include media('<tablet') {
+			padding: 0 2rem;
+		}
 		.event__icon {
 			margin-right: 1.4rem;
 			margin-bottom: 1.4rem;
@@ -93,10 +126,15 @@
 			border-right: 1px solid $transparent-black;
 			padding-left: 0;
 		}
+		@include media('<tablet') {
+			margin-top: 0.8rem;
+		}
+		@include media('<phone-lg') {
+			padding: 2.8rem 1.5rem;
+		}
 	}
 	&__subtitle {
-		font-size: 2.4rem;
-		font-family: $graphik--semiBold;
+		@extend .event__title;
 	}
 	&__subcontent {
 		line-height: 2.6rem;
@@ -105,6 +143,11 @@
 	&__group {
 		@extend %flex-center-y;
 		font-size: 2.4rem;
+		@include media('<tablet') {
+			font-size: 1.9rem;
+			flex-direction: column;
+			align-items: flex-start;
+		}
 		> * {
 			flex-basis: 50%;
 			display: flex;
