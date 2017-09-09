@@ -10,6 +10,15 @@
 	&__wrapper {
 		padding: 8rem;
 		display: flex;
+		@include media('<desktop') {
+			padding: 5rem;
+		}
+		@include media('<tablet') {
+			padding: 3.5rem;
+		}
+		@include media('<tablet-xs') {
+			flex-direction: column;
+		}
 	}
 	&__content {
 		font-size: 1.6rem;
@@ -21,6 +30,16 @@
 		margin-left: 9.7rem;
 		flex-basis: 31rem;
 		flex-shrink: 0;
+		@include media('<desktop') {
+			margin-left: 3rem;
+		}
+		@include media('<tablet') {
+			flex-basis: 22rem;
+		}
+		@include media('<tablet-xs') {
+			margin-left: 0;
+			padding-left:0;
+		}
 	}
 	&__name {
 		font-family: $graphik--semiBold;
