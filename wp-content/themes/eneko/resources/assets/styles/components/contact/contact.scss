@@ -1,0 +1,15 @@
+.contact {
+	&__title {
+		font-size: 1.4rem;
+		font-family: $graphik--semiBold;
+		margin-bottom: 0.8rem;
+	}
+	&__group {
+		display: flex;
+		flex-direction: column;
+	}
+	&__info {
+		margin-top: 0.8rem;
+		font-size: 1.2rem;
+	}
+}

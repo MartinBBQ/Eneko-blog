@@ -28,7 +28,7 @@
             $i = 0;
         @endphp
         <div class="informations__group">
-            <h5 class="informations__title">Statistiques</h5>
+            <h5 class="informations__title">Travail parlementaire</h5>
             <div class="informations__tags">
                 @while ($loop->have_posts())
                     @php($loop->the_post())

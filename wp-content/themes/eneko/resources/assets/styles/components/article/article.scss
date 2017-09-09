@@ -132,7 +132,7 @@
 	&__image {
 		@extend %regular-background;
 		flex-basis: 29rem;
-		max-width: 29rem;
+		min-width: 29rem;
 		display: none;
 		.article.has-post-thumbnail:not(.is-url-article) & {
 			display: block;

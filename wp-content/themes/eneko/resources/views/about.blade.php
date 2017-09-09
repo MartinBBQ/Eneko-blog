@@ -38,9 +38,28 @@
                     @php($loop = App\getCustomQuery(['post_type'=> 'commissions', 'posts_per_page' => -1]))
                         @while ($loop->have_posts()) @php($loop->the_post())
                             <span>{{get_the_title()}}</span>
-                        @endwhile
-                    {{wp_reset_query()}}
+                            @endwhile
+                            {{wp_reset_query()}}
                 </div>
+                @php($loop = App\getCustomQuery(['post_type'=> 'employees', 'posts_per_page' => -1]))
+                    @while ($loop->have_posts()) @php($loop->the_post())
+                        @php
+                        $category = get_the_category();
+                        if(!empty($category)) {
+                            $categoryName = $category[0]->name;
+                        } else {
+                            $categoryName = '';
+                        }
+                        @endphp
+                        @if(get_field('isOnAbout') && !empty($categoryName))
+                            <div class="bio__group">
+                                <h5 class="bio__label">{{$categoryName}}</h5>
+                                <span>{{get_field('name')}}</span>
+                                <span>{{get_field('description')}}</span>
+                            </div>
+                        @endif
+                    @endwhile
+                    {{wp_reset_query()}}
                 <div class="bio__socials">
                     @include('partials.socials',['twitter'=> $twitter, 'facebook'=> $facebook])
                 </div>

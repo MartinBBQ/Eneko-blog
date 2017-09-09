@@ -30,6 +30,9 @@
         font-size: 1.4rem;
         margin-top: 1.6rem;
         cursor: pointer;
+		&:only-child {
+			display: none;
+		}
     }
 	&__buttonContainer {
 		&.is-hidden {
@@ -39,4 +42,5 @@
 	.button {
 		text-align: left;
 	}
+
 }
