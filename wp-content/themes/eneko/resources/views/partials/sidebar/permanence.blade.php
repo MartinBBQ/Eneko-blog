@@ -5,7 +5,7 @@
     $imageUrl = get_the_post_thumbnail_url();
     $location = \App\getPermanenceLocation($fullAddress);
     $address =  \App\getPermanenceAddress($fullAddress);
-$nextDay = \App\getNextPermanenceDate($dates)['day'];
+    $nextDay = \App\getNextPermanenceDate($dates);
 @endphp
 <div class="permanence" style="background-image: url({{$imageUrl}});">
     <img src="{{$imageUrl}}" class="visually-hidden">
@@ -17,7 +17,7 @@ $nextDay = \App\getNextPermanenceDate($dates)['day'];
             {{$address}}
         </p>
         <p class="permanence__nextDate">
-            {{$nextDay}}
+            {{$nextDay['day']}}
         </p>
     </div>
     <div class="modal is-marginless">
@@ -39,7 +39,7 @@ $nextDay = \App\getNextPermanenceDate($dates)['day'];
                         <div class="modal__group">
                             <p class="modal__nextLabel">Prochaine permanence</p>
                             <p class="modal__nextDate">
-                                {{$nextDay}}
+                                <span>{{$nextDay['day']}}</span> - {{$nextDay['hour']}}
                             </p>
                         </div>
                         <div class="modal__group">
