@@ -4,6 +4,7 @@
     $terms = get_the_terms(get_post(),'category');
     $termSlugs = [];
     $termNames = [];
+    $siteName = '';
     foreach($terms as $term) {
         array_push($termSlugs,$term->slug);
         array_push($termNames,$term->name);
@@ -11,8 +12,20 @@
     if(!empty($articleUrl)) {
         $url = $articleUrl;
         $result = wp_remote_get('http://back.eneko.co/api/openGraph/url?url='.$url);
-        $title = $result['http_response']->get_response_object()->body;
-        $title = json_decode($title)->response->title;
+        $parsedUrl = parse_url($articleUrl);
+        if(!empty($parsedUrl['host'])) {
+           $siteName = $parsedUrl['host'];
+        } else {
+           $siteName = $parsedUrl['path'];
+        }
+        $siteName = str_replace('www.','', $siteName);
+        if(!$result instanceof WP_Error) {
+            $title = $result['http_response']->get_response_object()->body;
+            $title = json_decode($title)->response->title;
+        } else {
+            $title = '';
+            $result = false;
+        }
         // To get external links.
         $url = '//'.$url;
         $isCustomArticle = true;
@@ -24,11 +37,13 @@
 <article data-category="{{implode(' ',$termSlugs)}}" @php(post_class(\App\getArticleClasses()))>
     <a {{$isCustomArticle ? 'target="_blank"' : ''}} href="{{$url}}">
     <div class="article__wrapper">
+        @if(!$isCustomArticle)
         @foreach($termNames as $term)
-            <div class="article__buttonContainer">
-                <span class="button button--small button--filled-blue">{{$term}}</span>
-            </div>
+            @include('partials.content.buttonContainer', ['label' => $term])
         @endforeach
+        @else
+            @include('partials.content.buttonContainer', ['label' => $siteName])
+        @endif
         <h2 class="article__title">{{$title}}</h2>
         <div class="article__bottom">
             {{App\getArticleNameAndDate(true)}}
