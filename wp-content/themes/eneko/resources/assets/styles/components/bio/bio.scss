@@ -19,6 +19,9 @@
 		@include media('<tablet-xs') {
 			flex-direction: column;
 		}
+		@include media('<phone-md') {
+			padding: 2.5rem;
+		}
 	}
 	&__content {
 		font-size: 1.6rem;

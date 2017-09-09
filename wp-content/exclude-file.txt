@@ -15,6 +15,8 @@
 ## wp-content folders
 - wp-content/upgrade/
 - wp-content/uploads/
+- .cache-loader
+
 
 ## Grunt
 - node_modules
