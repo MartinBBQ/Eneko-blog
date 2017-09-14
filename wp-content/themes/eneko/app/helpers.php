@@ -200,6 +200,11 @@ function getPermanenceLocation(array $fullAddress) {
 	$count = count($addressParts);
 	if($count > 2) {
 		$index = 1;
+		$pickedAddress = explode(' ',ltrim($addressParts[$index]));
+		if(count($pickedAddress) >= 2 && is_integer(intval($pickedAddress[0]))) {
+			unset($pickedAddress[0]);
+			$addressParts[$index] = implode(' ',$pickedAddress);
+		}
 	} elseif ($count == 2) {
 		$index = 0;
 	}
