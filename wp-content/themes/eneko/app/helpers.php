@@ -196,7 +196,14 @@ function getPermanenceAddress(array $fullAddress) {
 }
 
 function getPermanenceLocation(array $fullAddress) {
-	return explode(',',$fullAddress['address'])[1];
+	$addressParts = explode(',',$fullAddress['address']);
+	$count = count($addressParts);
+	if($count > 2) {
+		$index = 1;
+	} elseif ($count == 2) {
+		$index = 0;
+	}
+	return $addressParts[$index];
 }
 
 function date_fr($format,$date) {

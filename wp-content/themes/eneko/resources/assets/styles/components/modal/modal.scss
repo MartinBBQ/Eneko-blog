@@ -46,7 +46,7 @@
     &__main {
         @extend %container;
         border-radius: $standard-radius;
-        //box-shadow: $standard-box-border;
+        box-shadow: 0 0 2.5rem 0.4rem transparentize($black,0.9);
         width: 75vw;
 		max-height: 85vh;
 		overflow: auto;

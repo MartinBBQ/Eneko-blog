@@ -17,7 +17,7 @@
             {{$address}}
         </p>
         <p class="permanence__nextDate">
-            {{$nextDay['day']}}
+            {{$nextDay['day']}}  - {{$nextDay['hour']}}
         </p>
     </div>
     <div class="modal is-marginless">

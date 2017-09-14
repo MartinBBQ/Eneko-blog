@@ -388,14 +388,14 @@ new Add_Settings_Field();
 function add_employees() {
 
 	$labels = array(
-		'name'                  => _x( 'Employés', 'Post Type General Name', 'text_domain' ),
-		'singular_name'         => _x( 'Employé', 'Post Type Singular Name', 'text_domain' ),
-		'menu_name'             => __( 'Employés', 'text_domain' ),
-		'name_admin_bar'        => __( 'Employé', 'text_domain' ),
+		'name'                  => _x( 'Équipe', 'Post Type General Name', 'text_domain' ),
+		'singular_name'         => _x( 'Membre', 'Post Type Singular Name', 'text_domain' ),
+		'menu_name'             => __( 'Équipe', 'text_domain' ),
+		'name_admin_bar'        => __( 'Membre', 'text_domain' ),
 		'archives'              => __( 'Item Archives', 'text_domain' ),
 		'attributes'            => __( 'Item Attributes', 'text_domain' ),
 		'parent_item_colon'     => __( 'Parent Item:', 'text_domain' ),
-		'all_items'             => __( 'Tous les employés', 'text_domain' ),
+		'all_items'             => __( 'Tous les membres', 'text_domain' ),
 		'add_new_item'          => __( 'Add New Item', 'text_domain' ),
 		'add_new'               => __( 'Ajouter', 'text_domain' ),
 		'new_item'              => __( 'New Item', 'text_domain' ),
@@ -417,7 +417,7 @@ function add_employees() {
 		'filter_items_list'     => __( 'Filter items list', 'text_domain' ),
 	);
 	$args = array(
-		'label'                 => __( 'Employé', 'text_domain' ),
+		'label'                 => __( 'Membre', 'text_domain' ),
 		'labels'                => $labels,
 		'supports'              => array( ),
 		'taxonomies'            => array( 'category', 'post_tag' ),
