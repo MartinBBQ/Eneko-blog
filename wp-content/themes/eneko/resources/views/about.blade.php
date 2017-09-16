@@ -44,7 +44,7 @@
                 @php($loop = App\getCustomQuery(['post_type'=> 'employees', 'posts_per_page' => -1]))
                     @while ($loop->have_posts()) @php($loop->the_post())
                         @php
-                        $category = get_the_category();
+                        $category = get_the_terms(get_the_ID(),'roles');
                         if(!empty($category)) {
                             $categoryName = $category[0]->name;
                         } else {
