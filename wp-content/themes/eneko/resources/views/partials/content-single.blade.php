@@ -1,10 +1,16 @@
+@php
+    $articleUrl = CFS()->get('url');
+    if(!empty($articleUrl)) {
+        wp_redirect(home_url());
+    }
+@endphp
 <article @php(post_class('article is-single'))>
     @php($thumb = get_the_post_thumbnail_url())
         @if(!empty($thumb))
             <div class="article__image" style="background-image: url({{$thumb}});">
                 <img src="{{$thumb}}" class="visually-hidden">
             </div>
-            @endif
+        @endif
     <div class="article__container">
         <header class="article__head">
             @foreach(get_the_terms(get_post(),'category') as $term)
