@@ -251,6 +251,9 @@ function getNextPermanenceRawDate(array $dates) {
 	return $dates;
 }
 function getNextPermanenceDate($dates = []) {
+	if(empty($dates)) {
+		return;
+	}
 	if(is_array($dates)) {
 		$nextDate  = getNextPermanenceRawDate($dates)[0];
 		$sentence = getDateToString($nextDate);
@@ -268,7 +271,10 @@ function getDateToString($date) {
 	];
 	return $sentence;
 }
-function getPermanenceDates(array $dates) {
+function getPermanenceDates($dates) {
+	if(empty($dates)) {
+		return [];
+	}
 	$sortedDates = getNextPermanenceRawDate($dates);
 	unset($sortedDates[0]);
 	return array_map(function ($date) {

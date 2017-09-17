@@ -8,6 +8,7 @@
     $dates = $cfs->get('dates');
     $nextDay = \App\getNextPermanenceDate($dates);
     $termSlug = get_the_terms(get_the_ID(), 'types')[0]->slug;
+
     $schedule = $cfs->get('ouvertures');
 @endphp
 <div class="permanence" style="background-image: url({{$imageUrl}});">
@@ -19,9 +20,11 @@
         <p class="permanence__address">
             {{$address}}
         </p>
+        @if($termSlug=='ephemere')
         <p class="permanence__nextDate">
             {{$nextDay['day']}}  - {{$nextDay['hour']}}
         </p>
+        @endif
     </div>
     <div class="modal is-marginless">
         <div class="modal__main">
