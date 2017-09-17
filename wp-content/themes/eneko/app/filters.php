@@ -126,7 +126,8 @@ add_filter('acf/fields/google_map/api', __NAMESPACE__.'\\my_acf_google_map_api')
 
 add_filter('wp_terms_checklist_args', __NAMESPACE__.'\\htmlandcms_select_one_category');
 function htmlandcms_select_one_category($args) {
-	if (isset($args['taxonomy']) && $args['taxonomy'] == 'roles') {
+    $taxonomy = $args['taxonomy'];
+	if (isset($args['taxonomy']) &&  ($taxonomy == 'roles' || $taxonomy == 'types')) {
 		$args['walker'] = new Walker_Category_Radios;
 		$args['checked_ontop'] = false;
 	}

@@ -1,11 +1,14 @@
 @php
-    $dates = CFS()->get('dates');
+    $cfs = CFS();
     $fullAddress = get_field('fulladdress');
     $cityRef = get_field('city_ref');
     $imageUrl = get_the_post_thumbnail_url();
     $location = \App\getPermanenceLocation($fullAddress);
     $address =  \App\getPermanenceAddress($fullAddress);
+    $dates = $cfs->get('dates');
     $nextDay = \App\getNextPermanenceDate($dates);
+    $termSlug = get_the_terms(get_the_ID(), 'types')[0]->slug;
+    $schedule = $cfs->get('ouvertures');
 @endphp
 <div class="permanence" style="background-image: url({{$imageUrl}});">
     <img src="{{$imageUrl}}" class="visually-hidden">
@@ -36,22 +39,11 @@
                             <span>{{$address}}</span>
                             <span>{{$cityRef}} - {{$location}}</span>
                         </p>
-                        <div class="modal__group">
-                            <p class="modal__nextLabel">Prochaine permanence</p>
-                            <p class="modal__nextDate">
-                                <span>{{$nextDay['day']}}</span> - {{$nextDay['hour']}}
-                            </p>
-                        </div>
-                        <div class="modal__group">
-                            <p class="modal__nextLabel">A venir</p>
-                            <ul class="modal__list">
-                                @foreach(\App\getPermanenceDates($dates) as $date)
-                                    <li class="modal__listItem">
-                                        <span>{{$date['day']}}</span> - {{$date['hour']}}
-                                    </li>
-                                @endforeach
-                            </ul>
-                        </div>
+                        @if($termSlug=='ephemere')
+                            @include('partials.sidebar.permanence.ephemeral', ['nextDay' => $nextDay, 'dates' => $dates])
+                        @elseif($termSlug=='permanente')
+                            @include('partials.sidebar.permanence.permanent', ['days' => $schedule])
+                        @endif
                     </div>
                 </div>
             </div>

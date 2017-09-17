@@ -250,7 +250,7 @@ function getNextPermanenceRawDate(array $dates) {
 	});
 	return $dates;
 }
-function getNextPermanenceDate(array $dates) {
+function getNextPermanenceDate($dates = []) {
 	if(is_array($dates)) {
 		$nextDate  = getNextPermanenceRawDate($dates)[0];
 		$sentence = getDateToString($nextDate);
