@@ -1,8 +1,12 @@
+@php
+    $tempTitle = !empty(get_option('ephemere')) ? get_option('ephemere') : 'Rencontrer le député';
+    $permaTitle = !empty(get_option('permanence')) ? get_option('permanence') : 'Permanences';
+@endphp
 <aside class="sidebar">
     @php($loop = App\getCustomQuery(['post_type'=> 'permanencies', 'posts_per_page' => -1]))
         @if($loop->have_posts())
             <div class="sidebar__group">
-                <h3 class="sidebar__title">Rencontrer le député</h3>
+                <h3 class="sidebar__title">{{$tempTitle}}</h3>
                 @while ($loop->have_posts()) @php($loop->the_post())
                     @php
                         $termSlug = get_the_terms(get_the_ID(), 'types')[0]->slug;
@@ -16,7 +20,7 @@
         {{wp_reset_query()}}
         @if($loop->have_posts())
             <div class="sidebar__group">
-                <h3 class="sidebar__title">Permanences</h3>
+                <h3 class="sidebar__title">{{$permaTitle}}</h3>
                 @while ($loop->have_posts()) @php($loop->the_post())
                     @php
                         $termSlug = get_the_terms(get_the_ID(), 'types')[0]->slug;
