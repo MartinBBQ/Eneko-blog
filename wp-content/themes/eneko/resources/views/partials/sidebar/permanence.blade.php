@@ -6,10 +6,13 @@
     $location = \App\getPermanenceLocation($fullAddress);
     $address =  \App\getPermanenceAddress($fullAddress);
     $dates = $cfs->get('dates');
-    $nextDay = \App\getNextPermanenceDate($dates);
     $termSlug = get_the_terms(get_the_ID(), 'types')[0]->slug;
-
     $schedule = $cfs->get('ouvertures');
+    if($termSlug=='ephemere') {
+        $nextDay = \App\getNextPermanenceDate($dates);
+    } else {
+        $nextDay = \App\getNextPermanenceDate($schedule,true);
+    }
 @endphp
 <div class="permanence" style="background-image: url({{$imageUrl}});">
     <img src="{{$imageUrl}}" class="visually-hidden">
@@ -20,11 +23,12 @@
         <p class="permanence__address">
             {{$address}}
         </p>
-        @if($termSlug=='ephemere')
         <p class="permanence__nextDate">
-            {{$nextDay['day']}}  - {{$nextDay['hour']}}
+            {{$nextDay['day']}}
+            @if($nextDay['hour'])
+                - {{$nextDay['hour']}}
+            @endif
         </p>
-        @endif
     </div>
     <div class="modal is-marginless">
         <div class="modal__main">

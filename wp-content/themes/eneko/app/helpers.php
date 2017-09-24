@@ -250,14 +250,43 @@ function getNextPermanenceRawDate(array $dates) {
 	});
 	return $dates;
 }
-function getNextPermanenceDate($dates = []) {
-	if(empty($dates)) {
-		return;
-	}
-	if(is_array($dates)) {
-		$nextDate  = getNextPermanenceRawDate($dates)[0];
-		$sentence = getDateToString($nextDate);
-		return $sentence;
+function getNextPermanenceDate($dates = [], $isPermanent = false) {
+	if(!$isPermanent) {
+		if(!empty($dates) && is_array($dates)) {
+			$nextDate  = getNextPermanenceRawDate($dates)[0];
+			$sentence = getDateToString($nextDate);
+			return $sentence;
+		}
+	} else {
+		$days = ['Dimanche','Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi'];
+		$today = new \DateTime();
+		$timestamp = $today->getTimeStamp();
+		$dayIndex = idate('w', $timestamp);
+		$i = 0;
+		$isOpen = false;
+		foreach ($dates as $date) {
+			$pickedDay = reset($date['day']);
+			$pickedDayIndex = array_search($pickedDay,$days);
+			$morningStart = $date['morning_start_hour'] ?? '';
+			$morningEnd = $date['morning_end_hour'] ?? '';
+			$afternoonStart = $date['afternoon_start_hour'] ?? '';
+			$afternoonEnd = $date['afternoon_end_hour'] ?? '';
+			if($pickedDayIndex==$dayIndex) {
+				$nextDay = [
+					'day' => $pickedDay,
+					'hour' => $morningStart.' - '.$morningEnd.', '.$afternoonStart.' - '.$afternoonEnd
+				];
+				// If I got my day I return the array.
+				return $nextDay;
+			}
+			$i++;
+		}
+		$nextDay = [
+			'day' => 'FERMÉ',
+			'hour' => ''
+		];
+		// If i looped over the whole array without find my day, I return this
+		return $nextDay;
 	}
 }
 
