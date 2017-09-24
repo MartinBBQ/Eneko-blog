@@ -1,8 +1,16 @@
 .contact {
+	margin-top: 3rem;
+	&__role {
+		text-transform: uppercase;
+		font-size: 1.1rem;
+		margin-bottom: 1rem;
+		color: $grey;
+	}
 	&__title {
 		font-size: 1.4rem;
 		font-family: $graphik--semiBold;
 		margin-bottom: 0.8rem;
+		margin-top: 0;
 	}
 	&__group {
 		display: flex;
