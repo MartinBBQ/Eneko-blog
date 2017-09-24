@@ -22,47 +22,51 @@
                 {!! get_post()->post_content !!}
             </div>
             <aside class="bio__sumup">
-                <h3 class="bio__name">
-                    {{$fullName}}
-                </h3>
-                <div class="bio__group">
-                    <h5 class="bio__label">Fonction</h5>
-                    {{get_the_author_meta('description', $authorId)}}
-                </div>
-                <div class="bio__group">
-                    <h5 class="bio__label">Groupe politique</h5>
-                    {{$politicalGroup}}
-                </div>
-                <div class="bio__group">
-                    <h5 class="bio__label">Commission</h5>
-                    @php($loop = App\getCustomQuery(['post_type'=> 'commissions', 'posts_per_page' => -1]))
-                        @while ($loop->have_posts()) @php($loop->the_post())
-                            <span>{{get_the_title()}}</span>
-                            @endwhile
-                            {{wp_reset_query()}}
+                <div class="bio__block">
+                    <h3 class="bio__name">
+                        {{$fullName}}
+                    </h3>
+                    <div class="bio__group">
+                        <h5 class="bio__label">Fonction</h5>
+                        {{get_the_author_meta('description', $authorId)}}
+                    </div>
+                    <div class="bio__group">
+                        <h5 class="bio__label">Groupe politique</h5>
+                        {{$politicalGroup}}
+                    </div>
+                    <div class="bio__group">
+                        <h5 class="bio__label">Commission</h5>
+                        @php($loop = App\getCustomQuery(['post_type'=> 'commissions', 'posts_per_page' => -1]))
+                            @while ($loop->have_posts()) @php($loop->the_post())
+                                <span>{{get_the_title()}}</span>
+                                @endwhile
+                                {{wp_reset_query()}}
+                    </div>
+                    <div class="bio__socials">
+                        @include('partials.socials',['twitter'=> $twitter, 'facebook'=> $facebook])
+                    </div>
                 </div>
                 @php($loop = App\getCustomQuery(['post_type'=> 'employees', 'posts_per_page' => -1]))
                     @while ($loop->have_posts()) @php($loop->the_post())
                         @php
-                        $category = get_the_terms(get_the_ID(),'roles');
-                        if(!empty($category)) {
-                            $categoryName = $category[0]->name;
-                        } else {
-                            $categoryName = '';
-                        }
+                            $category = get_the_terms(get_the_ID(),'roles');
+                            if(!empty($category)) {
+                                $categoryName = $category[0]->name;
+                            } else {
+                                $categoryName = '';
+                            }
                         @endphp
                         @if(get_field('isOnAbout') && !empty($categoryName))
-                            <div class="bio__group">
-                                <h5 class="bio__label">{{$categoryName}}</h5>
-                                <span>{{get_field('name')}}</span>
-                                <span>{{get_field('description')}}</span>
+                            <div class="bio__block bio__block is-secondary">
+                                <div class="bio__group">
+                                    <h5 class="bio__label">{{$categoryName}}</h5>
+                                    <span>{{get_field('name')}}</span>
+                                    <span>{{get_field('description')}}</span>
+                                </div>
                             </div>
                         @endif
-                    @endwhile
-                    {{wp_reset_query()}}
-                <div class="bio__socials">
-                    @include('partials.socials',['twitter'=> $twitter, 'facebook'=> $facebook])
-                </div>
+                        @endwhile
+                        {{wp_reset_query()}}
             </aside>
         </div>
     </article>
