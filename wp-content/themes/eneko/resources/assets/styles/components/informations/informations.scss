@@ -6,6 +6,11 @@
 		//flex-direction: column;
 		margin-bottom: 4rem;
 	}
+	&__tags {
+		a {
+			display: block;
+		}
+	}
     &__title {
         color: $white;
         font-size: 1rem;
@@ -35,8 +40,13 @@
 		}
     }
 	&__buttonContainer {
+		display: flex;
+		background-repeat: no-repeat;
 		&.is-hidden {
 			display: none;
+		}
+		a {
+			display: block;
 		}
 	}
 	.button {

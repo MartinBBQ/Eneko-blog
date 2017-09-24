@@ -95,7 +95,7 @@ function add_commissions() {
 	$args = array(
 		'label'                 => __( 'Commission', 'text_domain' ),
 		'labels'                => $labels,
-		'supports'              => array( ),
+		'supports'              => array('excerpt','title'),
 		'taxonomies'            => array(),
 		'hierarchical'          => false,
 		'public'                => false,
@@ -151,7 +151,7 @@ function custom_post_type() {
 	$args = array(
 		'label'                 => __( 'Statistique', 'text_domain' ),
 		'labels'                => $labels,
-		'supports'              => array( ),
+		'supports'              => array('excerpt', 'title'),
 		'taxonomies'            => array(),
 		'hierarchical'          => false,
 		'public'                => false,

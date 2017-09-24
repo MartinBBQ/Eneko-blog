@@ -1,13 +1,16 @@
 <div class="informations">
     @php
         $authorId = get_post()->post_author;
-        $politicalGroup = get_the_author_meta('group',$authorId)
+        $politicalGroup = get_the_author_meta('group',$authorId);
+        $linkPolitical = get_the_author_meta('url',$authorId) ?? '#';
     @endphp
     @if(!empty($politicalGroup))
         <div class="informations__group">
-            <h5 class="informations__title">Groupe politique</h5>
+            <h5 class="informations__title">
+                <a href="{{$linkPolitical}}" target="_blank">Groupe politique</a>
+            </h5>
             <div class="informations__tags">
-                <button type="button" class="button button--light-blue button--tag disabled-hover">{{$politicalGroup}}</button>
+                <a href="{{$linkPolitical}}" class="button button--light-blue button--tag disabled-hover">{{$politicalGroup}}</a>
             </div>
         </div>
     @endif
@@ -17,7 +20,7 @@
             <div class="informations__tags">
                 @while ($loop->have_posts()) @php($loop->the_post())
                     <div class="informations__buttonContainer">
-                        <button type="button" class="button button--white button--tag disabled-hover">{{get_the_title()}}</button>
+                        <a target="_blank" href="{{get_the_excerpt()}}" class="button button--white button--tag disabled-hover">{{get_the_title()}}</a>
                     </div>
                     @endwhile
                     {{wp_reset_query()}}
@@ -34,11 +37,11 @@
                     @php($loop->the_post())
                         @if($i<2)
                             <div class="informations__buttonContainer">
-                                <button type="button" class="button button--white button--tag disabled-hover">{{get_the_title()}}</button>
+                                <a target="_blank" href="{{get_the_excerpt()}}" class="button button--white button--tag disabled-hover">{{get_the_title()}}</a>
                             </div>
                         @else
                             <div class="informations__buttonContainer is-hidden">
-                                <button type="button" class="button button--white button--tag disabled-hover">{{get_the_title()}}</button>
+                                <a target="_blank" href="{{get_the_excerpt()}}" class="button button--white button--tag disabled-hover">{{get_the_title()}}</a>
                             </div>
                         @endif
                         @php($i++)
