@@ -239,5 +239,3 @@ RewriteRule . /index.php [L]
     AddOutputFilterByType DEFLATE font/opentype
 </IfModule>
 
-# END WordPress
-RedirectMatch 301 /sticker/(.*)$ /home
