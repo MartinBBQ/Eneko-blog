@@ -27,12 +27,14 @@
             <a href="/propositions">Faire une proposition</a>
         </div>
     </div>
-        @if($loop->have_posts())
+    @php($loop = App\getCustomQuery(['post_type'=> 'permanencies', 'posts_per_page' => -1]))
+    @if($loop->have_posts())
             <div class="sidebar__group">
                 <h3 class="sidebar__title">{{$permaTitle}}</h3>
                 @while ($loop->have_posts()) @php($loop->the_post())
                     @php
-                        $termSlug = get_the_terms(get_the_ID(), 'types')[0]->slug;
+                        $term = get_the_terms(get_the_ID(), 'types')[0];
+                        $termSlug = $term ? $term->slug : '';
                     @endphp
                     @if($termSlug=='permanente')
                         @include('partials.sidebar.permanence', ["isPermanent" => true])
@@ -41,13 +43,13 @@
             </div>
         @endif
         {{wp_reset_query()}}
-    @php($loop = App\getCustomQuery(['post_type'=> 'permanencies', 'posts_per_page' => -1]))
         @if($loop->have_posts())
             <div class="sidebar__group">
                 <h3 class="sidebar__title">{{$tempTitle}}</h3>
                 @while ($loop->have_posts()) @php($loop->the_post())
                     @php
-                        $termSlug = get_the_terms(get_the_ID(), 'types')[0]->slug;
+                        $term = get_the_terms(get_the_ID(), 'types')[0];
+                        $termSlug = $term ? $term->slug : '';
                     @endphp
                     @if($termSlug=='ephemere')
                         @include('partials.sidebar.permanence')

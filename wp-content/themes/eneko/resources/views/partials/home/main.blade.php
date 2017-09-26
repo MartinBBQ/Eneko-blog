@@ -1,6 +1,9 @@
+@php
+    $useLocalLoop = $useLocalLoop ?? false;
+@endphp
 <section class="section">
     <h1 class="section__title">
-        {{ $title ? $title : "Flux d'actualités" }}
+        {{ !empty($title) ? $title : "Flux d'actualités" }}
     </h1>
     @if (!have_posts())
         <div class="alert alert-warning">
