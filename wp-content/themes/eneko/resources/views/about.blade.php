@@ -61,7 +61,7 @@
                                 <div class="bio__group">
                                     <h5 class="bio__label">{{$categoryName}}</h5>
                                     <span>{{get_field('name')}}</span>
-                                    <span>{{get_field('description')}}</span>
+                                    <span class="bio__normal">{{get_field('description')}}</span>
                                 </div>
                             </div>
                         @endif

@@ -39,7 +39,7 @@
 			.bio__label {
 				margin-top: 0;
 			}
-			.bio__group span {
+			.bio__group span:not(.bio__normal) {
 				font-family: $graphik--semiBold;
 			}
 		}
