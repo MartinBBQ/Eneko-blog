@@ -9,10 +9,9 @@ export default function initMap() {
 		if (lat && lng) {
 			const map = new google.maps.Map(el.querySelector('.modal__map'), {
 				zoom: 15,
-				zoomControl: true,
-				scaleControl: false,
 				scrollwheel: true,
 				center: position,
+				disableDefaultUI: true,
 				styles: [
 					{elementType: 'geometry', stylers: [{color: '#f5f5f5'}]},
 					{elementType: 'labels.text.stroke', stylers: [{color: '#f5f5f5'}]},
@@ -20,7 +19,7 @@ export default function initMap() {
 					{
 						featureType: 'administrative.locality',
 						elementType: 'labels.text.fill',
-						stylers: [{color: '#bdbdbd'}]
+						stylers: [{visibility: "off"}]
 					},
 					{
 						featureType: 'poi',
@@ -30,12 +29,12 @@ export default function initMap() {
 					{
 						featureType: 'poi.park',
 						elementType: 'geometry',
-						stylers: [{color: '#eeeeee'}]
+						stylers: [{visibility: "off"}]
 					},
 					{
 						featureType: 'poi.park',
 						elementType: 'labels.text.fill',
-						stylers: [{color: '#757575'}]
+						stylers: [{visibility: "off"}]
 					},
 					{
 						featureType: 'road',
