@@ -4,7 +4,8 @@ import common from './routes/common';
 import home from './routes/home';
 import aboutUs from './routes/about';
 import datebook from './routes/datebook';
-
+// Utils
+import initMap from './initMap';
 /** Populate Router instance with DOM routes */
 const routes = new Router({
 	// All pages
@@ -18,3 +19,6 @@ const routes = new Router({
 
 // Load Events
 document.addEventListener('DOMContentLoaded', () => routes.loadEvents())
+
+// Init google map callback, it must be here
+window.initMap = initMap;

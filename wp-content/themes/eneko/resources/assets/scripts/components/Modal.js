@@ -7,6 +7,7 @@ export default class Modal {
 		this.$el = props.$el;
 		this.openClass = 'is-open';
 		this.isOpen = false;
+		this.isTriggeredOnce = false;
 	}
 	findAncestor ($el, cls) {
 		while (($el = $el.parentElement) && !$el.classList.contains(cls));
@@ -31,6 +32,15 @@ export default class Modal {
 	open(ev) {
 		const $target = ev.target;
 		const classVal = $target.classList.value;
+		if(google && !this.isTriggeredOnce) {
+			const map = this.$el.querySelector('.modal__map');
+			let {lat, lng, id} = this.$el.dataset;
+			lat = parseFloat(lat) - 5;
+			lng = parseFloat(lng);
+			const center = {lat, lng};
+			google.maps.event.trigger(map, "resize");
+			this.isTriggeredOnce = true;
+		}
 		if(!classVal.includes('modal') && !classVal.includes('cross')) {
 			this.$el.classList.add(this.openClass);
 			this.isOpen = true;

@@ -2,6 +2,7 @@
     $cfs = CFS();
     $fullAddress = get_field('fulladdress');
     $cityRef = get_field('city_ref');
+    $phone = get_field('phone');
     $imageUrl = get_the_post_thumbnail_url();
     $location = \App\getPermanenceLocation($fullAddress);
     $address =  \App\getPermanenceAddress($fullAddress);
@@ -13,8 +14,10 @@
     } else {
         $nextDay = \App\getNextPermanenceDate($schedule,true);
     }
+    $lng = $fullAddress['lng'];
+    $lat = $fullAddress['lat']
 @endphp
-<div class="permanence" style="background-image: url({{$imageUrl}});">
+<div class="permanence" data-lng="{{$lng}}" data-lat="{{$lat}}" style="background-image: url({{$imageUrl}});">
     <img src="{{$imageUrl}}" class="visually-hidden">
     <div class="permanence__wrapper">
         <h5 class="permanence__location">
@@ -35,17 +38,35 @@
             <div class="modal__inner">
                 <div class="cross"></div>
                 <div class="modal__content">
-                    <div class="modal__background" style="background-image: url({{$imageUrl}});">
+                    <div class="modal__top" style="background-image: url({{$imageUrl}});">
+                        <div class="modal__map"></div>
                         <img src="{{$imageUrl}}" class="visually-hidden">
+                        @if(!empty($lat) && !empty($lng))
+                            <a target="_blank" href="//google.com/maps/?q={{$fullAddress['address']}}" class="modal__locate">
+                                <div class="modal__cta">
+                                    <i class="material-icons">directions</i>
+                                </div>
+                                <span class="modal__mapLabel">S'y rendre</span>
+                            </a>
+                        @endif
                     </div>
                     <div class="modal__externalContent">
                         <h5 class="modal__location">
                             {{$location}}
                         </h5>
-                        <p class="modal__address">
-                            <span>{{$address}}</span>
-                            <span>{{$cityRef}} - {{$location}}</span>
+                        <p class="modal__info">
+                            <span class="modal__label">Adresse : </span>
+                            <span>{{$address}}, {{$cityRef}} {{$location}}</span>
                         </p>
+                        @if(!empty(phone))
+                        <p class="modal__info">
+                            <span class="modal__label">Téléphone : </span>
+                            <span>{{$phone}}</span>
+                        </p>
+                        @endif
+                        <div class="modal__description">
+                            {{get_the_content()}}
+                        </div>
                         @if($termSlug=='ephemere')
                             @include('partials.sidebar.permanence.ephemeral', ['nextDay' => $nextDay, 'dates' => $dates])
                         @elseif($termSlug=='permanente')

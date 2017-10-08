@@ -60,15 +60,16 @@
 			width: 85vw;
 		}
 	}
-	&__background {
+	&__background,&__top {
 		width: 100%;
 		height: 21rem;
 		border-top-left-radius: $standard-radius;
 		border-top-right-radius: $standard-radius;
+		position: relative;
 		@extend %regular-background;
 	}
     &__content {
-        p:not(.modal__address):not(.modal__nextLabel) {
+        p:not(.modal__info):not(.modal__nextLabel) {
             margin-top: 0;
             margin-bottom: 3rem;
         }
@@ -78,6 +79,10 @@
             font-family: $graphik--semiBold;
         }
     }
+	&__map {
+		width: 100%;
+		height: 100%;
+	}
     &__inner {
         position: relative;
         padding: $modal--paddings;
@@ -89,6 +94,32 @@
             margin-right: 1.6rem;
         }
     }
+	&__locate {
+		right: 8rem;
+		top: 100%;
+		position: absolute;
+		transform: translate3d(0,-#{$modal--ctaSize/2},0);
+		@extend %flex-center-y;
+		flex-direction: column;
+	}
+	&__mapLabel {
+		color: $blue;
+		font-size: 1.4rem;
+		margin-top: 1.6rem;
+	}
+	&__cta {
+		width: $modal--ctaSize;
+		height: $modal--ctaSize;
+		border-radius: 100%;
+		background-color: $blue;
+		box-shadow: 0 1px 3px 0 transparentize($blue,0.7);
+		color: white;
+		@extend %flex-center;
+		i {
+			@extend %flex-center;
+			font-size: 3rem;
+		}
+	}
 	&__externalContent {
 		padding: 4rem;
 	}
@@ -99,22 +130,11 @@
 		margin-top: 0;
 		margin-bottom: 1.6rem;
 	}
-	&__address {
-		text-transform: uppercase;
-		display: flex;
-		flex-direction: column;
-		margin-bottom: 2.2rem;
+	&__info {
 		font-size: 1rem;
+		margin-bottom: 0.8rem;
 		@include media('<phone-lg') {
 			font-size: 0.95rem;
-		}
-		&::after {
-			content: '';
-			height: 0.2rem;
-			width: 2.4rem;
-			background-color: $black;
-			margin-top: 0.9rem;
-			display: block;
 		}
 		span {
 			font-size: 1.6em;
@@ -122,6 +142,15 @@
 				margin-top: 0.8rem;
 			}
 		}
+	}
+	&__label {
+		font-family: $graphik--semiBold;
+	}
+	&__description {
+		margin: 2.4rem 0;
+		line-height: 2.3rem;
+		font-size: 1.4rem;
+		color: $grey--modalContent;
 	}
 	&__nextDate {
 		font-size: 1.6em;
@@ -152,6 +181,17 @@
 				display: block;
 			}
 			flex-direction: column;
+		}
+	}
+	&__group {
+		display: flex;
+		flex-direction: column;
+		&::before {
+			content: '';
+			width: 100%;
+			height: 1px;
+			background-color: $grey--modalLine;
+			margin-bottom: 4rem;
 		}
 	}
 }
