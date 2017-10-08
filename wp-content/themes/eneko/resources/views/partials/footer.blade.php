@@ -3,9 +3,9 @@
 </footer>
 <script type="text/javascript">
 	function initMap() {
-		const $list = $('.permanence');
+		const $list = document.querySelectorAll('.permanence');
 		window.maps = [];
-		$list.each(function (i, el) {
+		Array.from($list).forEach(function (el) {
 			let {lat, lng} = el.dataset;
 			lat = parseFloat(lat);
 			lng = parseFloat(lng);
@@ -102,8 +102,6 @@
 					position: position,
 					map: map
 				});
-				maps.push({id: i, map});
-				el.setAttribute('data-id', i);
 			}
 		})
 	}
