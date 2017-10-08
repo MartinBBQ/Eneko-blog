@@ -9,10 +9,9 @@
     }
 @endphp
 <div class="contact">
-    <h5 class="contact__role">{{$categoryName}}</h5>
-    <h5 class="contact__title">{{get_field('name')}}</h5>
+    <div class="contact__title">{{get_field('name')}} <span class="contact__role"> — {{$categoryName}}</span></div>
     <div class="contact__group">
-        <a href="tel:{{$phone}}" class="contact__info">{{$phone}}</a>
-        <a href="mailto:{{$mail}}" class="contact__info">{{$mail}}</a>
+        <a href="tel:{{$phone}}" class="contact__info">📞 {{$phone}}</a>
+        <a href="mailto:{{$mail}}" class="contact__info">✉️ {{$mail}}</a>
     </div>
 </div>

@@ -3,12 +3,21 @@
     $permaTitle = !empty(get_option('permanence')) ? get_option('permanence') : 'Permanences';
 @endphp
 <aside class="sidebar">
-    <div class="sidebar__group">
+    <h3 class="sidebar__title">Contact</h3>
+    <div class="sidebar__group sidebar__group--contact">
+        <div class="sidebar__info">
+            <a href="mailto:{{$mail}}"><span>✉️</span> Écrire au député</a>
+        </div>
+        <div class="sidebar__info">
+            <a href="/propositions"><span>💡</span> Faire une proposition</a>
+        </div>
+    </div>
+    <div class="sidebar__group sidebar__group--team">
         @php
             $authorId = \App\getOwnerId();
             $mail = get_the_author_meta('user_email', $authorId);
         @endphp
-        <h3 class="sidebar__title">Contact</h3>
+        <h4 class="sidebar__subtitle">L'équipe</h4>
         @php($loop = App\getCustomQuery(['post_type'=> 'employees', 'posts_per_page' => -1]))
             @if($loop->have_posts())
                 @while ($loop->have_posts()) @php($loop->the_post())
@@ -18,14 +27,6 @@
                     @endwhile
                     @endif
                     {{wp_reset_query()}}
-    </div>
-    <div class="sidebar__group">
-        <div class="sidebar__info">
-            <a href="mailto:{{$mail}}">Écrire au député</a>
-        </div>
-        <div class="sidebar__info">
-            <a href="/propositions">Faire une proposition</a>
-        </div>
     </div>
     @php($loop = App\getCustomQuery(['post_type'=> 'permanencies', 'posts_per_page' => -1]))
     @if($loop->have_posts())
