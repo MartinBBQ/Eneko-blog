@@ -73,7 +73,7 @@
 						{
 							featureType: 'transit',
 							elementType: 'geometry',
-							stylers: [{color: '#eee'}]
+							stylers: [{visibility: "off"}]
 						},
 						{
 							featureType: 'transit.station',

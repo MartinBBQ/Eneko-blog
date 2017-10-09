@@ -14,7 +14,7 @@
         @include('partials.filters')
     @endif
     <div class="section__list">
-        @php($loop = App\getCustomQuery(['post_type'=> 'post', 'posts_per_page' => 4]))
+        @php($loop = App\getCustomQuery(['post_type'=> 'post', 'posts_per_page' => 10]))
             @while (!$useLocalLoop ? $loop->have_posts() : have_posts()) @php(!$useLocalLoop ? $loop->the_post() : the_post())
                 @include('partials.content')
             @endwhile

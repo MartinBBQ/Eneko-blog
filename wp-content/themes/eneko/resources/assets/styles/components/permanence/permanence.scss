@@ -16,7 +16,7 @@
 		top: 0;
 		width: 100%;
 		height: 100%;
-		background-color: transparentize($black-blue,0.8);
+		background: linear-gradient(180deg, transparentize($white,1) 0%, $white 100%);
 	}
 	@include media('<tablet-xs') {
 		height: 20rem;
