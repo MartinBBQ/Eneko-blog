@@ -12,24 +12,24 @@
             <a href="/propositions"><span>💡</span> Faire une proposition</a>
         </div>
     </div>
-    <div class="sidebar__group sidebar__group--team">
-        @php
-            $authorId = \App\getOwnerId();
-            $mail = get_the_author_meta('user_email', $authorId);
-        @endphp
-        <h4 class="sidebar__subtitle">L'équipe</h4>
-        @php($loop = App\getCustomQuery(['post_type'=> 'employees', 'posts_per_page' => -1]))
-            @if($loop->have_posts())
-                @while ($loop->have_posts()) @php($loop->the_post())
-                    @if(get_field('isOnSidebar'))
-                        @include('partials.sidebar.contact')
-                    @endif
-                    @endwhile
-                    @endif
-                    {{wp_reset_query()}}
-    </div>
-    @php($loop = App\getCustomQuery(['post_type'=> 'permanencies', 'posts_per_page' => -1]))
+    @php
+        $authorId = \App\getOwnerId();
+        $mail = get_the_author_meta('user_email', $authorId);
+    $loop = App\getCustomQuery(['post_type'=> 'employees', 'posts_per_page' => -1])
+    @endphp
     @if($loop->have_posts())
+        <div class="sidebar__group sidebar__group--team">
+            <h4 class="sidebar__subtitle">L'équipe</h4>
+            @while ($loop->have_posts()) @php($loop->the_post())
+                @if(get_field('isOnSidebar'))
+                    @include('partials.sidebar.contact')
+                @endif
+            @endwhile
+        </div>
+    @endif
+    {{wp_reset_query()}}
+    @php($loop = App\getCustomQuery(['post_type'=> 'permanencies', 'posts_per_page' => -1]))
+        @if($loop->have_posts())
             <div class="sidebar__group">
                 <h3 class="sidebar__title">{{$permaTitle}}</h3>
                 @while ($loop->have_posts()) @php($loop->the_post())
