@@ -314,8 +314,12 @@ function getPermanenceDates($dates) {
 function getArticleClasses() {
 	$classes = ['article'];
 	$url = CFS()->get('url');
+	$video = get_field('video');
 	if($url) {
 		array_push($classes, 'is-url-article');
+	}
+	if($video) {
+		array_push($classes, 'has-video');
 	}
 	return $classes;
 }

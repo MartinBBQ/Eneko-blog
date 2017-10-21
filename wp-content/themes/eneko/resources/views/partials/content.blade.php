@@ -34,27 +34,32 @@
         $url = get_the_permalink();
         $title = get_the_title();
     }
+    $videoUrl = get_field('video');
 @endphp
 <article data-category="{{implode(' ',$termSlugs)}}" @php(post_class(\App\getArticleClasses()))>
-    <a {{$isCustomArticle ? 'target="_blank"' : ''}} href="{{$url}}">
-        <div class="article__wrapper">
-            @if(!$isCustomArticle)
-                @foreach($termNames as $term)
-                    @include('partials.content.buttonContainer', ['label' => $term])
-                @endforeach
-            @else
-                @include('partials.content.buttonContainer', ['label' => $siteName])
-            @endif
-            <h2 class="article__title">{{$title}}</h2>
-            <div class="article__bottom">
-                {{App\getArticleNameAndDate(true)}}
-            </div>
-        </div>
-        @php($thumb = get_the_post_thumbnail_url(get_post(),'full'))
-            @isset($thumb)
-                <div class="article__image" style="background-image: url({{$thumb}});">
-                    <img src="{{$thumb}}" class="visually-hidden">
+    @if(empty($videoUrl))
+        <a {{$isCustomArticle ? 'target="_blank"' : ''}} href="{{$url}}">
+            <div class="article__wrapper">
+                @if(!$isCustomArticle)
+                    @foreach($termNames as $term)
+                        @include('partials.content.buttonContainer', ['label' => $term])
+                    @endforeach
+                @else
+                    @include('partials.content.buttonContainer', ['label' => $siteName])
+                @endif
+                <h2 class="article__title">{{$title}}</h2>
+                <div class="article__bottom">
+                    {{App\getArticleNameAndDate(true)}}
                 </div>
-            @endisset
-    </a>
+            </div>
+            @php($thumb = get_the_post_thumbnail_url(get_post(),'full'))
+                @isset($thumb)
+                    <div class="article__image" style="background-image: url({{$thumb}});">
+                        <img src="{{$thumb}}" class="visually-hidden">
+                    </div>
+                @endisset
+        </a>
+    @else
+        <iframe src="{{$videoUrl}}" frameborder="0" class="article__video"></iframe>
+    @endif
 </article>

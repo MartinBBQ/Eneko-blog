@@ -95,6 +95,9 @@
 			display: none;
 		}
 	}
+	&.has-video {
+		background-color: transparent;
+	}
 	.button {
 		text-transform: uppercase;
 	}
@@ -153,5 +156,15 @@
 	}
 	&__buttonContainer {
 		display: flex;
+	}
+	&__video {
+		width: 100%;
+		height: 100%;
+		display: block;
+		max-height: none;
+		min-height: 45rem;
+		@include media('<tablet') {
+			min-height: 35rem;
+		}
 	}
 }
