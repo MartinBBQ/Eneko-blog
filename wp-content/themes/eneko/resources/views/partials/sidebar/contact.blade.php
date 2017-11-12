@@ -2,7 +2,7 @@
     $mail = get_field('mail');
     $phone = get_field('phone');
     $category = get_the_terms(get_the_ID(),'roles');
-    if(!empty($category) && $category instanceof WP_Error) {
+    if(!empty($category) && !$category instanceof WP_Error) {
         $categoryName = $category[0]->name;
     } else {
         $categoryName = '';
