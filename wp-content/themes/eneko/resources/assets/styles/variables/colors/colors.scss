@@ -8,9 +8,9 @@ $green: #7ed321;
 $red--dark: #d0011b;
 $red--flash: #ff4375;
 $black: #222222;
-$black-blue: #1F2532;
+$black-blue: #0F4291;
 $blue--light: #01B2FB;
-$blue: $blue--light;
+$blue: $black-blue;
 $blue--dark: #6A85B6;
 $blue--darker:#3542d1;
 $grey--lightest: #f6f6f6;
@@ -26,8 +26,12 @@ $article--border: #E5E5E5;
 $grey: #A3A3A3;
 $grey--modalContent: #777777;
 $grey--modalLine: #DCDCDC;
+$grey--header: #AEC4E4;
 
 $transparent-black: transparentize($black,0.9);
 
 // Symbols
 $bg-body: #F7F8FA;
+
+// Main
+$color--main: $blue;
