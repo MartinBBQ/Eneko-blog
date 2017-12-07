@@ -31,6 +31,7 @@
 		font-size: 1.6rem;
 		margin-bottom: 0.8rem;
 		line-height: 1.8rem;
+		color: $color--main;
 	}
 	&__address {
 		font-size: 1rem;
@@ -39,10 +40,17 @@
 	}
 	&__nextDate {
 		font-size: 1rem;
-		color: $blue--dark;
+		color: $blue--grey;
 		text-transform: uppercase;
-		font-family: $graphik--semiBold;
+		font-family: $font--main;
 		margin-bottom: 0;
+	}
+	&__hours {
+		border-radius: $standard-radius;
+		border: 1px solid transparentize($blue--grey,0.5);
+		padding: 0.3rem;
+		color: $color--main;
+		margin-left: 0.5rem;
 	}
 	&__wrapper {
 		position: relative;

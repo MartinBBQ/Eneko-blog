@@ -48,11 +48,11 @@
 	}
 	&__day {
 		font-size: 4.8em;
-		font-family: $graphik--semiBold;
+		font-family: $font--main;
 	}
 	&__month {
 		font-size: 2.4em;
-		font-family: $graphik--semiBold;
+		font-family: $font--main;
 		text-transform: uppercase;
 	}
 	&__header {
@@ -61,7 +61,7 @@
 	&__title {
 		font-size: 2.4rem;
 		text-transform: uppercase;
-		font-family: $graphik--semiBold;
+		font-family: $font--main;
 		margin-top: 0;
 		margin-bottom: 1.6rem;
 		@include media('<tablet') {
@@ -100,7 +100,7 @@
 		}
 		h1,h2,h3,h4,h5,h6 {
 			margin-top: 0;
-			font-family: $graphik--semiBold;
+			font-family: $font--main;
 			font-weight: normal;
 			margin-bottom: 1.2rem;
 		}

@@ -4,7 +4,7 @@
         background-color: transparentize($color,0.93);
     }
     &.button--semiFilled {
-        font-family: $graphik--semiBold;
+        font-family: $font--main;
         font-size: 1.6rem;
         &:hover:not(:disabled):not(.disabled-hover) {
             background-color: transparentize($color,0.93);

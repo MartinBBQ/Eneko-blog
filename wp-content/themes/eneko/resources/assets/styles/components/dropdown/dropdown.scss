@@ -131,7 +131,7 @@
             margin-left: 1.6rem;
         }
         &.is-active {
-            font-family: $graphik--semiBold;
+            font-family: $font--main;
         }
     }
     &__label {
@@ -148,7 +148,7 @@
             z-index: $layer--1;
         }
         .has-themes-enabled & {
-            font-family: $graphik--semiBold;
+            font-family: $font--main;
             span {
                 &::before {
                     opacity: 1;

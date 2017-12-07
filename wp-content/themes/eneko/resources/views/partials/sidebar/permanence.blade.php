@@ -29,7 +29,9 @@
         <p class="permanence__nextDate">
             {{$nextDay['day']}}
             @if($nextDay['hour'])
-                - {{$nextDay['hour']}}
+                <span class="permanence__hours">
+                    {{$nextDay['hour']}}
+                </span>
             @endif
         </p>
     </div>

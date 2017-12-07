@@ -5,6 +5,7 @@
     $termSlugs = [];
     $termNames = [];
     $siteName = '';
+    $thumb = get_the_post_thumbnail_url(get_post(),'full');
     foreach($terms as $term) {
         array_push($termSlugs,$term->slug);
         array_push($termNames,$term->name);
@@ -36,7 +37,9 @@
     }
     $videoUrl = get_field('video');
 @endphp
-<article data-category="{{implode(' ',$termSlugs)}}" @php(post_class(\App\getArticleClasses()))>
+<article
+        data-category="{{implode(' ',$termSlugs)}}"
+        @php(post_class(\App\getArticleClasses()))>
     @if(empty($videoUrl))
         <a {{$isCustomArticle ? 'target="_blank"' : ''}} href="{{$url}}">
             <div class="article__wrapper">
@@ -48,18 +51,18 @@
                     @include('partials.content.buttonContainer', ['label' => $siteName])
                 @endif
                 <h2 class="article__title">{{$title}}</h2>
+                <p class="article__extract">
+                    {{wp_trim_words(get_the_content(),30,null)}}
+                </p>
                 <div class="article__bottom">
                     {{App\getArticleNameAndDate(true)}}
                 </div>
             </div>
-            @php($thumb = get_the_post_thumbnail_url(get_post(),'full'))
-                @isset($thumb)
-                    <div class="article__image" style="background-image: url({{$thumb}});">
-                        <img src="{{$thumb}}" class="visually-hidden">
-                    </div>
-                @endisset
         </a>
     @else
         <iframe src="{{$videoUrl}}" frameborder="0" class="article__video"></iframe>
+    @endif
+    @if(!empty($thumb) && empty($videoUrl))
+        <div class="article__bg" style="background-image: url({{$thumb}});"></div>
     @endif
 </article>

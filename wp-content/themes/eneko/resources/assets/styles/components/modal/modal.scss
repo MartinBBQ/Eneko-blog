@@ -76,7 +76,7 @@
         h3 {
             font-size: 1.6rem;
             margin-top: 0;
-            font-family: $graphik--semiBold;
+            font-family: $font--main;
         }
     }
 	&__map {
@@ -144,7 +144,7 @@
 		}
 	}
 	&__label {
-		font-family: $graphik--semiBold;
+		font-family: $font--main;
 	}
 	&__description {
 		margin: 2.4rem 0;
@@ -155,7 +155,7 @@
 	&__nextDate {
 		font-size: 1.6em;
 		color: $blue--dark;
-		font-family: $graphik--semiBold;
+		font-family: $font--main;
 	}
 	&__list {
 		max-height: 30rem;
@@ -168,11 +168,11 @@
 			margin-top: 0.8rem;
 		}
 		span {
-			font-family: $graphik--semiBold;
+			font-family: $font--main;
 		}
 	}
 	&__nextLabel {
-		font-family: $graphik--semiBold;
+		font-family: $font--main;
 		font-size: 1.6em;
 	}
 	&__nextDate, &__listItem {

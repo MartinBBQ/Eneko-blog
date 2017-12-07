@@ -1,35 +1,64 @@
 .contact {
-	&:not(:last-child) {
-		padding-bottom: 1.7rem;
-		.contact__group {
-			&::after {
-				content: '';
-				display: block;
-				background-color: $grey--separator;
-				height: 1px;
-				margin-top: 1.7rem;
-			}
+	padding: 1.6rem;
+	display: flex;
+	align-items: center;
+	border: 1px solid $blue--grey;
+	border-radius: $standard-radius;
+	box-shadow: 0 0.3rem 0.8rem 0 $blue--grey;
+	cursor: pointer;
+	&:not(:first-child) {
+		margin-top: 1.6rem;
+	}
+	&.is-owner {
+		background-color: $color--main;
+		.contact__title {
+			color: $white;
 		}
+	}
+	&__container {
+		display: flex;
+		flex-grow: 1;
+		flex-direction: column;
 	}
 	&__role {
 		margin-bottom: 1rem;
 		margin-top: 0;
-		color: $grey;
-		font-family: $font--main;
+		color: $blue--grey;
+		font-family: $sf--semiBold;
+	}
+	&__photo {
+		$size: 4.8rem;
+		margin-right: 1.6rem;
+		width: $size;
+		min-width: $size;
+		height: $size;
+		border: 1px solid $color--main;
+		border-radius: 100%;
+		overflow: hidden;
+		@extend %regular-background;
+		img {
+			border-radius: 100%;
+			opacity: 0;
+		}
 	}
 	&__title {
 		font-size: 1.4rem;
-		font-family: $graphik--semiBold;
+		font-family: $sf--bold;
 		margin-top: 0;
 		color: $blue;
+		line-height: 1.6rem;
+		margin-top: 0.25rem;
 	}
 	&__group {
 		display: flex;
-		flex-direction: column;
+		margin-left: auto;
 		margin-top: 0.8rem;
 	}
 	&__info {
 		font-size: 1.2rem;
-		line-height: 2.3rem;
+		//line-height: 2.3rem;
+		&:first-child {
+			margin-right: 1.65rem;
+		}
 	}
 }

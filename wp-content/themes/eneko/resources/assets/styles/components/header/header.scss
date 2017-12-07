@@ -33,7 +33,7 @@
 		display: flex;
 		position: relative;
 		margin-top: 5.6rem;
-		border-bottom: 1px solid $grey--header;
+		border-bottom: 1px solid $blue--grey;
 		&::after {
 			content: '';
 			width: 100%;
@@ -59,7 +59,7 @@
 		}
 	}
     &__tab,.menu-item {
-        font-size: 1.6rem;
+        font-size: 1.4rem;
         position: relative;
         margin-right: 5.5rem;
 		padding: 2rem 0;
@@ -83,7 +83,8 @@
 			}
         }
         &.is-active,&.current_page_item {
-            font-family: $graphik--semiBold;
+            font-family: $font--main;
+			color: $color--main;
             &::before {
                 display: block;
             }

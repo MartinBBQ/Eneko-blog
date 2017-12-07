@@ -273,7 +273,7 @@ function getNextPermanenceDate($dates = [], $isPermanent = false) {
 			$afternoonEnd = $date['afternoon_end_hour'] ?? '';
 			if($pickedDayIndex==$dayIndex) {
 				$nextDay = [
-					'day' => $pickedDay,
+					'day' => "Ouvert aujourd'hui",
 					'hour' => $morningStart.' - '.$morningEnd.', '.$afternoonStart.' - '.$afternoonEnd
 				];
 				// If I got my day I return the array.

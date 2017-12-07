@@ -1,6 +1,6 @@
 .sidebar {
 	margin-left: 5.8rem;
-	flex-basis: 25rem;
+	flex-basis: 30rem;
 	flex-shrink: 0;
 	@include media('<tablet'){
 		margin-left: 0;
@@ -9,10 +9,11 @@
 	}
 	&__title {
 		margin-top: 0;
-		margin-bottom: 1.6rem;
+		margin-bottom: 2.8rem;
 		font-weight: normal;
 		font-size: 1.6rem;
-		font-family: $graphik--medium;
+		font-family: $sf--bold;
+		color: $blue;
 		text-transform: uppercase;
 	}
 	&__subtitle {
@@ -23,16 +24,7 @@
 		margin-bottom: 1.4rem;
 	}
 	&__group {
-		margin-top: 4rem;
-		&--contact {
-			margin-top: 1.7rem;
-		}
-		&--team {
-			margin-top: 3.2rem;
-			border-radius: $standard-radius;
-			padding: 1.6rem;
-			border: 1px solid $grey--light;
-		}
+		margin-top: 6.2rem;
 		.contact {
 			&:first-child {
 				margin-top: 0;
@@ -42,7 +34,7 @@
 	&__info {
 		margin-top: 1.6rem;
 		font-size: 1.4rem;
-		font-family: $graphik--semiBold;
+		font-family: $font--main;
 		background-color: $black-blue;
 		color: $white;
 		padding: 1.4rem 1.4rem 1.4rem 2.4rem;
