@@ -1,56 +1,22 @@
 .informations {
     display: flex;
-	justify-content: space-between;
     flex-wrap: wrap;
+	position: relative;
+	z-index: $layer--2;
+	@include container(true);
 	@include media('<large'){
 		//flex-direction: column;
 		margin-bottom: 4rem;
 	}
-	&__tags {
-		a {
-			display: block;
-		}
-	}
     &__title {
         color: $white;
-        font-size: 1rem;
+        font-size: 1.6rem;
         text-transform: uppercase;
-        margin-bottom: 0.8rem;
         margin-top: 0;
-        font-weight: normal;
-        font-family: $graphik--medium;
+        font-family: $sf--semiBold;
     }
-    &__group {
-        margin-top: 4rem;
-		margin-right: 2rem;
-        .informations__buttonContainer {
-            &:not(:first-child) {
-                margin-top: 0.8rem;
-            }
-        }
-    }
-    &__more {
-        color: $white;
-        opacity: 0.8;
-        font-size: 1.4rem;
-        margin-top: 1.6rem;
-        cursor: pointer;
-		&:only-child {
-			display: none;
-		}
-    }
-	&__buttonContainer {
-		display: flex;
-		background-repeat: no-repeat;
-		&.is-hidden {
-			display: none;
-		}
-		a {
-			display: block;
-		}
+	&__hours {
+		@include box-hours($white,$white);
+		margin-left: 1.6rem;
 	}
-	.button {
-		text-align: left;
-	}
-
 }

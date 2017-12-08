@@ -300,6 +300,18 @@ function getDateToString($date) {
 	];
 	return $sentence;
 }
+
+function isToday(string $day, bool $found): bool {
+	if($found) {
+		return false;
+	}
+	$days = [
+		"Lundi", "Mardi", "Mercredi", "Jeudi",
+		"Vendredi", "Samedi", "Dimanche"];
+	$dayIndex = array_search($day, $days) + 1;
+	$today = getdate()['wday'];
+	return $dayIndex === $today;
+}
 function getPermanenceDates($dates) {
 	if(empty($dates)) {
 		return [];

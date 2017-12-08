@@ -3,6 +3,7 @@
     $fullAddress = get_field('fulladdress');
     $cityRef = get_field('city_ref');
     $phone = get_field('phone');
+    $mail = get_field('mail');
     $imageUrl = get_the_post_thumbnail_url();
     $location = \App\getPermanenceLocation($fullAddress);
     $address =  \App\getPermanenceAddress($fullAddress);
@@ -46,9 +47,9 @@
                         @if(!empty($lat) && !empty($lng))
                             <a target="_blank" href="//google.com/maps/?q={{$fullAddress['address']}}" class="modal__locate">
                                 <div class="modal__cta">
-                                    <i class="material-icons">directions</i>
+                                    <i class="material-icons">directions_car</i>
                                 </div>
-                                <span class="modal__mapLabel">S'y rendre</span>
+                                <span class="modal__mapLabel">Itinéraire</span>
                             </a>
                         @endif
                     </div>
@@ -60,11 +61,17 @@
                             <span class="modal__label">Adresse : </span>
                             <span>{{$address}}, {{$cityRef}} {{$location}}</span>
                         </p>
-                        @if(!empty(phone))
+                        @if(!empty($phone))
                         <p class="modal__info">
                             <span class="modal__label">Téléphone : </span>
                             <span>{{$phone}}</span>
                         </p>
+                        @endif
+                        @if(!empty($mail))
+                            <p class="modal__info">
+                                <span class="modal__label">Email : </span>
+                                <span>{{$mail}}</span>
+                            </p>
                         @endif
                         <div class="modal__description">
                             {{get_the_content()}}

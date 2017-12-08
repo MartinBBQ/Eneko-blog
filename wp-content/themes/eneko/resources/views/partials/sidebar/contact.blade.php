@@ -25,8 +25,11 @@
             </div>
         @endif
     <div class="contact__container">
-        <div class="contact__title">{{$name}} <span class="contact__role"> — {{$categoryName}}</span></div>
-        @if(!$owner)
+        <div class="contact__title">
+            {{$name}}
+            <span class="contact__role"> — {{$categoryName}}</span>
+        </div>
+        @if(!$isOwner)
             <div class="contact__group">
                 <a href="tel:{{$phone}}" class="contact__info">📞</a>
                 <a href="mailto:{{$mail}}" class="contact__info">✉️</a>

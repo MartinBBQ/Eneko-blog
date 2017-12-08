@@ -48,7 +48,7 @@
                     @endwhile
             </div>
         @endif
-        {{wp_reset_query()}}
+        {{wp_reset_postdata()}}
         @if($loop->have_posts())
             <div class="sidebar__group">
                 <h3 class="sidebar__title">{{$tempTitle}}</h3>
