@@ -16,7 +16,6 @@ export default class NewsletterInput {
 		 * which doesn't render the modal inside the el but right after.
 		 */
 		this.modal = new NewsletterModal({$el: $el.nextElementSibling});
-		this.modal.open();
 	}
 	setListeners() {
 		this.$form.addEventListener('submit', this.handleSubmit.bind(this))

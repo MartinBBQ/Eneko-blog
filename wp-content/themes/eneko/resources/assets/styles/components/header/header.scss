@@ -11,11 +11,24 @@
 	@include media('<tablet-xs'){
 		padding-top: 4rem;
 	}
-	&::after {
-		content: '';
-		display: block;
-		position: absolute;
-		background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(15,67,146,0.75) 100%);
+	&.is-secondary {
+		height: auto;
+		padding-top: 0;
+		background-color: $white;
+		.header__container {
+			align-items: stretch;
+			@include media('<large') {
+				flex-direction: column;
+			}
+		}
+	}
+	&:not(.is-secondary) {
+		&::after {
+			content: '';
+			display: block;
+			position: absolute;
+			background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(15,67,146,0.75) 100%);
+		}
 	}
 	&__wrapper {
 		margin-top: auto;
@@ -50,9 +63,15 @@
     }
 	&__container {
 		display: flex;
+		align-items: center;
 		flex-wrap: wrap;
 		justify-content: space-between;
 		@include container(true);
+	}
+	&__customerName {
+		font-size: 3.2rem;
+		font-family: $sf--bold;
+		padding: 1.9rem 0;
 	}
 	&__menu {
 		margin: 0;
