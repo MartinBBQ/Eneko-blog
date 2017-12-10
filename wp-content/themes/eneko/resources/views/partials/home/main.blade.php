@@ -1,6 +1,9 @@
 @php
     $useLocalLoop = $useLocalLoop ?? false;
     $i = 0;
+    $hasFoundFirstContent = false;
+    $predicates = \App\isUrlOrVideo();
+    $isUrlOrVideo = $predicates['url'] || $predicates['video'];
 @endphp
 <section class="section">
     <h1 class="section__title">

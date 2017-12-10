@@ -30,6 +30,11 @@
 		background-color: $blue;
 		border: 1px solid $blue;
 	}
+	&--semiBlue {
+		background-color: rgba(238,245,255,0.9);
+		border: 1px solid $blue;
+		font-family: $sf--semiBold;
+	}
 	&--gold {
 		color: $gold;
 		border: 1px solid;

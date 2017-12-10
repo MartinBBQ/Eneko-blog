@@ -48,11 +48,13 @@
     &__tabs,&__menu {
         display: flex;
     }
-	&__tabs {
-		@extend %container;
+	&__container {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		@include container(true);
 	}
 	&__menu {
-		@include container(true);
 		margin: 0;
 		@include media('<large'){
 			flex-direction: column;
@@ -90,6 +92,18 @@
             }
         }
     }
+	&__rightCol {
+		@extend %flex-center-y;
+		a {
+			&:first-child {
+				margin-right: 3.2rem;
+			}
+		}
+		img {
+			max-width: 2.5rem;
+			max-height: 2.5rem;
+		}
+	}
     .informations {
         // On the model, 64px but I need the next component to have 40px margin-top. Can't play with nth-child.
         margin-top: 2.4rem;

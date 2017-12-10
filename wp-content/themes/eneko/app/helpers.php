@@ -323,15 +323,29 @@ function getPermanenceDates($dates) {
 	}, $sortedDates,[]);
 }
 
-function getArticleClasses() {
-	$classes = ['article'];
+function isUrlOrVideo(): array {
 	$url = CFS()->get('url');
 	$video = get_field('video');
+	return [
+		'url' => $url,
+		'video' => $video
+	];
+}
+function getArticleClasses(array $newClasses) {
+	$classes = ['article'];
+	$predicates = isUrlOrVideo();
+	$url = $predicates['url'];
+	$video = $predicates['video'];
 	if($url) {
 		array_push($classes, 'is-url-article');
 	}
 	if($video) {
-		array_push($classes, 'has-video');
+		array_push($classes, 'is-video-article');
+	}
+	foreach ($newClasses as $key => $class) {
+		if($newClasses[$key]) {
+			array_push($classes, $key);
+		}
 	}
 	return $classes;
 }

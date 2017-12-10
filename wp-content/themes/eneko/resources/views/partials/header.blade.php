@@ -3,8 +3,10 @@
         @include('partials.header.profile')
         @include('partials.header.informations')
         <div class="header__menuContainer">
-            @include('partials.header.tabs')
-            @include('partials.header.socials')
+            <div class="header__container">
+                @include('partials.header.tabs')
+                @include('partials.header.socials')
+            </div>
         </div>
     </div>
 </header>

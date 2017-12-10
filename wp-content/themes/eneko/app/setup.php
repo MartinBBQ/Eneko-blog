@@ -22,6 +22,7 @@ add_action('wp_enqueue_scripts', function () {
 	}
 }, 100);
 
+
 /**
  * Theme setup
  */
