@@ -61,7 +61,7 @@ add_action('after_setup_theme', function () {
      * @link https://developer.wordpress.org/reference/functions/add_theme_support/#html5
      */
     add_theme_support('html5', ['caption', 'comment-form', 'comment-list', 'gallery', 'search-form']);
-
+	add_theme_support( 'custom-logo' );
     /**
      * Enable selective refresh for widgets in customizer
      * @link https://developer.wordpress.org/themes/advanced-topics/customizer-api/#theme-support-in-sidebars

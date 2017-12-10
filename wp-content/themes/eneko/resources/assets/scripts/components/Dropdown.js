@@ -1,4 +1,4 @@
-import eventBus from '../eventBus';
+import EventBus from '../EventBus';
 import {DROPDOWN_TOGGLE} from '../constants';
 
 export default class Dropdown {
@@ -36,9 +36,7 @@ export default class Dropdown {
 	toggleItem(ev) {
 		const $target = ev.currentTarget;
 		$target.classList.toggle('is-active');
-		const payload = { filter: $target.getAttribute('data-slug') };
-		const newEvent = new CustomEvent(DROPDOWN_TOGGLE, {detail: payload, bubbles:true});
-		eventBus.dispatchEvent(newEvent);
+		EventBus.emit(DROPDOWN_TOGGLE, { filter: $target.getAttribute('data-slug') });
 	}
 	setListeners() {
 		document.body.addEventListener('click', this.close.bind(this));

@@ -1,5 +1,6 @@
 @php
     $useLocalLoop = $useLocalLoop ?? false;
+    $i = 0;
 @endphp
 <section class="section">
     <h1 class="section__title">
@@ -16,7 +17,11 @@
     <div class="section__list">
         @php($loop = App\getCustomQuery(['post_type'=> 'post', 'posts_per_page' => 10]))
             @while (!$useLocalLoop ? $loop->have_posts() : have_posts()) @php(!$useLocalLoop ? $loop->the_post() : the_post())
-                @include('partials.content')
+                @if($i == 1)
+                    @include('partials.newsletter.subscribe')
+                @endif
+                @include('partials.content', ['isFirst' => $i == 0])
+                @php($i++)
             @endwhile
                 {{wp_reset_query()}}
     </div>

@@ -1,5 +1,5 @@
 export default class Modal {
-	constructor(props) {
+	constructor(props = {}) {
 		this.setProps(props);
 		this.setListeners();
 	}

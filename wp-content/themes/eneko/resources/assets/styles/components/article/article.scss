@@ -27,9 +27,6 @@
 		opacity: .8;
 		@extend %regular-background;
 	}
-	&:not(:last-child) {
-		margin-bottom: 4rem;
-	}
 	&.is-hidden {
 		display: none;
 	}

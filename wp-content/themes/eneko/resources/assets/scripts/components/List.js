@@ -1,4 +1,4 @@
-import eventBus from '../eventBus';
+import EventBus from '../EventBus';
 import {DROPDOWN_TOGGLE} from '../constants';
 
 export default class List {
@@ -62,6 +62,6 @@ export default class List {
 		}
 	}
 	setListeners() {
-		eventBus.addEventListener(DROPDOWN_TOGGLE,this.sortList.bind(this))
+		EventBus.on(DROPDOWN_TOGGLE,this.sortList.bind(this))
 	}
 }
