@@ -7,7 +7,6 @@ export default class Modal {
 		this.$el = props.$el;
 		this.openClass = 'is-open';
 		this.isOpen = false;
-		this.isTriggeredOnce = false;
 	}
 	findAncestor ($el, cls) {
 		while (($el = $el.parentElement) && !$el.classList.contains(cls));
@@ -16,34 +15,30 @@ export default class Modal {
 	setListeners() {
 		this.$el.addEventListener('click', this.toggle.bind(this));
 		this.$el.querySelector('.cross').addEventListener('click',this.close.bind(this));
-		this.findAncestor(this.$el,'permanence').addEventListener('click',this.open.bind(this));
 	}
 	toggle(ev) {
-		this.isOpen ? this.close(ev) : this.open(ev);
+		this.isOpen ? this.handleClose(ev) : this.handleOpen(ev);
 	}
-	close(ev) {
+	close() {
+		this.$el.classList.remove(this.openClass);
+		this.isOpen = false;
+	}
+	handleClose(ev) {
 		const $target = ev.target;
 		const classVal = $target.classList.value;
 		if(classVal.includes('cross') || $target.classList.contains('modal')) {
-			this.$el.classList.remove(this.openClass);
-			this.isOpen = false;
+			this.close();
 		}
 	}
-	open(ev) {
+	open() {
+		this.$el.classList.add(this.openClass);
+		this.isOpen = true;
+	}
+	handleOpen(ev) {
 		const $target = ev.target;
-		const classVal = $target.classList.value;
-		if(google && !this.isTriggeredOnce) {
-			const map = this.$el.querySelector('.modal__map');
-			let {lat, lng, id} = this.$el.dataset;
-			lat = parseFloat(lat) - 5;
-			lng = parseFloat(lng);
-			const center = {lat, lng};
-			google.maps.event.trigger(map, "resize");
-			this.isTriggeredOnce = true;
-		}
+		const classVal = $target && $target.classList.value;
 		if(!classVal.includes('modal') && !classVal.includes('cross')) {
-			this.$el.classList.add(this.openClass);
-			this.isOpen = true;
+			this.open();
 		}
 	}
 }

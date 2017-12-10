@@ -69,6 +69,8 @@
 		@extend %regular-background;
 	}
     &__content {
+		display: flex;
+		flex-direction: column;
         p:not(.modal__info):not(.modal__nextLabel) {
             margin-top: 0;
             margin-bottom: 3rem;
@@ -86,6 +88,15 @@
     &__inner {
         position: relative;
         padding: $modal--paddings;
+		@include media('<phone-lg') {
+			padding: 1rem;
+		}
+		&--modifier {
+			padding: 3.9rem 4.1rem;
+			@include media('<phone-lg') {
+				padding: 1rem;
+			}
+		}
     }
     &__buttons {
         display: flex;
@@ -190,5 +201,37 @@
 		display: flex;
 		flex-direction: column;
 		margin-top: 5.2rem;
+		&--newsletter {
+			margin-top: 0;
+			margin-left: 9.5rem;
+			margin-right: 9.5rem;
+			@include media('<tablet') {
+				margin-left: 4rem;
+				margin-right: 4rem;
+			}
+			@include media('<phone-lg') {
+				margin-left: 0.5rem;
+				margin-right: 0.5rem;
+			}
+		}
+	}
+	&__title {
+		color: $color--main;
+		font-size: 3.2rem;
+		font-family: $sf--bold;
+		margin-bottom: 2.4rem;
+	}
+	&__excerpt {
+		font-size: 1.4rem;
+		line-height: 2.3rem;
+		margin-top: 0;
+		&:after {
+			content: '';
+			height: 1px;
+			display: block;
+			background-color: $grey--separator;
+			width: 6.4rem;
+			margin: 2.6rem auto;
+		}
 	}
 }

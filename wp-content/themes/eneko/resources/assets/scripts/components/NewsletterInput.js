@@ -1,3 +1,5 @@
+import NewsletterModal from './NewsletterModal';
+
 export default class NewsletterInput {
 	constructor($el) {
 		this.setProps($el);
@@ -7,25 +9,22 @@ export default class NewsletterInput {
 		this.$el = $el;
 		this.$form = $el.querySelector('.newsletter-in__form');
 		this.$input = this.$form.querySelector('input');
+		this.$button = this.$form.querySelector('.newsletter-in__button');
 		this.$responseEl = $el.querySelector('.newsletter-in__response');
+		/**
+		 * I target the next sibling because I use an extension of layout
+		 * which doesn't render the modal inside the el but right after.
+		 */
+		this.modal = new NewsletterModal({$el: $el.nextElementSibling});
+		this.modal.open();
 	}
 	setListeners() {
 		this.$form.addEventListener('submit', this.handleSubmit.bind(this))
 	}
 	handleSubmit(ev) {
 		ev.preventDefault();
-		const link = "test";
-		const config = {
-			method: 'POST'
-		}
-		fetch(link, config)
-			.then(response => {
-				this.$input.value = '';
-				this.displayMessage({success: true});
-			})
-			.catch(error => {
-
-			});
+		this.modal.setEmail(this.$input.value);
+		this.modal.open();
 	}
 	displayMessage({success = false} = {}) {
 		let text, modifier;

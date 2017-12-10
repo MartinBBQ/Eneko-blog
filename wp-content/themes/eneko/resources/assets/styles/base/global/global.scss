@@ -113,3 +113,7 @@ p {
 .is-hidden {
 	display: none;
 }
+
+.flex-center {
+	@extend %flex-center;
+}

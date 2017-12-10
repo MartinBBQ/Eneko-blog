@@ -25,9 +25,7 @@
 		border-bottom-left-radius: 0;
 		background-color: $color--main;
 		color: $white;
-		padding: 1.2rem 1.6rem;
-		font-family: $sf--semiBold;
-		font-size: 1.4rem;
+		@extend .button--medium;
 	}
 	&__form {
 		margin-top: 2.2rem;

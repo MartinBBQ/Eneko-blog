@@ -1,10 +1,10 @@
-import Modal from '../components/Modal';
+import DutyModal from '../components/DutyModal';
 
 export default {
 	init() {
 		// JavaScript to be fired on all pages
-		Array.from(document.querySelectorAll('.modal')).forEach($el => {
-			const modal = new Modal({$el});
+		Array.from(document.querySelectorAll('.permanence .modal')).forEach($el => {
+			new DutyModal({$el});
 		});
 		this.$search = document.querySelector('.filters__group--search');
 		this.$search && this.$search.addEventListener('click',this.toggleSearch.bind(this));

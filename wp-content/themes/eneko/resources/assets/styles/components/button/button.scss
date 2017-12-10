@@ -22,6 +22,11 @@
 			font-size: 1.4rem;
 		}
 	}
+	&--medium {
+		padding: 1.2rem 1.6rem;
+		font-family: $sf--semiBold;
+		font-size: 1.4rem;
+	}
 	&--tag {
 		padding: 0.9rem 1rem;
 		background-color: transparent;
