@@ -10,18 +10,14 @@ export default class NewsletterModal extends Modal {
 		this.$form.addEventListener('submit', this.register.bind(this));
 	}
 	getBody() {
-		const {
-			email,
-			name,
-			firstName,
-			cityRef,
-		} = this;
-		return {
-			email,
-			name,
-			firstName,
-			cityRef
-		}
+		const body = {};
+		Array.from(this.$form.elements).forEach($input => {
+			const name = $input.getAttribute('name');
+			if (name) {
+				body[name] = $input.value;
+			}
+		})
+		return body;
 	}
 	setEmail(value) {
 		Array.from(this.$form.elements).forEach($input => {
@@ -37,6 +33,7 @@ export default class NewsletterModal extends Modal {
 			method: 'POST',
 			body: this.getBody()
 		}
+		console.log(this.getBody());
 		fetch(url, config)
 			.then(response => {
 				this.close();

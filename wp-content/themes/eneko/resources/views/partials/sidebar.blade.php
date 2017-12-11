@@ -4,9 +4,11 @@
 @endphp
 <aside class="sidebar">
     <div class="sidebar__group sidebar__group--contact">
+        @if(!empty($mail))
         <div class="sidebar__info">
             <a href="mailto:{{$mail}}"><span>✉️</span> Écrire au député</a>
         </div>
+        @endif
         <div class="sidebar__info">
             <a href="/propositions"><span>💡</span> Restons en contact </a>
         </div>

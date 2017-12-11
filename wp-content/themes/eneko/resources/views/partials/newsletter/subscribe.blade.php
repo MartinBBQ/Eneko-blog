@@ -14,10 +14,33 @@
         </p>
         <form>
             <div class="modal__group modal__group--newsletter">
-                @include('partials.input', ['type' => 'email', 'label' => 'Adresse e-mail','placeholder' => 'Veuillez saisir votre adresse e-mail', 'required' => true])
-                @include('partials.input', ['type' => 'text', 'label' => 'Prénom', 'placeholder' => 'Veuillez saisir votre prénom', 'required' => true])
-                @include('partials.input', ['type' => 'text', 'label' => 'Nom', 'placeholder' => 'Veuillez saisir votre nom', 'required' => true])
-                @include('partials.input', ['type' => 'number', 'label' => 'Code postal','placeholder' => 'Veuillez saisir votre code postal'])
+                @include('partials.input', [
+                'type' => 'email',
+                'label' => 'Adresse e-mail',
+                'placeholder' => 'Veuillez saisir votre adresse e-mail',
+                'required' => true,
+                'name' => 'email'
+                ])
+                @include('partials.input', [
+                'type' => 'text',
+                'label' => 'Prénom',
+                'placeholder' => 'Veuillez saisir votre prénom',
+                'required' => true,
+                'name' => 'firstName'
+                ])
+                @include('partials.input', [
+                'type' => 'text',
+                'label' => 'Nom',
+                'placeholder' => 'Veuillez saisir votre nom',
+                'required' => true,
+                'name' => 'name'
+                ])
+                @include('partials.input', [
+                'type' => 'number',
+                'label' => 'Code postal',
+                'placeholder' => 'Veuillez saisir votre code postal',
+                'name' => 'cityRef'
+                ])
             </div>
             <div class="flex-center">
                 <button type="submit" class="button button--medium button--filled-blue">Valider votre inscription</button>

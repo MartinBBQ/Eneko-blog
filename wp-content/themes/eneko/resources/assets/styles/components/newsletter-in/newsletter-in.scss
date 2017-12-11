@@ -39,16 +39,7 @@
 		padding-left: 1.6rem;
 		font-size: 1.4rem;
 		border: 1px solid $blue--grey;
-		&::-webkit-input-placeholder { /* WebKit, Blink, Edge */
-			color: $blue--grey;
-		}
-		&:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
-			color: $blue--grey;
-			opacity:  1;
-		}
-		&:-ms-input-placeholder { /* Internet Explorer 10-11 */
-			color: $blue--grey;
-		}
+		@include placeholder;
 	}
 	&__response {
 		display: none;

@@ -2,37 +2,38 @@
 if (post_password_required()) {
   return;
 }
+
+$args = [
+    'title_reply' => '',
+    'comment_field' => \App\getCommentField(),
+    'fields' => ['author' => '', 'url' => '', 'email' => ''],
+    'comment_notes_before' => '',
+    'label_submit' => 'Publier'
+];
+if(!is_user_logged_in()) {
+$args['submit_button'] = '';
+}
+$commentsNumber = get_comments_number();
+$comments = get_comments(array(
+    'post_id' => get_the_ID(),
+    'status' => 'approve',
+));
 @endphp
 
-<section id="comments" class="comments">
-  @if (have_comments())
-    <h2>
-      {!! sprintf(_nx('One response to &ldquo;%2$s&rdquo;', '%1$s responses to &ldquo;%2$s&rdquo;', get_comments_number(), 'comments title', 'sage'), number_format_i18n(get_comments_number()), '<span>' . get_the_title() . '</span>') !!}
-    </h2>
+<section class="comment-field">
+    <div class="comment-field__label">Réagissez à cet article</div>
+    @php(comment_form($args))
+    <ul class="comments">
+        {!! wp_list_comments(array(
+        'per_page' => 10, //Allow comment pagination
+        'reverse_top_level' => false //Show the oldest comments at the top of the list
+        ), $comments); !!}
+    </ul>
 
-    <ol class="comment-list">
-      {!! wp_list_comments(['style' => 'ol', 'short_ping' => true]) !!}
-    </ol>
-
-    @if (get_comment_pages_count() > 1 && get_option('page_comments'))
-      <nav>
-        <ul class="pager">
-          @if (get_previous_comments_link())
-            <li class="previous">@php(previous_comments_link(__('&larr; Older comments', 'sage')))</li>
-          @endif
-          @if (get_next_comments_link())
-            <li class="next">@php(next_comments_link(__('Newer comments &rarr;', 'sage')))</li>
-          @endif
-        </ul>
-      </nav>
-    @endif
-  @endif
 
   @if (!comments_open() && get_comments_number() != '0' && post_type_supports(get_post_type(), 'comments'))
     <div class="alert alert-warning">
       {{ __('Comments are closed.', 'sage') }}
     </div>
   @endif
-
-  @php(comment_form())
 </section>

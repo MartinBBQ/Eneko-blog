@@ -349,3 +349,12 @@ function getArticleClasses(array $newClasses) {
 	}
 	return $classes;
 }
+
+function getCommentField() {
+	if(is_user_logged_in()) {
+		return '<textarea name="comment" maxlength="65525" required placeholder="Ajouter un commentaire..."></textarea>';
+	} else {
+		return '<a class="comment-field__register" href="'.wp_registration_url().'">Veuillez vous connecter pour pouvoir commenter</a>';
+	}
+
+}

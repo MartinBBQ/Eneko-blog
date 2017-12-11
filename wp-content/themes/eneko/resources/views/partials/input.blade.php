@@ -9,5 +9,6 @@
         type="{{$type}}"
         placeholder="{{$placeholder}}"
         required="{{$required ?? false}}"
+        name="{{$name}}"
     />
 </div>

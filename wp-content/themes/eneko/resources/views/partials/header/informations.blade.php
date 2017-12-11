@@ -25,14 +25,8 @@
                     $schedule = $cfs->get('ouvertures');
                     $nextDay = \App\getNextPermanenceDate($schedule,true);
                     foreach($schedule as $day) {
-                        if ($found) {
-                            return;
-                        }
                         $dayString = reset($day['day']);
                         $isToday = \App\isToday($dayString, $found);
-                        if ($isToday) {
-                            $found = true;
-                        }
                     }
                 @endphp
                 <div class="informations__title">
@@ -46,5 +40,7 @@
             @endif
             @endwhile
         @endif
-    <img src="{{$logo}}" class="informations__logo">
+    @if(!empty($logo))
+    <img src="{{$logo}}" class="informations__logo" />
+    @endif
 </div>

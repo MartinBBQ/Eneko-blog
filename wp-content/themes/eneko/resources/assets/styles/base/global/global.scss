@@ -64,10 +64,13 @@ p {
 }
 
 .main-wrapper {
-	margin-top: 8rem;
 	margin-bottom: 14rem;
 	display: flex;
-	@extend %container;
+	flex-wrap: wrap;
+	.page &, .home & {
+		margin-top: 8rem;
+		@extend %container;
+	}
 }
 
 .content {

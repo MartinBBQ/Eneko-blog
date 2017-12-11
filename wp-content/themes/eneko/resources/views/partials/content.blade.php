@@ -25,7 +25,7 @@
 <article
     data-category="{{implode(' ',$termSlugs)}}"
     @php(post_class(\App\getArticleClasses(['is-first' => $isFirst])))>
-    <a {{$isCustomArticle || !empty($videoUrl) ? 'target="_blank"' : ''}} href="{{$url}}">
+    <a {{$isCustomArticle || !empty($videoUrl) ? 'target="_blank"' : ''}} href="//{{$url}}">
         <div class="article__wrapper">
             @if(!$isCustomArticle)
                 @foreach($termNames as $term)

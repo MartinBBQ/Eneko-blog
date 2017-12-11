@@ -76,6 +76,7 @@ add_filter('user_contactmethods', function ($fields) {
 	$fields['twitter'] = 'Twitter';
 	$fields['facebook'] = 'Facebook';
 	$fields['group'] = 'Groupe Politique';
+	$fields['tinyName'] = 'Abbréviation du nom';
 	return $fields;
 });
 
@@ -133,6 +134,19 @@ function htmlandcms_select_one_category($args) {
 	}
 	return $args;
 }
+add_filter('pre_option_default_role', function($default_role){
+	$default_role = 'subscriber';
+	return $default_role;
+});
+
+add_filter( 'comment_form_logged_in', function () {
+    return '';
+});
+
+
+
+
+
 
 class Walker_Category_Radios extends \Walker {
 	var $tree_type = 'category';
