@@ -28,8 +28,8 @@ $grey--modalLine: #DCDCDC;
 $grey--comments: #F7F7F8;
 $blue--grey: #AEC4E4;
 $blue--newsletter: #EEF5FF;
-$blue--placeholder: #9FB6DD;
-
+$blue--lighter:#9FB6DD;
+$blue--placeholder: $blue--lighter;
 $article--border: $blue--grey;
 
 $transparent-black: transparentize($black,0.9);

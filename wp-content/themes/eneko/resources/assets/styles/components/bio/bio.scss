@@ -1,23 +1,34 @@
 .bio {
-	box-shadow: 0 0 0 1px $transparent-black;
-	border-radius: 0.4rem;
 	flex-grow: 1;
 	&__bg {
 		@extend %regular-background;
-		height: 39rem;
+		height: 50rem;
 		width: 100%;
+		position: relative;
+		&:after {
+			content: '';
+			display: block;
+			position: absolute;
+			left: 0;
+			bottom: 0;
+			width: 100%;
+			height: 100%;
+			pointer-events: none;
+			background: linear-gradient(180deg, transparentize($bg-body,0.9) 0%, transparentize($bg-body,0.4) 56.89%, $bg-body 100%);
+		}
 	}
 	&__wrapper {
-		padding: 8rem;
+		@extend %container;
 		display: flex;
+		padding: 9rem;
+		padding-bottom: 0;
 		@include media('<desktop') {
 			padding: 5rem;
 		}
 		@include media('<tablet') {
 			padding: 3.5rem;
-		}
-		@include media('<tablet-xs') {
 			flex-direction: column;
+
 		}
 		@include media('<phone-md') {
 			padding: 2.5rem;
@@ -27,65 +38,117 @@
 		font-size: 1.6rem;
 		line-height: 2.6rem;
 		white-space: pre-line;
+		h1 {
+			font-size: 3rem;
+		}
 	}
 	&__block {
-		background-color: $grey--about;
-		padding: 3.2rem;
+		border: 1px solid $color--main;
+		padding: 2.5rem;
+		border-radius: $standard-radius;
 		&:not(:first-child) {
 			margin-top: 4rem;
+		}
+		&:first-child {
+			margin-bottom: 0;
+			.bio__group {
+				.bio__label {
+					&:first-child {
+						margin-top: 0;
+					}
+				}
+			}
 		}
 		&.is-secondary {
 			padding: 2rem 3.2rem;
 			.bio__label {
 				margin-top: 0;
-			}
-			.bio__group span:not(.bio__normal) {
-				font-family: $font--main;
+				margin-bottom: 1.6rem;
 			}
 		}
 	}
 	&__sumup {
-		margin-left: 9.7rem;
+		margin-right: 4.7rem;
 		flex-basis: 31rem;
 		flex-shrink: 0;
+		margin-top: 7rem;
 		@include media('<desktop') {
-			margin-left: 3rem;
+			margin-right: 3rem;
 		}
 		@include media('<tablet') {
 			flex-basis: 22rem;
 		}
 		@include media('<tablet-xs') {
-			margin-left: 0;
+			margin-right: 0;
 			padding-left:0;
 		}
 	}
 	&__name {
 		font-family: $font--main;
 		font-size: 2.4rem;
-		line-height: 2.6rem;
-		&::after {
-			content: '';
-			display: block;
-			height: 0.5rem;
-			margin-top: 1rem;
-			width: 4rem;
-			background-color: $black;
-		}
+		line-height: 2.9rem;
+		color: $color--main;
+		font-family: $sf--bold;
+		margin: 0;
 	}
 	&__group {
 		display: flex;
 		flex-direction: column;
 		font-size: 1.6rem;
 		line-height: 2.6rem;
+		color: $color--main;
+		margin-bottom: 1.8rem;
+		&:only-child {
+			margin-bottom: 0;
+		}
+	}
+	&__title {
+		color: $color--main;
+		margin-top: 4.3rem;
+		margin-bottom: 2.8rem;
+		font-family: $sf--bold;
+		font-size: 2.4rem;
 	}
 	&__label {
 		font-size: 1rem;
-		color: $grey--aboutLabel;
-		margin-bottom: .4rem;
+		line-height: 1.2rem;
+		color: $blue--lighter;
+		margin-bottom: .2rem;
 		text-transform: uppercase;
 	}
 	&__socials {
 		margin-top: 2.4rem;
+		font-size: 2rem;
+		display: flex;
+		> * {
+			&:not(:first-child) {
+				margin-left: 1.8rem;
+			}
+		}
+		img {
+			$size: 2.5rem;
+			height: $size;
+			&:not(:last-child) {
+			}
+		}
+	}
+	&__description {
+		font-size: 1.2rem;
+		line-height: 1.6rem;
+		margin-bottom: 1.8rem;
+		margin-top: 0.8rem;
+	}
+	&__member {
+		color: $color--main;
+		font-size: 1.6rem;
+		line-height: 1.6rem;
+		margin-bottom: 1.8rem;
+		font-family:$sf--bold;
+	}
+	&__sentence {
+		color: $black;
+		font-size: 1.2rem;
+		line-height: 1.6rem;
 	}
 	.social {
 		margin-right: 1.6rem;

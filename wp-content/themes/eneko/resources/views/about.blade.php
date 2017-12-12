@@ -7,10 +7,9 @@
     $authorId = \App\getOwnerId();
     $url = get_avatar_url( get_the_author_meta('user_email', $authorId), 'full');
     $fullName = get_the_author_meta('first_name',$authorId).' '.get_the_author_meta('last_name',$authorId);
-    $twitter = get_the_author_meta('twitter',$authorId);
-    $facebook = get_the_author_meta('facebook',$authorId);
+    $description = get_the_author_meta('description', $authorId);
     $imageUrl = get_the_post_thumbnail_url();
-    $politicalGroup = get_the_author_meta('group',$authorId)
+    $politicalGroup = get_the_author_meta('group',$authorId);
 @endphp
 @section('content')
     <article class="bio">
@@ -18,14 +17,12 @@
             <img src="{{$imageUrl}}" class="visually-hidden">
         </div>
         <div class="bio__wrapper">
-            <div class="bio__content">
-                {!! get_post()->post_content !!}
-            </div>
             <aside class="bio__sumup">
                 <div class="bio__block">
                     <h3 class="bio__name">
                         {{$fullName}}
                     </h3>
+                    <p class="bio__description">{{$description}}</p>
                     <div class="bio__group">
                         <h5 class="bio__label">Fonction</h5>
                         {{get_the_author_meta('description', $authorId)}}
@@ -42,14 +39,15 @@
                                 @endwhile
                                 {{wp_reset_query()}}
                     </div>
-                    <div class="bio__socials">
-                        @include('partials.socials',['twitter'=> $twitter, 'facebook'=> $facebook])
-                    </div>
                 </div>
+                <div class="bio__title">L'équipe</div>
                 @php($loop = App\getCustomQuery(['post_type'=> 'employees', 'posts_per_page' => -1]))
                     @while ($loop->have_posts()) @php($loop->the_post())
                         @php
                             $category = get_the_terms(get_the_ID(),'roles');
+                            $email = get_field('mail');
+                            $twitter = get_field('twitter');
+                            $linkedin = get_field('linkedin');
                             if(!empty($category)) {
                                 $categoryName = $category[0]->name;
                             } else {
@@ -57,17 +55,39 @@
                             }
                         @endphp
                         @if(get_field('isOnAbout') && !empty($categoryName))
-                            <div class="bio__block bio__block is-secondary">
+                            <div class="bio__block is-secondary">
                                 <div class="bio__group">
                                     <h5 class="bio__label">{{$categoryName}}</h5>
-                                    <span>{{get_field('name')}}</span>
-                                    <span class="bio__normal">{{get_field('description')}}</span>
+                                    <span class="bio__member">{{get_field('name')}}</span>
+                                    <span class="bio__sentence">{{get_field('description')}}</span>
+                                    <div class="bio__socials">
+                                        @if(!empty($email))
+                                            <a href="mailto:{{$email}}">
+                                                <i class="material-icons">email</i>
+                                            </a>
+                                        @endif
+                                        @if(!empty($twitter))
+                                            <a href="{{$twitter}}" target="_blank">
+                                                <img src="{{\App\asset_path('images/twitter.png')}}"
+                                                     alt="Icône Twitter">
+                                            </a>
+                                        @endif
+                                        @if(!empty($linkedin))
+                                            <a href="{{$linkedin}}">
+                                                <img src="{{\App\asset_path('images/linkedin.png')}}"
+                                                     alt="Icône Linkedin">
+                                            </a>
+                                        @endif
+                                    </div>
                                 </div>
                             </div>
                         @endif
                         @endwhile
                         {{wp_reset_query()}}
             </aside>
+            <div class="bio__content">
+                {!! apply_filters('the_content', get_post()->post_content) !!}
+            </div>
         </div>
     </article>
 @endsection
