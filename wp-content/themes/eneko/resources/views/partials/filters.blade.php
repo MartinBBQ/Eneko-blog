@@ -1,7 +1,7 @@
 @php
-    $terms = get_terms( array(
-        'taxonomy' => 'category'
-    ));
+    $terms = !empty($terms)
+    ? $terms
+    : get_terms(['taxonomy' => 'category']);
     $options = [];
     foreach($terms as $term) {
         $option = [

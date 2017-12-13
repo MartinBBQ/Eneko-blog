@@ -4,6 +4,7 @@
     $hasFoundFirstContent = false;
     $predicates = \App\isUrlOrVideo();
     $isUrlOrVideo = $predicates['url'] || $predicates['video'];
+    $terms = !empty($terms) ? $terms : [];
 @endphp
 <section class="section">
     <h1 class="section__title">
@@ -15,7 +16,7 @@
         </div>
         @include('partials.home.search')
     @else
-        @include('partials.filters')
+        @include('partials.filters', $terms)
     @endif
     <div class="section__list">
         @php($loop = App\getCustomQuery(['post_type'=> 'post', 'posts_per_page' => 10]))

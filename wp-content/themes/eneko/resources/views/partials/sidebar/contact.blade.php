@@ -12,10 +12,10 @@
     $isOwner = !empty($owner) ? $owner : false;
     $authorId = \App\getOwnerId();
     $fullName = get_the_author_meta('first_name',$authorId).' '.get_the_author_meta('last_name',$authorId);
-    $description = get_the_author_meta('description', $authorId);
+    $shortDescription = get_the_author_meta('shortDescription', $authorId);
     if($isOwner) {
         $name = $fullName;
-        $categoryName = $description;
+        $categoryName = $shortDescription;
     }
 @endphp
 <div class="contact {{$isOwner ? 'is-owner' : ''}}">

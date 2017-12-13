@@ -10,7 +10,7 @@
         </div>
         @endif
         <div class="sidebar__info">
-            <a href="/propositions"><span>💡</span> Restons en contact </a>
+            <a href="#"><span>💡</span> Restons en contact </a>
         </div>
     </div>
     @php

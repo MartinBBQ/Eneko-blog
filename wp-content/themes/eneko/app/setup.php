@@ -135,3 +135,28 @@ add_action('after_setup_theme', function () {
     });
 });
 
+$default_terms = ['En circonscription', 'Travail parlementaire','Presse', 'Vidéos', 'Évènements'];
+foreach($default_terms as $default_term) {
+	if(!term_exists($default_term,'category')) {
+		wp_insert_term(
+			$default_term, // the term
+			'category'// the taxonomy
+		);
+	}
+}
+
+function insertTermChildren($slug, $children) {
+	$term = get_term_by('slug',$slug,'category');
+	foreach ($children as $child) {
+		if($term instanceof \WP_Term) {
+			wp_insert_term(
+				$child, // the term
+				'category', // the taxonomy
+				['parent' => $term->term_id ]
+			);
+		}
+	}
+}
+
+insertTermChildren(DISTRICT_CATEGORY_SLUG, ['Presse', 'Évènements','Vidéos']);
+insertTermChildren(DIPLOMATIC_WORK_CATEGORY_SLUG, ['Commissions affaires européennes', 'Commissions défense', 'Autres', 'Vidéos']);

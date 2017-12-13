@@ -358,3 +358,14 @@ function getCommentField() {
 	}
 
 }
+
+function getPageTerms(string $slug): array {
+	$parentTerm = get_term_by('slug', $slug, 'category');
+	$termsId = get_term_children($parentTerm->term_id,'category');
+	$terms = [];
+	foreach($termsId as $termId) {
+		$term = get_term_by('id', $termId, 'category');
+		$terms[] = $term;
+	}
+	return $terms;
+}
