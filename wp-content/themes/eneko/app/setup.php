@@ -135,7 +135,7 @@ add_action('after_setup_theme', function () {
     });
 });
 
-$default_terms = ['En circonscription', 'Travail parlementaire','Presse', 'Vidéos', 'Évènements'];
+$default_terms = ['En circonscription', "A l'Assemblée",'Presse', 'Vidéos', 'Évènements'];
 foreach($default_terms as $default_term) {
 	if(!term_exists($default_term,'category')) {
 		wp_insert_term(
@@ -159,4 +159,16 @@ function insertTermChildren($slug, $children) {
 }
 
 insertTermChildren(DISTRICT_CATEGORY_SLUG, ['Presse', 'Évènements','Vidéos']);
-insertTermChildren(DIPLOMATIC_WORK_CATEGORY_SLUG, ['Commissions affaires européennes', 'Commissions défense', 'Autres', 'Vidéos']);
+insertTermChildren(DIPLOMATIC_WORK_CATEGORY_SLUG, ['Affaires européennes', 'Défense', 'Autres', 'Vidéos', 'Question écrite']);
+
+add_action( 'user_register', 'registerToCrm', 10, 1 );
+
+function registerToCrm( $user_id ) {
+
+}
+
+add_action( 'profile_update', 'updateCrm', 10, 2 );
+
+function updateCrm( $user_id, $old_user_data ) {
+	// Do something
+}

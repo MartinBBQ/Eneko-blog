@@ -372,12 +372,28 @@ function getPageTerms(string $slug): array {
 
 function postHasFilter(array $terms): bool {
 	$postTerms = get_the_terms(get_post(),'category');
-//	dd($postTerms, $terms);
 	foreach ($terms as $term) {
 		foreach ($postTerms as $postTerm) {
+			$parentId = $term->parent;
+			if(!empty($parentId) && $parentId !== 0) {
+				$parent = get_term_by('id', $parentId, 'category');
+				if($postTerm->slug === $parent->slug) {
+					return true;
+				}
+			}
 			if($postTerm->slug === $term->slug) {
 				return true;
 			}
+		}
+	}
+	return false;
+}
+
+function isPressPost(): bool {
+	$postTerms = get_the_terms(get_post(),'category');
+	foreach ($postTerms as $term) {
+		if(strpos($term->slug, 'presse') !== false) {
+			return true;
 		}
 	}
 	return false;

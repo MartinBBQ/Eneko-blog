@@ -2,9 +2,10 @@
     $useLocalLoop = $useLocalLoop ?? false;
     $i = 0;
     $hasFoundFirstContent = false;
-    $predicates = \App\isUrlOrVideo();
-    $isUrlOrVideo = $predicates['url'] || $predicates['video'];
     $terms = !empty($terms) ? $terms : [];
+    $displayed = false;
+    $tplSlug = get_page_template_slug();
+    $pressView = 'views/press.blade.php';
 @endphp
 <section class="section">
     <h1 class="section__title">
@@ -12,7 +13,7 @@
     </h1>
     @if (!have_posts())
         <div class="alert alert-warning">
-            {{ __('Sorry, no results were found.', 'sage') }}
+            Aucun résultat trouvé.
         </div>
         @include('partials.home.search')
     @else
@@ -21,13 +22,22 @@
     <div class="section__list">
         @php($loop = App\getCustomQuery(['post_type'=> 'post', 'posts_per_page' => 10]))
             @while (!$useLocalLoop ? $loop->have_posts() : have_posts()) @php(!$useLocalLoop ? $loop->the_post() : the_post())
-                @if($i == 1)
+               @php
+                   $predicates = \App\isUrlOrVideo();
+                    $isUrlOrVideo = $predicates['url'] || $predicates['video'];
+               @endphp
+                @if($i == 1 && !$displayed)
                     @include('partials.newsletter.subscribe')
+                    @php($displayed = true)
                 @endif
-                @if(!is_front_page() && \App\postHasFilter($terms))
+                @if(!is_front_page() && (\App\postHasFilter($terms) || $isUrlOrVideo) && $tplSlug !== $pressView)
                     @include('partials.content', ['isFirst' => $i == 0])
                 @elseif(is_front_page())
                     @include('partials.content', ['isFirst' => $i == 0])
+                @elseif($tplSlug === $pressView && (\App\isPressPost() || $isUrlOrVideo))
+                    @include('partials.content', ['isFirst' => $i == 0])
+                @else
+                    @php($i--)
                 @endif
                 @php($i++)
             @endwhile

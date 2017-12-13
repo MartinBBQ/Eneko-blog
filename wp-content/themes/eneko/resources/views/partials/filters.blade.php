@@ -1,7 +1,7 @@
 @php
     $terms = !empty($terms)
     ? $terms
-    : get_terms(['taxonomy' => 'category']);
+    : [];
     $options = [];
     foreach($terms as $term) {
         $option = [
@@ -12,12 +12,14 @@
     }
 @endphp
 <div class="filters">
+    @if(count($terms) > 0)
     <div class="filters__group">
         @include('partials.dropdown', [
         'label' => 'Type de publication',
         'options' => $options
         ])
     </div>
+    @endif
     <div class="filters__group filters__group--search">
         @include('icons.search')
         @include('partials.home.search')

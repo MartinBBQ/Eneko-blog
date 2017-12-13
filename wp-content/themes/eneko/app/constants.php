@@ -7,7 +7,7 @@
  */
 
 define('DISTRICT_CATEGORY_SLUG', 'en-circonscription');
-define('DIPLOMATIC_WORK_CATEGORY_SLUG', 'travail-parlementaire');
+define('DIPLOMATIC_WORK_CATEGORY_SLUG', 'a-lassemblee');
 define('EVENTS_CATEGORY_SLUG', 'evenements');
 define('PRESS_CATEGORY_SLUG', 'presse');
 define('VIDEO_CATEGORY_SLUG', 'videos');

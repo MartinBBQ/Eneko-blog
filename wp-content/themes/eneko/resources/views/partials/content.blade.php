@@ -10,7 +10,13 @@
     $thumb = get_the_post_thumbnail_url(get_post(),'full');
     $title = get_the_title();
     foreach($terms as $term) {
-        array_push($termSlugs,$term->slug);
+        $slug = $term->slug;
+        $parentId = $term->parent;
+        if(!empty($parentId) && $parentId !== 0) {
+            $parent = get_term_by('id', $parentId, 'category');
+            $slug = $slug.'-'.$parent->slug;
+        }
+        array_push($termSlugs, $slug);
         array_push($termNames,$term->name);
     }
     if(!empty($url)) {

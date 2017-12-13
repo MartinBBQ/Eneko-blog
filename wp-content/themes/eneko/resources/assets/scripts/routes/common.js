@@ -30,7 +30,7 @@ export default {
 	initNewsletter() {
 		const $newsletter = document.querySelector('.newsletter-in');
 		if (!!$newsletter) {
-			new NewsletterInput();
+			new NewsletterInput($newsletter);
 		}
 	},
 	toggleSearch() {
