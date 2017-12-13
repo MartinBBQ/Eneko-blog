@@ -24,7 +24,11 @@
                 @if($i == 1)
                     @include('partials.newsletter.subscribe')
                 @endif
-                @include('partials.content', ['isFirst' => $i == 0])
+                @if(!is_front_page() && \App\postHasFilter($terms))
+                    @include('partials.content', ['isFirst' => $i == 0])
+                @elseif(is_front_page())
+                    @include('partials.content', ['isFirst' => $i == 0])
+                @endif
                 @php($i++)
             @endwhile
                 {{wp_reset_query()}}

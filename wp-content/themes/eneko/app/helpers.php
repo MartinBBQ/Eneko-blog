@@ -369,3 +369,16 @@ function getPageTerms(string $slug): array {
 	}
 	return $terms;
 }
+
+function postHasFilter(array $terms): bool {
+	$postTerms = get_the_terms(get_post(),'category');
+//	dd($postTerms, $terms);
+	foreach ($terms as $term) {
+		foreach ($postTerms as $postTerm) {
+			if($postTerm->slug === $term->slug) {
+				return true;
+			}
+		}
+	}
+	return false;
+}
