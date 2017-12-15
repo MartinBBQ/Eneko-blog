@@ -33,13 +33,15 @@
     @php(post_class(\App\getArticleClasses(['is-first' => $isFirst])))>
     <a {{$isCustomArticle || !empty($videoUrl) ? 'target="_blank"' : ''}} href="{{!empty($videoUrl) ? '//'.$url : $url}}">
         <div class="article__wrapper">
+            <div class="article__buttonContainer">
             @if(!$isCustomArticle)
                 @foreach($termNames as $term)
-                    @include('partials.content.buttonContainer', ['label' => $term])
+                <span class="button button--small button--blue">{{$term}}</span>
                 @endforeach
             @else
-                @include('partials.content.buttonContainer', ['label' => $siteName])
+                <span class="button button--small button--blue">{{$siteName}}</span>
             @endif
+            </div>
             <h2 class="article__title">{{$title}}</h2>
 
             @if(!$isFirst || $isCustomArticle || !empty($videoUrl))

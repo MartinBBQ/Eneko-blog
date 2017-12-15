@@ -1,3 +1,3 @@
 <div class="article__bottom">
-    {{App\getArticleNameAndDate(true)}}
+    {{App\getBottomInformations()}}
 </div>

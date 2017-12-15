@@ -41,6 +41,13 @@
         .modal__main {
             width: 50%;
             max-width: $container--maxSize;
+			@include media('<850px') {
+				width: 75%;
+			}
+			@include media('<phone-lg') {
+				width: 90%;
+				padding: 0.5rem;
+			}
         }
     }
     &__main {
@@ -91,9 +98,9 @@
 		@include media('<phone-lg') {
 			padding: 1rem;
 		}
-		&--modifier {
+		&--newsletter {
 			padding: 3.9rem 4.1rem;
-			@include media('<phone-lg') {
+			@include media('<tablet') {
 				padding: 1rem;
 			}
 		}
@@ -203,11 +210,11 @@
 		margin-top: 5.2rem;
 		&--newsletter {
 			margin-top: 0;
-			margin-left: 9.5rem;
-			margin-right: 9.5rem;
+			margin-left: 4rem;
+			margin-right: 4rem;
 			@include media('<tablet') {
-				margin-left: 4rem;
-				margin-right: 4rem;
+				margin-left: 0;
+				margin-right: 0;
 			}
 			@include media('<phone-lg') {
 				margin-left: 0.5rem;
@@ -220,6 +227,9 @@
 		font-size: 3.2rem;
 		font-family: $sf--bold;
 		margin-bottom: 2.4rem;
+		@include media('<phone-lg') {
+			font-size: 2.7rem;
+		}
 	}
 	&__excerpt {
 		font-size: 1.4rem;
@@ -232,6 +242,14 @@
 			background-color: $grey--separator;
 			width: 6.4rem;
 			margin: 2.6rem auto;
+			@include media('<phone-lg') {
+				margin: 1.6rem auto;
+			}
+		}
+	}
+	.cross {
+		@include media('<phone-lg') {
+			right: 1rem;
 		}
 	}
 }

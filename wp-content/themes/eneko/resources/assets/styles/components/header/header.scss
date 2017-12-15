@@ -50,6 +50,9 @@
 		position: relative;
 		margin-top: 5.6rem;
 		border-bottom: 1px solid $blue--grey;
+		@include media('<large'){
+			margin-top: 8rem;
+		}
 		&::after {
 			content: '';
 			width: 100%;
@@ -70,6 +73,14 @@
 		flex-wrap: wrap;
 		justify-content: space-between;
 		@include container(true);
+		@include media('<large'){
+			align-items: flex-start;
+			flex-direction: column;
+			margin-left: 4rem;
+		}
+		@include media('<phone-lg'){
+			margin-left: 1.5rem;
+		}
 	}
 	&__customerName {
 		font-size: 3.2rem;
@@ -125,6 +136,9 @@
 		img {
 			max-width: 2.5rem;
 			max-height: 2.5rem;
+		}
+		@include media('<large'){
+			margin: 1.5rem 0;
 		}
 	}
     .informations {

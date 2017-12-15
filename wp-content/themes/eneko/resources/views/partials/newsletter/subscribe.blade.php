@@ -6,7 +6,7 @@
         <button type="submit" class="newsletter-in__button">Informez-moi</button>
     </form>
     {{--This one is rendered right after the element. Wtf ?--}}
-    @extends('layouts.modal', ['innerModifier' => 'newsletter'])
+    @extends('layouts.modal', ['innerModifier' => 'newsletter', 'isSmall' => true])
     @section('modal-content')
         <h2 class="modal__title">Merci de votre confiance !</h2>
         <p class="modal__excerpt">

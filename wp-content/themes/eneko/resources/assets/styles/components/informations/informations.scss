@@ -8,6 +8,8 @@
 	@include container(true);
 	@include media('<large'){
 		margin-bottom: 4rem;
+		align-items: flex-start;
+		flex-direction: column;
 	}
     &__title {
         color: $white;
@@ -15,13 +17,24 @@
         text-transform: uppercase;
         margin-top: 0;
         font-family: $sf--semiBold;
+		display: flex;
+		@include media('<large'){
+			flex-direction: column;
+		}
     }
 	&__hours {
 		@include box-hours($white,$white);
 		margin-left: 1.6rem;
+		@include media('<large'){
+			margin-left: 0;
+			margin-top: 1.6rem;
+		}
 	}
 	&__logo {
 		max-width: 25rem;
 		max-height: 15rem;
+		@include media('<large'){
+			margin-top: 3rem;
+		}
 	}
 }

@@ -28,7 +28,7 @@
                     </div>
                 @endforeach
                 <div class="article__additionnal">
-                    {{App\getArticleNameAndDate(true)}}
+                    {{App\getBottomInformations()}}
                 </div>
             </div>
         </header>

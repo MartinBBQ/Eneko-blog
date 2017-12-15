@@ -38,7 +38,7 @@
 		.article__buttonContainer {
 			align-items: center;
 			&:not(:first-child) {
-
+				margin-left: 1.6rem;
 			}
 		}
 		.article__image {
@@ -66,9 +66,11 @@
 		.article__title {
 			font-size: 3.2rem;
 			margin-top: 3.2rem;
-			margin-bottom: 5rem;
+			margin-bottom: 3rem;
 			position: relative;
+			font-family: $sf--bold;
 			z-index: $layer--1;
+			padding-right: 2.5rem;
 			@include media('<tablet') {
 				font-size: 2.8rem;
 			}
@@ -79,12 +81,29 @@
 		.article__content {
 			margin-top: 3.4rem;
 			p {
+				font-size: 1.6rem;
+				line-height: 2.6rem;
 				&:first-child {
 					margin-top: 0;
 				}
 				@include media('<phone-lg') {
 					font-size: 1.5rem;
 				}
+			}
+			h1 {
+				font-size: 3.2rem;
+				left: 4rem;
+				font-family: $sf--bold;
+			}
+			h2 {
+				font-size: 2.2rem;
+				line-height: 3.6rem;
+				font-family: $sf--bold;
+			}
+			h3 {
+				font-size: 1.6rem;
+				line-height: 2.6rem;
+				font-family: $sf--semiBold;
 			}
 		}
 		.article__bottom {
@@ -154,6 +173,7 @@
 		.article__title {
 			color: $white;
 			font-size: 3.2rem;
+			line-height: 4rem;
 			font-weight: bold;
 			margin-bottom: 0;
 		}
@@ -166,6 +186,7 @@
 		.article__bottom {
 			color: $white;
 			margin-top: 2.6rem;
+			font-size: 1.4rem;
 		}
 	}
 	&__bg {
@@ -249,8 +270,12 @@
 	&__buttonContainer {
 		display: flex;
 		max-height: 2.4rem;
+		flex-wrap: wrap;
 		.button {
-			font-size: 1rem;
+			font-size: 1.2rem;
+			&:not(:first-child) {
+				margin-left: 1.6rem;
+			}
 		}
 	}
 	&__more {
@@ -268,7 +293,8 @@
 	}
 	&__bottom {
 		text-transform: uppercase;
-		font-size: 1rem;
+		font-size: 1.2rem;
+		font-family: $sf--semiBold;
 	}
 	&__titleContainer {
 		@include container(true, 62rem);

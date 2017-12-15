@@ -7,5 +7,5 @@
 @extends('layouts.app')
 
 @section('content')
-    @include('partials.home.main', ['terms' => $terms])
+    @include('partials.home.main', ['terms' => $terms, 'title' => "À l'assemblée"])
 @endsection

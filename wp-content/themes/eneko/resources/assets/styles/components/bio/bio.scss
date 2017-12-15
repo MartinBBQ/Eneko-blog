@@ -38,6 +38,11 @@
 		font-size: 1.6rem;
 		line-height: 2.6rem;
 		white-space: pre-line;
+		display: flex;
+		flex-direction: column;
+		p {
+			margin-bottom: 0;
+		}
 		h1 {
 			font-size: 3rem;
 		}
@@ -133,7 +138,7 @@
 		}
 	}
 	&__description {
-		font-size: 1.2rem;
+		font-size: 1.4rem;
 		line-height: 1.6rem;
 		margin-bottom: 1.8rem;
 		margin-top: 0.8rem;
@@ -147,7 +152,7 @@
 	}
 	&__sentence {
 		color: $black;
-		font-size: 1.2rem;
+		font-size: 1.4rem;
 		line-height: 1.6rem;
 	}
 	.social {

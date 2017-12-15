@@ -160,11 +160,25 @@ function getHomeCover() {
 	return $thumb[0];
 }
 
-function getArticleNameAndDate($excludeName = false) {
-	$fullName = get_the_author_meta('first_name').' '.get_the_author_meta('last_name');
-	$date = get_the_date('d M Y');
-	if(!empty($fullName) && !$excludeName) {
-		return $fullName.' - '.$date;
+function getBottomInformations($excludeComments = false) {
+	$excludeComments = (bool) $excludeComments;
+	if(!$excludeComments) {
+		$comments = get_comments(array(
+			'post_id' => get_the_ID(),
+			'status' => 'approve',
+		));
+		$commentsLength = count($comments);
+		if($commentsLength == 0) {
+			$commentsLabel = '';
+		} elseif ($commentsLength == 1) {
+			$commentsLabel = '1 COMMENTAIRE';
+		} else {
+			$commentsLabel = $commentsLength.' COMMENTAIRES';
+		}
+	}
+	$date = get_the_date();
+	if(!$excludeComments && $commentsLength > 0) {
+		return $date.' • '.$commentsLabel;
 	} else {
 		return $date;
 	}
