@@ -32,9 +32,11 @@
                 <div class="informations__title">
                     Permanence de {{$location}} • {{!empty($nextDay['hour']) ? "ouverte aujourd'hui" : "Fermée"}}
                     @if(!empty($nextDay['hour']))
-                    <span class="informations__hours">
-                        {{$nextDay['hour']}}
-                    </span>
+                    <div class="informations__wrapper">
+                        <span class="informations__hours">
+                            {{$nextDay['hour']}}
+                        </span>
+                    </div>
                     @endif
                 </div>
             @endif

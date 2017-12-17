@@ -9,6 +9,11 @@
 	cursor: pointer;
     width: $cross--size;
     height: $cross--size;
+	&--big {
+		&:before, &:after {
+			width: 3rem;
+		}
+	}
 	&:hover {
 		opacity: 1;
 	}
@@ -32,4 +37,14 @@
     &:after {
         transform: rotate(-45deg);
     }
+	&--grey {
+		&:before,&:after {
+			background-color: $grey;
+		}
+	}
+	&--white {
+		&:before,&:after {
+			background-color: $white;
+		}
+	}
 }

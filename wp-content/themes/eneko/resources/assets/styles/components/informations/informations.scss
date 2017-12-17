@@ -27,6 +27,10 @@
 		margin-left: 1.6rem;
 		@include media('<large'){
 			margin-left: 0;
+		}
+	}
+	&__wrapper {
+		@include media('<large'){
 			margin-top: 1.6rem;
 		}
 	}

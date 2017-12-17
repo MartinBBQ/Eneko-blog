@@ -55,12 +55,12 @@
 		border: 1px solid;
 	}
 	&--light-blue {
-		color: $blue--light;
+		color: $color--main;
 		border: 1px solid;
 		transition: color .25s ease, background-color .25s ease,border-color .25s ease;
 		&:hover {
-			background-color: $blue--light;
-			border-color: $blue--light;
+			background-color: $color--main;
+			border-color: $color--main;
 			color: $white;
 		}
 	}

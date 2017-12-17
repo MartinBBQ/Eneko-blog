@@ -5,6 +5,13 @@
 	display: flex;
 	flex-direction: column;
 	border-radius: $standard-radius;
+	position: relative;
+	@include media('<phone-lg') {
+		padding: 2.5rem 2rem;
+	}
+	.cross {
+
+	}
 	&__title {
 		font-size: 2.4rem;
 		color: $color--main;

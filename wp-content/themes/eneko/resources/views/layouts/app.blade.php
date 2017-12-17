@@ -13,6 +13,7 @@
           @yield('content')
         </main>
     </div>
+
     @php(do_action('get_footer'))
     @include('partials.footer')
     @php(wp_footer())

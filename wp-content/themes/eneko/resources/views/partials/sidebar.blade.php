@@ -1,6 +1,8 @@
 @php
-    $tempTitle = !empty(get_option('ephemere')) ? get_option('ephemere') : 'Rencontrer le député';
-    $permaTitle = !empty(get_option('permanence')) ? get_option('permanence') : 'Permanences';
+    $tempOption = get_option('ephemere');
+    $permaOption = get_option('permanence');
+    $tempTitle = !empty($tempOption) ? $tempOption : 'Rencontrer le député';
+    $permaTitle = !empty($permaOption) ? $permaOption : 'Permanences';
 @endphp
 <aside class="sidebar">
     <div class="sidebar__group sidebar__group--contact">
@@ -9,7 +11,7 @@
             <a href="mailto:{{$mail}}"><span>✉️</span> Écrire au député</a>
         </div>
         @endif
-        <div class="sidebar__info">
+        <div class="sidebar__info js-trigger-newsletter">
             <a href="#"><span>💡</span> Restons en contact </a>
         </div>
     </div>

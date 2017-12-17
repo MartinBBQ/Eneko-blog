@@ -38,6 +38,9 @@
 		background-color: $black-blue;
 		color: $white;
 		padding: 1.4rem 1.4rem 1.4rem 2.4rem;
+		&.js-trigger-newsletter {
+			cursor: pointer;
+		}
 		@extend %flex-center-y;
 		border-radius: $standard-radius;
 		> a {

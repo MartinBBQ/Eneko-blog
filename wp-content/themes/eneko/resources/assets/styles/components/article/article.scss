@@ -5,6 +5,10 @@
 	justify-content: space-between;
 	flex-grow: 1;
 	position: relative;
+	transition: box-shadow 0.25s ease;
+	&:hover {
+		box-shadow: 0px 1px 1.8rem transparentize($original-black, 0.83), 0.2rem 1px 1rem transparentize($original-black, 0.83);
+	}
 	&:not(.is-single):not(.is-url-article):not(.is-first):not(.is-video-article) {
 		&:before {
 			content: '';

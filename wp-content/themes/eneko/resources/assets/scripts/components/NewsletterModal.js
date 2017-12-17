@@ -4,10 +4,12 @@ export default class NewsletterModal extends Modal {
 	setProps(props) {
 		super.setProps(props);
 		this.$form = this.$el.querySelector('form');
+		this.$trigger = props.$trigger;
 	}
 	setListeners() {
 		super.setListeners();
 		this.$form.addEventListener('submit', this.register.bind(this));
+		this.$trigger.addEventListener('click', super.open.bind(this));
 	}
 	getBody() {
 		const body = {};

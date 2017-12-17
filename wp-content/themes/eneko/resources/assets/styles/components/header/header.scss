@@ -76,10 +76,12 @@
 		@include media('<large'){
 			align-items: flex-start;
 			flex-direction: column;
-			margin-left: 4rem;
+		}
+		@include media('<798px') {
+			width: 100%;
 		}
 		@include media('<phone-lg'){
-			margin-left: 1.5rem;
+			//margin-left: 1.5rem;
 		}
 	}
 	&__customerName {

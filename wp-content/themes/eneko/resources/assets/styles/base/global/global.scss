@@ -67,9 +67,8 @@ p {
 	margin-bottom: 14rem;
 	display: flex;
 	flex-wrap: wrap;
-	.page:not(.page-template-about) &, .home & {
-		margin-top: 8rem;//
-
+	.page:not(.page-template-about) &, .home &, .search & {
+		margin-top: 8rem;
 		@extend %container;
 	}
 }
