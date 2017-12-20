@@ -54,7 +54,7 @@
         @endif
         {{wp_reset_postdata()}}
         @if($loop->have_posts())
-            <div class="sidebar__group">
+            <div class="sidebar__group sidebar__group--temporary">
                 <h3 class="sidebar__title">{{$tempTitle}}</h3>
                 @while ($loop->have_posts()) @php($loop->the_post())
                     @php

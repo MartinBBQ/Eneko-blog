@@ -198,6 +198,9 @@
 	&__nextLabel {
 		font-family: $sf--bold;
 		font-size: 2.4em;
+		&--blue {
+			color: $color--main;
+		}
 	}
 	&__nextDate, &__listItem {
 		@include media('<phone-lg') {

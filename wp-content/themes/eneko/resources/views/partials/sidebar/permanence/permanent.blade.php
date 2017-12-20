@@ -1,5 +1,10 @@
 @php($found = false)
+@php
+    $hasAddress = (int) get_option( 'contactEnabled') !== 0;
+    $contact = get_option('dutyAddress');
+@endphp
 <div class="modal__group">
+    @if(!$hasAddress)
     <p class="modal__nextLabel">Horaires d’ouverture de la permanence</p>
     <ul class="modal__list">
         @foreach($days as $day)
@@ -20,4 +25,9 @@
             </li>
         @endforeach
     </ul>
+    @elseif(!empty($contact))
+        <p class="modal__nextLabel modal__nextLabel--blue">
+            <a href="mailto:{{$contact}}">Prenez rendez-vous</a>
+        </p>
+    @endif
 </div>

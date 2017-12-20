@@ -31,7 +31,7 @@
 <article
     data-category="{{implode(' ',$termSlugs)}}"
     @php(post_class(\App\getArticleClasses(['is-first' => $isFirst])))>
-    <a {{$isCustomArticle || !empty($videoUrl) ? 'target="_blank"' : ''}} href="{{!empty($videoUrl) ? '//'.$url : $url}}">
+    <a {{$isCustomArticle || !empty($videoUrl) ? 'target="_blank"' : ''}} href="{{$url}}">
         <div class="article__wrapper">
             <div class="article__buttonContainer">
             @if(!$isCustomArticle)

@@ -8,6 +8,8 @@
         $hasOne = false;
         $custom_logo_id = get_theme_mod( 'custom_logo' );
         $logo = wp_get_attachment_image_src( $custom_logo_id , 'full' )[0];
+        $hasAddress = (int) get_option( 'contactEnabled') !== 0;
+        $contact = get_option('dutyAddress');
     @endphp
         @if($query->have_posts())
             @while($query->have_posts() && !$hasOne)
@@ -30,6 +32,7 @@
                     }
                 @endphp
                 <div class="informations__title">
+                    @if(!$hasAddress)
                     Permanence de {{get_the_title()}} • {{!empty($nextDay['hour']) ? "ouverte aujourd'hui" : "Fermée"}}
                     @if(!empty($nextDay['hour']))
                     <div class="informations__wrapper">
@@ -37,6 +40,9 @@
                             {{$nextDay['hour']}}
                         </span>
                     </div>
+                    @endif
+                    @elseif(!empty($contact))
+                        <a href="mailto:{{$contact}}">Prenez rendez-vous</a>
                     @endif
                 </div>
             @endif

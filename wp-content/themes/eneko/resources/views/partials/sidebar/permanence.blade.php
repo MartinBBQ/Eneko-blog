@@ -16,23 +16,30 @@
         $nextDay = \App\getNextPermanenceDate($schedule,true);
     }
     $lng = $fullAddress['lng'];
-    $lat = $fullAddress['lat']
+    $lat = $fullAddress['lat'];
+    $title = get_the_title();
+    $hasAddress = (int) get_option( 'contactEnabled') !== 0;
+    $contact = get_option('dutyAddress');
 @endphp
 <div class="permanence" data-lng="{{$lng}}" data-lat="{{$lat}}" style="background-image: url({{$imageUrl}});">
     <img src="{{$imageUrl}}" class="visually-hidden">
     <div class="permanence__wrapper">
         <h5 class="permanence__location">
-            {{get_the_title()}}
+            {{$title}}
         </h5>
         <p class="permanence__address">
             {{$address}}
         </p>
         <p class="permanence__nextDate">
+            @if(!$hasAddress)
             {{$nextDay['day']}}
             @if($nextDay['hour'])
                 <span class="permanence__hours">
                     {{$nextDay['hour']}}
                 </span>
+            @endif
+            @elseif(!empty($contact))
+                <a href="mailto:{{$contact}}">Prenez rendez-vous</a>
             @endif
         </p>
     </div>
@@ -55,7 +62,7 @@
                     </div>
                     <div class="modal__externalContent">
                         <h5 class="modal__location">
-                            {{$location}}
+                            {{$title}}
                         </h5>
                         <p class="modal__info">
                             <span class="modal__label">Adresse : </span>

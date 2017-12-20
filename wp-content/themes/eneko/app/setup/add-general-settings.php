@@ -25,6 +25,32 @@ class Add_Settings_Field {
 		$this->registerAPIKey();
 		$this->registerPermanentDuty();
 		$this->registerTemporaryDuty();
+		$this->registerDutyAddress();
+		$this->registerCheckbox();
+	}
+
+	public function registerCheckbox(  ) {
+		register_setting( 'general', 'contactEnabled', 'esc_attr' );
+        add_settings_field('contactEnabled', '<label for="contactEnabled">'.__("Utiliser l'adresse de contact pour les permanences" , 'contactEnabled' ).'</label>' , array($this, 'checkbox_html') , 'general' );
+	}
+
+	public function checkbox_html(  ) {
+		$value = get_option( 'contactEnabled');
+		echo '<input type="checkbox" name="contactEnabled" value="1" '. checked(1, $value, false) .'/> ';
+	}
+	public function registerDutyAddress(  ) {
+		register_setting( 'general', 'dutyAddress', 'esc_attr' );
+		add_settings_field(
+			'dutyAddress',
+			'<label for="dutyAddress">' . __( "Adresse de contact des permanences" , 'dutyAddress' ) . '</label>',
+			array( $this, 'dutyAddress' ),
+			'general'
+		);
+	}
+
+	public function dutyAddress() {
+		$value = get_option( 'dutyAddress', '' );
+		echo '<input type="email" id="dutyAddress" name="dutyAddress" value="' . esc_attr( $value ) . '" />';
 	}
 	public function registerTemporaryDuty() {
 		register_setting( 'general', 'ephemere', 'esc_attr' );

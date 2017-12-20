@@ -168,6 +168,9 @@
 			margin-bottom: 1.6rem;
 			font-family: $sf--bold;
 		}
+		.article__bg {
+			opacity: .5;
+		}
 	}
 	&.is-first:not(.is-url-article):not(.is-video-article ):not(.is-single) {
 		background-color: $color--main;
@@ -225,7 +228,7 @@
 		line-height: 2.6rem;
 		strong {
 			font-weight: normal;
-			font-family: $font--main;
+			font-family: $sf--semiBold;
 		}
 	}
 	&__wrapper {

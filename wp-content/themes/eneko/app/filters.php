@@ -78,6 +78,7 @@ add_filter('user_contactmethods', function ($fields) {
 	$fields['group'] = 'Groupe Politique';
 	$fields['tinyName'] = 'Abbréviation du nom';
 	$fields['shortDescription'] = 'Description sidebar';
+	$fields['dutyAddress'] = 'Adresse de contact de la permanence';
 	return $fields;
 });
 

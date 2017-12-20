@@ -15,6 +15,9 @@
 		font-family: $sf--bold;
 		color: $blue;
 		text-transform: uppercase;
+		&:only-child {
+			display: none;
+		}
 	}
 	&__subtitle {
 		text-transform: uppercase;
