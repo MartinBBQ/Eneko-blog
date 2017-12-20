@@ -6,6 +6,9 @@ import NewsletterInput from '../components/NewsletterInput';
 export default {
 	init() {
 		this.isOpenSearch = false;
+		if(this.detectIE()) {
+			document.body.classList.add('is-ie');
+		}
 		// JavaScript to be fired on all pages
 		Array.from(document.querySelectorAll('.permanence .modal')).forEach($el => {
 			new DutyModal({$el});
@@ -15,9 +18,11 @@ export default {
 		this.$form = document.querySelector('.search-form');
 		this.$search = document.querySelector('input[type="search"]');
 		this.$fsForm = document.querySelector('.fs-form');
-		this.$cross = this.$fsForm.querySelector('.cross');
-		this.$input = this.$fsForm.querySelector('input');
-		this.$search && this.$search.addEventListener('focus',this.openSearch.bind(this));
+		if (this.$fsForm) {
+			this.$cross = this.$fsForm.querySelector('.cross');
+			this.$input = this.$fsForm.querySelector('input');
+		}
+		this.$search && this.$search.addEventListener('focus', this.openSearch.bind(this));
 		this.$cross && this.$cross.addEventListener('click', this.closeSearch.bind(this));
 		this.$input && this.$input.addEventListener('keydown', this.submitForm.bind(this));
 	},
@@ -34,6 +39,30 @@ export default {
 			this.$form.submit();
 		}
 	},
+	detectIE() {
+		const ua = window.navigator.userAgent;
+		const msie = ua.indexOf('MSIE ');
+		if (msie > 0) {
+			// IE 10 or older => return version number
+			return parseInt(ua.substring(msie + 5, ua.indexOf('.', msie)), 10);
+		}
+
+		const trident = ua.indexOf('Trident/');
+		if (trident > 0) {
+			// IE 11 => return version number
+			const rv = ua.indexOf('rv:');
+			return parseInt(ua.substring(rv + 3, ua.indexOf('.', rv)), 10);
+		}
+
+		const edge = ua.indexOf('Edge/');
+		if (edge > 0) {
+			// Edge (IE 12+) => return version number
+			return parseInt(ua.substring(edge + 5, ua.indexOf('.', edge)), 10);
+		}
+
+		// other browser
+		return false;
+	},
 	initList() {
 		const $list = document.querySelector('.section')
 		if (!!$list) {
@@ -47,10 +76,10 @@ export default {
 		}
 	},
 	openSearch() {
-		this.$fsForm.classList.add('is-open');
+		this.$fsForm && this.$fsForm.classList.add('is-open');
 	},
 	closeSearch() {
-		this.$fsForm.classList.remove('is-open');
+		this.$fsForm && this.$fsForm.classList.remove('is-open');
 	},
 	finalize() {
 		// JavaScript to be fired on all pages, after page specific JS is fired

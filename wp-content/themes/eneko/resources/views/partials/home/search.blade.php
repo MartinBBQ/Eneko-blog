@@ -6,4 +6,3 @@
     <input type="hidden" name="post_type" value="post" />
 </form>
 
-@include('partials.fs-form')

@@ -22,7 +22,7 @@
     <img src="{{$imageUrl}}" class="visually-hidden">
     <div class="permanence__wrapper">
         <h5 class="permanence__location">
-            {{$location}}
+            {{get_the_title()}}
         </h5>
         <p class="permanence__address">
             {{$address}}
@@ -59,7 +59,7 @@
                         </h5>
                         <p class="modal__info">
                             <span class="modal__label">Adresse : </span>
-                            <span>{{$address}}, {{$cityRef}} {{$location}}</span>
+                            <span>{{$fullAddress['address']}}</span>
                         </p>
                         @if(!empty($phone))
                         <p class="modal__info">

@@ -18,7 +18,7 @@
 			width: 100%;
 			z-index: 1;
 			pointer-events: none;
-			background: linear-gradient(43.41deg, $white 0%, transparentize($white, 0.5) 100%);
+			background: linear-gradient(85deg, $white 30%, $white 40%, transparentize($white, 0.3) 80%);
 		}
 	}
 	&.is-hidden {
@@ -158,11 +158,14 @@
 		.article_image {
 			display: none;
 		}
+		.article__bottom {
+			margin-top: 1.6rem;
+		}
 		.article__extract {
 			margin-bottom: 1.6rem;
 		}
 		.article__title {
-			margin-bottom: 0;
+			margin-bottom: 1.6rem;
 			font-family: $sf--bold;
 		}
 	}

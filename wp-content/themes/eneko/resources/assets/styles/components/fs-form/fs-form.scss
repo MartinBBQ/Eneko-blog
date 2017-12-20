@@ -30,6 +30,9 @@
 	&__main {
 		display: flex;
 		flex-direction: column;
+		.is-ie & {
+			transform: translate3d(-50%,0,0);
+		}
 	}
 	.cross {
 		position: relative;

@@ -45,11 +45,11 @@
             <h2 class="article__title">{{$title}}</h2>
 
             @if(!$isFirst || $isCustomArticle || !empty($videoUrl))
-                @include('partials.content.extract')
+                @include('partials.content.extract', ['isCustomArticle' => $isCustomArticle])
                 @include('partials.content.bottom')
             @elseif($isFirst)
                 @include('partials.content.bottom')
-                @include('partials.content.extract')
+                @include('partials.content.extract', ['isCustomArticle' => $isCustomArticle])
                 @include('partials.content.more')
             @endif
         </div>

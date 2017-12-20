@@ -26,6 +26,7 @@
                    $predicates = \App\isUrlOrVideo();
                     $isUrlOrVideo = $predicates['url'] || $predicates['video'];
                @endphp
+                @if(!$useLocalLoop)
                 @if($i == 1 && !$displayed)
                     @include('partials.newsletter.subscribe')
                     @php($displayed = true)
@@ -37,9 +38,16 @@
                 @elseif($tplSlug === $pressView && (\App\isPressPost() || $isUrlOrVideo))
                     @include('partials.content', ['isFirst' => $i == 0])
                 @else
-                    @php($i--)
                 @endif
                 @php($i++)
+                @else
+                    @include('partials.content', ['isFirst' => $i == 0])
+                    @if($i == 1 && !$displayed)
+                        @include('partials.newsletter.subscribe')
+                        @php($displayed = true)
+                    @endif
+                    @php($i--)
+                @endif
             @endwhile
                 {{wp_reset_query()}}
     </div>
