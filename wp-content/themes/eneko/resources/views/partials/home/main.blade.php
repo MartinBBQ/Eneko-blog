@@ -50,7 +50,7 @@
             paginate_links([
                 'base' => get_pagenum_link(1) . '%_%',
                 'format' => 'page/%#%',
-                'current' => get_query_var('page',1),
+                'current' => get_query_var( 'paged' ) ? intval( get_query_var( 'paged' ) ) : 1,
                 'total' => $loop->max_num_pages,
                 'prev_text'    => __('←'),
                 'next_text'    => __('→'),])
