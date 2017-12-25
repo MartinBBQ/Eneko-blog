@@ -21,7 +21,7 @@
         @include('partials.filters', $terms)
     @endif
     <div class="section__list">
-        @while (!$useLocalLoop ? $loop->have_posts() : have_posts()) @php(!$useLocalLoop ? $loop->the_post() : the_post())
+        @while ($loop->have_posts()) @php($loop->the_post())
            @php
                $predicates = \App\isUrlOrVideo();
                $isUrlOrVideo = $predicates['url'] || $predicates['video'];
