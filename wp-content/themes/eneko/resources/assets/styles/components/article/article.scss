@@ -1,6 +1,6 @@
 .article {
-	box-shadow: 0 0 0 1px $article--border;
-	border-radius: 0.4rem;
+	border: 1px solid $article--border;
+	border-radius: $standard-radius;
 	display: flex;
 	justify-content: space-between;
 	flex-grow: 1;
@@ -14,6 +14,7 @@
 			content: '';
 			position: absolute;
 			left: 0;
+			border-radius: $standard-radius;
 			height: 100%;
 			width: 100%;
 			z-index: 1;
@@ -233,6 +234,7 @@
 	}
 	&__wrapper {
 		padding: 4rem;
+		padding-top: 3.2rem;
 		z-index: $layer--1;
 		display: flex;
 		width: 100%;
@@ -280,12 +282,12 @@
 	}
 	&__buttonContainer {
 		display: flex;
-		max-height: 2.4rem;
 		flex-wrap: wrap;
 		.button {
 			font-size: 1.2rem;
-			&:not(:first-child) {
-				margin-left: 1.6rem;
+			margin-top: 0.8rem;
+			&:not(:last-child) {
+				margin-right: 0.8rem;
 			}
 		}
 	}
