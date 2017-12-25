@@ -7,5 +7,9 @@
 @extends('layouts.app')
 
 @section('content')
-    @include('partials.home.main', ['terms' => $terms, 'title' => "En circonscription"])
+    @include('partials.home.main', [
+    'terms' => $terms,
+    'title' => "En circonscription",
+    'useLocalLoop' => App\getCustomQuery(['post_type'=> 'post', 'posts_per_page' => 10])
+    ])
 @endsection

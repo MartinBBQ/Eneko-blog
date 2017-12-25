@@ -6,6 +6,7 @@
     $displayed = false;
     $tplSlug = get_page_template_slug();
     $pressView = 'views/press.blade.php';
+    $loop = !empty($loop) ? $loop : App\getCustomQuery(['post_type'=> 'post', 'posts_per_page' => 10]);
 @endphp
 <section class="section">
     <h1 class="section__title">
@@ -20,13 +21,12 @@
         @include('partials.filters', $terms)
     @endif
     <div class="section__list">
-        @php($loop = App\getCustomQuery(['post_type'=> 'post', 'posts_per_page' => 10]))
-            @while (!$useLocalLoop ? $loop->have_posts() : have_posts()) @php(!$useLocalLoop ? $loop->the_post() : the_post())
-               @php
-                   $predicates = \App\isUrlOrVideo();
-                    $isUrlOrVideo = $predicates['url'] || $predicates['video'];
-               @endphp
-                @if(!$useLocalLoop)
+        @while (!$useLocalLoop ? $loop->have_posts() : have_posts()) @php(!$useLocalLoop ? $loop->the_post() : the_post())
+           @php
+               $predicates = \App\isUrlOrVideo();
+               $isUrlOrVideo = $predicates['url'] || $predicates['video'];
+           @endphp
+            @if(!$useLocalLoop)
                 @if($i == 1 && !$displayed)
                     @include('partials.newsletter.subscribe')
                     @php($displayed = true)
@@ -40,23 +40,22 @@
                 @else
                 @endif
                 @php($i++)
-                @else
-                    @include('partials.content', ['isFirst' => $i == 0])
-                    @if($i == 1 && !$displayed)
-                        @include('partials.newsletter.subscribe')
-                        @php($displayed = true)
-                    @endif
-                    @php($i--)
+            @else
+                @include('partials.content', ['isFirst' => $i == 0])
+                @if($i == 1 && !$displayed)
+                    @include('partials.newsletter.subscribe')
+                    @php($displayed = true)
                 @endif
-            @endwhile
-                {{wp_reset_query()}}
+                @php($i--)
+            @endif
+        @endwhile
     </div>
     <div class="section__nav">
         @if($loop->max_num_pages > 1)
             {!!
             paginate_links([
                 'base' => get_pagenum_link(1) . '%_%',
-                'format' => '/page/%#%',
+                'format' => 'page/%#%',
                 'current' => get_query_var('page',1),
                 'total' => $loop->max_num_pages,
                 'prev_text'    => __('←'),
@@ -65,4 +64,5 @@
         @endif
     </div>
 </section>
+{{wp_reset_query()}}
 @include('partials.sidebar')

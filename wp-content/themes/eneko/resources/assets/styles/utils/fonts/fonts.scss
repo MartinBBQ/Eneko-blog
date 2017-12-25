@@ -1,7 +1,7 @@
 @font-face {
     font-family: $sf;
     src:
-	url("#{$fontPath}/#{$sf}.otf") format('opentype'),
+	url("#{$fontPath}/#{$sf}.otf") format('opentype');
 }
 
 @font-face {
