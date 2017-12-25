@@ -1,4 +1,5 @@
 @php
+    global $post;
     $cfs = CFS();
     $url = $cfs->get('url');
     $videoUrl = get_field('video');
@@ -9,7 +10,8 @@
     $siteName = '';
     $thumb = get_the_post_thumbnail_url(get_post(),'full');
     $title = get_the_title();
-    foreach($terms as $term) {
+    if(!empty($terms) && count($terms)) {
+        foreach($terms as $term) {
         $slug = $term->slug;
         $parentId = $term->parent;
         if(!empty($parentId) && $parentId !== 0) {
@@ -18,6 +20,7 @@
         }
         array_push($termSlugs, $slug);
         array_push($termNames,$term->name);
+    }
     }
     if(!empty($url)) {
         $isCustomArticle = true;

@@ -1,5 +1,5 @@
 @php
-    $useLocalLoop = $useLocalLoop ?? false;
+    $useLocalLoop = $useLocalLoop ?? true;
     $i = 0;
     $hasFoundFirstContent = false;
     $terms = !empty($terms) ? $terms : [];
@@ -25,20 +25,14 @@
            @php
                $predicates = \App\isUrlOrVideo();
                $isUrlOrVideo = $predicates['url'] || $predicates['video'];
+               $post = get_post();
            @endphp
             @if(!$useLocalLoop)
                 @if($i == 1 && !$displayed)
                     @include('partials.newsletter.subscribe')
                     @php($displayed = true)
                 @endif
-                @if(!is_front_page() && (\App\postHasFilter($terms) || $isUrlOrVideo) && $tplSlug !== $pressView)
-                    @include('partials.content', ['isFirst' => $i == 0])
-                @elseif(is_front_page())
-                    @include('partials.content', ['isFirst' => $i == 0])
-                @elseif($tplSlug === $pressView && (\App\isPressPost() || $isUrlOrVideo))
-                    @include('partials.content', ['isFirst' => $i == 0])
-                @else
-                @endif
+                @include('partials.content', ['isFirst' => $i == 0])
                 @php($i++)
             @else
                 @include('partials.content', ['isFirst' => $i == 0])
