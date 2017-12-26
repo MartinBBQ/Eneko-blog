@@ -18,6 +18,7 @@
         margin-top: 0;
         font-family: $sf--semiBold;
 		display: flex;
+		align-items: center;
 		@include media('<large'){
 			flex-direction: column;
 		}

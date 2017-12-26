@@ -33,6 +33,10 @@
 						margin-top: 1rem;
 					}
 				}
+				input {
+					border: none;
+					background-color: transparent;
+				}
 				input[type="search"] {
 					border: none;
 					$color: $original-black;

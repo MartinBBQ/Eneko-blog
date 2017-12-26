@@ -42,7 +42,10 @@
                     </div>
                     @endif
                     @elseif(!empty($contact))
+                        Permanence de {{get_the_title()}} 
+                        <span class="informations__hours">
                         <a href="mailto:{{$contact}}">Prenez rendez-vous</a>
+                        </span>
                     @endif
                 </div>
             @endif

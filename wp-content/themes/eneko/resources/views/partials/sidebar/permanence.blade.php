@@ -39,6 +39,7 @@
                 </span>
             @endif
             @elseif(!empty($contact))
+                {{$title}} -
                 <a href="mailto:{{$contact}}">Prenez rendez-vous</a>
             @endif
         </p>

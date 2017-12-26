@@ -121,7 +121,7 @@
 			}
         }
         &.is-active,&.current_page_item {
-            font-family: $font--main;
+            font-family: $sf--semiBold;
 			color: $color--main;
             &::before {
                 display: block;
