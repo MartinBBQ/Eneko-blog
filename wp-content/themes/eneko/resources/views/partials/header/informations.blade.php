@@ -43,8 +43,8 @@
                     @endif
                     @elseif(!empty($contact))
                         Permanence de {{get_the_title()}} 
-                        <span class="informations__hours">
-                        <a href="mailto:{{$contact}}">Prenez rendez-vous</a>
+                        <span class="informations__hours informations__hours--small">
+                        <a href="mailto:{{$contact}}">Gardons contact</a>
                         </span>
                     @endif
                 </div>

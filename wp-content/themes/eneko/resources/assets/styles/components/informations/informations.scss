@@ -29,6 +29,9 @@
 		@include media('<large'){
 			margin-left: 0;
 		}
+		&--small {
+			font-size: 1.4rem;
+		}
 	}
 	&__wrapper {
 		@include media('<large'){

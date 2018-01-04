@@ -6,7 +6,7 @@
     $loop = App\getCustomQuery([
     'post_type'=> 'post',
     'posts_per_page' => 10,
-    'category_name' => 'presse-'.DISTRICT_CATEGORY_SLUG.',presse-'.DIPLOMATIC_WORK_CATEGORY_SLUG
+    'category_name' => PRESS_CATEGORY_SLUG.',presse-'.DISTRICT_CATEGORY_SLUG.',presse-'.DIPLOMATIC_WORK_CATEGORY_SLUG
     ])
 @endphp
 @extends('layouts.app')

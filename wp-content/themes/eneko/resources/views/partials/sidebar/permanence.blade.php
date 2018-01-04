@@ -40,7 +40,7 @@
             @endif
             @elseif(!empty($contact))
                 {{$title}} -
-                <a href="mailto:{{$contact}}">Prenez rendez-vous</a>
+                <a href="mailto:{{$contact}}">Prenez RDV</a>
             @endif
         </p>
     </div>

@@ -11,9 +11,9 @@
             <a href="mailto:{{$mail}}"><span>✉️</span> Écrire au député</a>
         </div>
         @endif
-        <div class="sidebar__info js-trigger-newsletter">
-            <a href="#"><span>💡</span> Restons en contact </a>
-        </div>
+        {{--<div class="sidebar__info js-trigger-newsletter">--}}
+            {{--<a href="#"><span>💡</span> S'inscrire à la newsletter </a>--}}
+        {{--</div>--}}
     </div>
     @php
         $authorId = \App\getOwnerId();

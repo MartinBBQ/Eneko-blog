@@ -3,7 +3,7 @@
     $i = 0;
     $hasFoundFirstContent = false;
     $terms = !empty($terms) ? $terms : [];
-    $displayed = false;
+    $displayed = true;
     $tplSlug = get_page_template_slug();
     $pressView = 'views/press.blade.php';
     $loop = !empty($loop) ? $loop : App\getCustomQuery(['post_type'=> 'post', 'posts_per_page' => 10]);
@@ -27,21 +27,12 @@
                $isUrlOrVideo = $predicates['url'] || $predicates['video'];
                $post = get_post();
            @endphp
-            @if(!$useLocalLoop)
-                @if($i == 1 && !$displayed)
-                    @include('partials.newsletter.subscribe')
-                    @php($displayed = true)
-                @endif
-                @include('partials.content', ['isFirst' => $i == 0])
-                @php($i++)
-            @else
-                @include('partials.content', ['isFirst' => $i == 0])
-                @if($i == 1 && !$displayed)
-                    @include('partials.newsletter.subscribe')
-                    @php($displayed = true)
-                @endif
-                @php($i--)
+            @if($i == 1 && !$displayed)
+                @include('partials.newsletter.subscribe')
+                @php($displayed = true)
             @endif
+            @include('partials.content', ['isFirst' => $i == 0])
+            @php($i++)
         @endwhile
     </div>
     <div class="section__nav">
