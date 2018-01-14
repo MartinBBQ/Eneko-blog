@@ -1,5 +1,6 @@
 @php
     $useLocalLoop = $useLocalLoop ?? true;
+    $optionsLoop = $optionsLoop ?? [];
     $i = 0;
     $hasFoundFirstContent = false;
     $terms = !empty($terms) ? $terms : [];

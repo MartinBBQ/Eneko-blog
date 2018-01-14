@@ -12,10 +12,18 @@
         @endwhile
     @else
         @php
+            $queryParams = [
+                'post_type'=> 'post',
+                'posts_per_page' => 10,
+            ];
+            if(!empty($_GET['s'])) {
+                $queryParams['s'] = $_GET['s'];
+            }
             $options = [
                 'useLocalLoop'=> true,
-                'title'=> 'Recherche pour : "'.get_search_query().'"'
-            ]
+                'title'=> 'Recherche pour : "'.get_search_query().'"',
+                'loop' => App\getCustomQuery($queryParams),
+            ];
         @endphp
         @include('partials.home.main',$options)
     @endif
