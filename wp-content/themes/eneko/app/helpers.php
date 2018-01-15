@@ -190,8 +190,8 @@ function scrapeImage($text) {
 	$link = $link[1];
 	$link = urldecode($link);
 	return $link;
-
 }
+
 function getOwnerId() {
 	$admins = get_users([
 		'roles' => 'administrator'

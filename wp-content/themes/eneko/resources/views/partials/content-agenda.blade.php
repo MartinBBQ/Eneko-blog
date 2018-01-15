@@ -8,6 +8,7 @@
     $month = \App\date_fr('F',strtotime($fullDate));
     $imageUrl = get_the_post_thumbnail_url();
     $id = get_the_ID();
+    $title = get_the_title();
 @endphp
 <article data-id="{{$id}}" data-month="{{date('n',strtotime($fullDate))}}" class="event is-closed {{has_post_thumbnail() ? 'has-thumb' : 'is-thumbless'}}">
     <div class="event__top">
@@ -20,7 +21,7 @@
             </div>
         </div>
         <div class="event__header">
-            <h3 class="event__title">{{get_the_title()}}</h3>
+            <h3 class="event__title">{{$title}}</h3>
             <div class="event__group">
                 <div class="event__hours">
                     <span class="event__icon">
@@ -32,7 +33,7 @@
                     <span class="event__icon">
                         <i class="material-icons">location_on</i>
                     </span>
-                    {{\App\getPermanenceLocation($fullAddress)}}
+                    {{$title}}
                 </div>
             </div>
         </div>

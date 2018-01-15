@@ -26,7 +26,7 @@
             @include('partials.sidebar.contact', ['owner' => true])
             @while ($loop->have_posts()) @php($loop->the_post())
                 @if(get_field('isOnSidebar'))
-                    @include('partials.sidebar.contact')
+                    @include('partials.sidebar.contact', ['id' => get_post()->ID])
                 @endif
             @endwhile
         </div>

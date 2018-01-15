@@ -33,7 +33,7 @@
 		@extend %flex-center;
 		flex-direction: column;
 		flex-grow: 0;
-		color: $blue--light;
+		color: $color--main;
 		margin-right: 9rem;
 		font-size: 1rem;
 		@include media('<tablet') {

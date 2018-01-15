@@ -23,19 +23,19 @@ export default class NewsletterModal extends Modal {
 	}
 	setEmail(value) {
 		Array.from(this.$form.elements).forEach($input => {
-			if ($input.getAttribute('type') == 'email') {
+			if ($input.getAttribute('type') === 'email') {
 				$input.value = value;
 			}
 		})
 	}
 	register(ev) {
 		ev.preventDefault();
-		const url = "test";
+		const url = `crm.${location.origin}/api/external/addContact`
 		const config = {
 			method: 'POST',
 			body: this.getBody()
 		}
-		console.log(this.getBody());
+		// console.log(this.getBody());
 		fetch(url, config)
 			.then(response => {
 				this.close();

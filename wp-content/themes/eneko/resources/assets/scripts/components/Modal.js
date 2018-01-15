@@ -6,6 +6,7 @@ export default class Modal {
 	setProps(props) {
 		this.$el = props.$el;
 		this.openClass = 'is-open';
+		this.$cross = this.$el.querySelector('.cross');
 		this.isOpen = false;
 	}
 	findAncestor ($el, cls) {
@@ -14,7 +15,9 @@ export default class Modal {
 	}
 	setListeners() {
 		this.$el.addEventListener('click', this.toggle.bind(this));
-		this.$el.querySelector('.cross').addEventListener('click',this.close.bind(this));
+		if (this.$cross) {
+			this.$cross.addEventListener('click',this.close.bind(this));
+		}
 	}
 	toggle(ev) {
 		this.isOpen ? this.handleClose(ev) : this.handleOpen(ev);

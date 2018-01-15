@@ -16,13 +16,6 @@
         <form>
             <div class="modal__group modal__group--newsletter">
                 @include('partials.input', [
-                'type' => 'email',
-                'label' => 'Adresse e-mail',
-                'placeholder' => 'Veuillez saisir votre adresse e-mail',
-                'required' => true,
-                'name' => 'email'
-                ])
-                @include('partials.input', [
                 'type' => 'text',
                 'label' => 'Prénom',
                 'placeholder' => 'Veuillez saisir votre prénom',
@@ -34,13 +27,26 @@
                 'label' => 'Nom',
                 'placeholder' => 'Veuillez saisir votre nom',
                 'required' => true,
-                'name' => 'name'
+                'name' => 'lastName'
                 ])
                 @include('partials.input', [
-                'type' => 'number',
-                'label' => 'Code postal',
-                'placeholder' => 'Veuillez saisir votre code postal',
+                'type' => 'email',
+                'label' => 'Adresse e-mail',
+                'placeholder' => 'Veuillez saisir votre adresse e-mail',
+                'required' => true,
+                'name' => 'email'
+                ])
+                @include('partials.input', [
+                'type' => 'text',
+                'label' => 'Ville',il
+                'placeholder' => 'Veuillez saisir votre ville',
                 'name' => 'cityRef'
+                ])
+                @include('partials.input', [
+                'type' => 'text',
+                'label' => 'Pays',
+                'placeholder' => 'Veuillez saisir votre pays',
+                'name' => 'country'
                 ])
             </div>
             <div class="flex-center">

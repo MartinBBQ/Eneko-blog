@@ -160,15 +160,3 @@ function insertTermChildren($slug, $children) {
 
 insertTermChildren(DISTRICT_CATEGORY_SLUG, ['Presse', 'Évènements','Vidéos']);
 insertTermChildren(DIPLOMATIC_WORK_CATEGORY_SLUG, ['Affaires européennes', 'Défense', 'Autres', 'Vidéos', 'Question écrite']);
-
-add_action( 'user_register', 'registerToCrm', 10, 1 );
-
-function registerToCrm( $user_id ) {
-
-}
-
-add_action( 'profile_update', 'updateCrm', 10, 2 );
-
-function updateCrm( $user_id, $old_user_data ) {
-	// Do something
-}
