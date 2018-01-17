@@ -26,10 +26,19 @@
             </div>
         </div>
         <div class="datebook__list">
-            @php($loop = App\getCustomQuery(['post_type'=> 'agenda', 'posts_per_page' => -1]))
-                @while ($loop->have_posts()) @php($loop->the_post())
-                    @include('partials.content-agenda')
-                    @endwhile
+            @php
+                $list = get_posts(['post_type'=> 'agenda', 'posts_per_page' => -1]);
+                usort($list, function ($a, $b) {
+                    $cfs = CFS();
+                    $timeA = $cfs->get('date', $a->ID);
+                    $timeB = $cfs->get('date', $b->ID);
+                    return $timeA > $timeB;
+                })
+            @endphp
+                @foreach($list as $item)
+                    @php(setup_postdata($item))
+                    @include('partials.content-agenda', ['post' => $item])
+                @endforeach
                     {{wp_reset_query()}}
         </div>
     </section>

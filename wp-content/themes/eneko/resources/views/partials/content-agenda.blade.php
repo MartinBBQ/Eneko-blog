@@ -1,14 +1,17 @@
 @php
+    if(empty($post)) {
+        global $post;
+    }
     $cfs = CFS();
-    $fullDate = $cfs->get('date');
+    $fullDate = $cfs->get('date',$post->ID);
     $day = date('j',strtotime($fullDate));
-    $start = $cfs->get('starting_hour');
-    $fullAddress = get_field('place') ? get_field('place') : [];
-    $end = $cfs->get('ending_hour');
+    $start = $cfs->get('starting_hour',$post->ID);
+    $fullAddress = get_field('place',$post->ID) ? get_field('place',$post->ID) : [];
+    $end = $cfs->get('ending_hour',$post->ID);
     $month = \App\date_fr('F',strtotime($fullDate));
-    $imageUrl = get_the_post_thumbnail_url();
-    $id = get_the_ID();
-    $title = get_the_title();
+    $imageUrl = get_the_post_thumbnail_url($post);
+    $id = get_the_ID($post);
+    $title = get_the_title($post);
 @endphp
 <article data-id="{{$id}}" data-month="{{date('n',strtotime($fullDate))}}" class="event is-closed {{has_post_thumbnail() ? 'has-thumb' : 'is-thumbless'}}">
     <div class="event__top">
@@ -56,7 +59,7 @@
                     <div class="event__subtitle">DATE</div>
                 </div>
                 <div class="event__subcontent">
-                    {{\App\date_fr('l',strtotime(date('l',$fullDate)))}} {{$day}} {{$month}} - {{$start}} - {{$end}}
+                    {{\App\date_fr('l',strtotime($fullDate))}} {{$day}} {{$month}} - {{$start}} - {{$end}}
                 </div>
             </div>
             <div class="event__col">
