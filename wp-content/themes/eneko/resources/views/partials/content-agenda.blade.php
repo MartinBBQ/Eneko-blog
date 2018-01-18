@@ -12,6 +12,7 @@
     $imageUrl = get_the_post_thumbnail_url($post);
     $id = get_the_ID($post);
     $title = get_the_title($post);
+    $placeTitle = $cfs->get('place_title', $post-ID);
 @endphp
 <article data-id="{{$id}}" data-month="{{date('n',strtotime($fullDate))}}" class="event is-closed {{has_post_thumbnail() ? 'has-thumb' : 'is-thumbless'}}">
     <div class="event__top">
@@ -36,7 +37,7 @@
                     <span class="event__icon">
                         <i class="material-icons">location_on</i>
                     </span>
-                    {{$title}}
+                    {{!empty($placeTitle) ? $placeTitle : explode(',', $fullAddress['address'])[0]}}
                 </div>
             </div>
         </div>
@@ -70,7 +71,7 @@
                     <div class="event__subtitle">LIEU</div>
                 </div>
                 <div class="event__subcontent">
-                    {{$fullAddress['address']}}
+                    {{!empty($placeTitle) ? $placeTitle : explode(',', $fullAddress['address'])[0]}}
                 </div>
             </div>
         </div>
