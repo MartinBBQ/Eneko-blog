@@ -33,7 +33,9 @@
                 @endphp
                 <div class="informations__title">
                     @if(!$hasAddress)
-                    Permanence de {{get_the_title()}} • {{!empty($nextDay['hour']) ? "ouverte aujourd'hui" : "Fermée"}}
+                    <span>
+                        Permanence de {{get_the_title()}} • {{!empty($nextDay['hour']) ? "ouverte aujourd'hui" : "Fermée"}}
+                    </span>
                     @if(!empty($nextDay['hour']))
                     <div class="informations__wrapper">
                         <span class="informations__hours">
@@ -42,7 +44,9 @@
                     </div>
                     @endif
                     @elseif(!empty($contact))
-                        Permanence de {{get_the_title()}} 
+                        <span>
+                            Permanence de {{get_the_title()}}
+                        </span>
                         <span class="informations__hours informations__hours--small">
                         <a href="mailto:{{$contact}}">Gardons contact</a>
                         </span>

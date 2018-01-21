@@ -4,17 +4,19 @@
     }
     $cfs = CFS();
     $fullDate = $cfs->get('date',$post->ID);
-    $day = date('j',strtotime($fullDate));
+    $strTimeFullDate = strtotime($fullDate);
+    $day = date('j',$strTimeFullDate);
+    $isDisabled = strtotime(date('D')) > $strTimeFullDate ? 'is-disabled' : '';
     $start = $cfs->get('starting_hour',$post->ID);
     $fullAddress = get_field('place',$post->ID) ? get_field('place',$post->ID) : [];
     $end = $cfs->get('ending_hour',$post->ID);
-    $month = \App\date_fr('F',strtotime($fullDate));
+    $month = \App\date_fr('F',$strTimeFullDate);
     $imageUrl = get_the_post_thumbnail_url($post);
     $id = get_the_ID($post);
     $title = get_the_title($post);
     $placeTitle = $cfs->get('place_title', $post-ID);
 @endphp
-<article data-id="{{$id}}" data-month="{{date('n',strtotime($fullDate))}}" class="event is-closed {{has_post_thumbnail() ? 'has-thumb' : 'is-thumbless'}}">
+<article data-id="{{$id}}" data-month="{{date('n',$strTimeFullDate)}}" class="event is-closed {{has_post_thumbnail() ? 'has-thumb' : 'is-thumbless'}} {{$isDisabled}}">
     <div class="event__top">
         <div class="event__date">
             <div class="event__day">
@@ -60,7 +62,7 @@
                     <div class="event__subtitle">DATE</div>
                 </div>
                 <div class="event__subcontent">
-                    {{\App\date_fr('l',strtotime($fullDate))}} {{$day}} {{$month}} - {{$start}} - {{$end}}
+                    {{\App\date_fr('l',$strTimeFullDate)}} {{$day}} {{$month}} - {{$start}} - {{$end}}
                 </div>
             </div>
             <div class="event__col">

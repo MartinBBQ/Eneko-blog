@@ -32,7 +32,7 @@
                     $cfs = CFS();
                     $timeA = $cfs->get('date', $a->ID);
                     $timeB = $cfs->get('date', $b->ID);
-                    return $timeA > $timeB;
+                    return $timeA < $timeB;
                 })
             @endphp
                 @foreach($list as $item)

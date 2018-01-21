@@ -4,6 +4,9 @@
 	$radius: 0.4rem;
 	border: 1px solid $transparent-black;
 	cursor: pointer;
+	&.is-disabled {
+		filter: grayscale(0.8);
+	}
 	&.is-hidden {
 		display: none;
 	}

@@ -1,5 +1,5 @@
 .header {
-    height: 60rem;
+    height: 85vh;
     background-color: $black-blue;
     padding-top: 5rem;
 	font-size: 1.4rem;
@@ -130,14 +130,12 @@
     }
 	&__rightCol {
 		@extend %flex-center-y;
-		a {
+		svg {
+			max-width: 2.5rem;
+			max-height: 2.5rem;
 			&:first-child {
 				margin-right: 3.2rem;
 			}
-		}
-		img {
-			max-width: 2.5rem;
-			max-height: 2.5rem;
 		}
 		@include media('<large'){
 			margin: 1.5rem 0;
@@ -145,6 +143,6 @@
 	}
     .informations {
         // On the model, 64px but I need the next component to have 40px margin-top. Can't play with nth-child.
-        margin-top: 2.4rem;
+        margin-top: 4rem;
     }
 }

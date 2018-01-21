@@ -7,7 +7,7 @@
 	position: relative;
 	transition: box-shadow 0.25s ease;
 	&:hover {
-		box-shadow: 0px 1px 1.8rem transparentize($original-black, 0.83), 0.2rem 1px 1rem transparentize($original-black, 0.83);
+		box-shadow: 0 1rem 3rem 0.5rem rgba(15, 67, 146, 0.2);
 	}
 	&:not(.is-single):not(.is-url-article):not(.is-first):not(.is-video-article) {
 		&:before {
@@ -30,6 +30,7 @@
 		flex-direction: column;
 		justify-content: inherit;
 		box-shadow: none;
+		border: none;
 		.article__container {
 			padding: 0;
 			@include container(true,62rem);
@@ -83,6 +84,9 @@
 			@include media('<phone-lg') {
 				font-size: 2.6rem;
 			}
+		}
+		img {
+			margin: 0 2rem;
 		}
 		.article__content {
 			margin-top: 3.4rem;
@@ -176,6 +180,9 @@
 		.article__bg {
 			opacity: .5;
 		}
+	}
+	&.is-video-article {
+		background-color: $yellow;
 	}
 	&.is-first:not(.is-url-article):not(.is-video-article ):not(.is-single) {
 		background-color: $color--main;

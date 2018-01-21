@@ -18,17 +18,16 @@
         margin-top: 0;
         font-family: $sf--semiBold;
 		display: flex;
+		flex-wrap: wrap;
 		align-items: center;
-		@include media('<large'){
-			flex-direction: column;
+		> * {
+			margin-top: 0.8rem;
 		}
     }
 	&__hours {
 		@include box-hours($white,$white);
 		margin-left: 1.6rem;
-		@include media('<large'){
-			margin-left: 0;
-		}
+		padding: 0.8rem;
 		&--small {
 			font-size: 1.4rem;
 		}
