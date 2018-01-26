@@ -9,6 +9,11 @@
 	@include media('<tablet'){
 		order: -1;
 		margin-bottom: 4.8rem;
+		margin-left: 0;
+		flex-basis: 15rem;
+	}
+	@include media('<600px'){
+		flex-basis: auto;
 	}
 	&__title {
 		margin-top: 0;

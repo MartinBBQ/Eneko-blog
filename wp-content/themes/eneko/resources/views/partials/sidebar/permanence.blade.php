@@ -27,9 +27,6 @@
         <h5 class="permanence__location">
             {{$title}}
         </h5>
-        <p class="permanence__address">
-            {{$address}}
-        </p>
         <p class="permanence__nextDate">
             @if(!$hasAddress)
             {{$nextDay['day']}}
