@@ -9,9 +9,9 @@
 @import "variables/layers/layers";
 
 // Vendor
-@import "vendor/normalize/normalize";
-@import "vendor/include-media/include-media";
-@import "vendor/flexboxgrid/flexboxgrid";
+@import "styles-vendor/normalize/normalize";
+@import "styles-vendor/include-media/include-media";
+@import "styles-vendor/flexboxgrid/flexboxgrid";
 
 // Utils
 @import "utils/mixins/mixins";
