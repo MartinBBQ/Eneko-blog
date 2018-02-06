@@ -15,6 +15,12 @@
             {{--<a href="#"><span>💡</span> S'inscrire à la newsletter </a>--}}
         {{--</div>--}}
     </div>
+    <div class="sidebar__group sidebar__group--twitter">
+      <h4 class="sidebar__title">Flux Twitter</h4>
+      @php
+         echo do_shortcode('[custom-twitter-feeds]');
+      @endphp
+    </div>
     @php
         $authorId = \App\getOwnerId();
         $mail = get_the_author_meta('user_email', $authorId);
