@@ -21,7 +21,6 @@
     </div>
     @endif
     <div class="filters__group filters__group--search">
-        @include('icons.search')
         @include('partials.home.search')
     </div>
 </div>

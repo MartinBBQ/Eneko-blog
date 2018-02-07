@@ -10,17 +10,11 @@
         align-items: flex-start;
     }
 	&__group {
-		display: flex;
-		&--search {
-			align-items: center;
-			border: 1px solid $blue--grey;
-			border-radius: $standard-radius;
-			padding: 0.8rem 1.6rem;
-			max-height: 3rem;
-			max-width: 12.5rem;
-			@include media('<tablet-xs') {
-				margin-top: 0.8rem;
-			}
+    display: flex;
+    &--search {
+      @include media('<tablet-xs') {
+        margin-top: 0.8rem;
+      }
 			&.is-open {
 
 			}

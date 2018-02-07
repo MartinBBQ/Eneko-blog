@@ -1,14 +1,110 @@
 .article {
+	.source-presse, .youtube {
+		display: none;
+
+	}
 	border: 1px solid $article--border;
 	border-radius: $standard-radius;
 	display: flex;
 	justify-content: space-between;
 	flex-grow: 1;
 	position: relative;
-	transition: box-shadow 0.25s ease;
-	&:hover {
-		box-shadow: 0 1rem 3rem 0.5rem rgba(15, 67, 146, 0.2);
+	transition: all 0.25s ease;
+	h2 {
+		font-size: 24px;
+		font-weight: bold;
 	}
+	&:hover {
+
+		box-shadow: 0 10px 30px -5px rgba(0, 9, 23, .2);
+		transition: all 150ms ease;
+	}
+	&.is-video-article {
+		.article__wrapper {
+			display: flex!important;
+			flex-direction: row!important;
+			flex-wrap: wrap;
+			.article__buttonContainer {
+				.source-presse {
+					display: inline;
+					width: 100%;
+					color: #FFFFFF;
+					font-size: 12px;
+					text-transform: uppercase;
+					line-height: 24px;
+					text-shadow: 0 1px 1px 0 rgba(0,9,23,0.16);
+					text-align:end;
+					flex: 1;
+					flex-direction: column-reverse;
+					margin-top: 10px;
+				}
+				.youtube {display: inline;}
+				flex: 1;
+				justify-content: flex-end;
+			}
+			:nth-child(1){
+				order: 4;
+			}
+			:nth-child(2){
+				order: 1;
+				width: 100%;
+			}
+			:nth-child(3){
+				order: 2;
+			}
+			:nth-child(4){
+				order: 3;
+			}
+		}
+		&:hover{
+			box-shadow: 0 10px 30px -5px rgba(238, 173, 62, .2)!important;
+			transition: all 150ms ease;
+		}
+	}
+	&.category-presse {
+		.article__wrapper {
+			display: flex!important;
+			flex-direction: row!important;
+			flex-wrap: wrap;
+			.article__buttonContainer {
+				.source-presse {
+					display: inline;
+					width: 100%;
+					color: #FFFFFF;
+					font-size: 12px;
+					text-transform: uppercase;
+					line-height: 24px;
+					text-shadow: 0 1px 1px 0 rgba(0,9,23,0.16);
+					text-align:end;
+					flex: 1;
+					flex-direction: column-reverse;
+					margin-top: 10px;
+				}
+				flex: 1;
+				justify-content: flex-end;
+			}
+			:nth-child(1){
+				order: 4;
+
+			}
+			:nth-child(2){
+				order: 1;
+				width: 100%;
+			}
+			:nth-child(3){
+				order: 2;
+			}
+			:nth-child(4){
+				order: 3;
+			}
+			&:hover {
+				box-shadow: 0 10px 30px -5px rgba(15, 67, 146, .2)!important;
+				transition: all 150ms ease;
+			}
+		}
+	}
+
+
 	&:not(.is-single):not(.is-url-article):not(.is-first):not(.is-video-article) {
 		&:before {
 			content: '';
@@ -178,7 +274,7 @@
 			font-family: $sf--bold;
 		}
 		.article__bg {
-			opacity: .5;
+			opacity: .2;
 		}
 	}
 	&.is-video-article {

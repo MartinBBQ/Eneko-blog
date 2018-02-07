@@ -37,12 +37,12 @@
     <a {{$isCustomArticle || !empty($videoUrl) ? 'target="_blank"' : ''}} href="{{$url}}">
         <div class="article__wrapper">
             <div class="article__buttonContainer">
-            @if(!$isCustomArticle)
+            @if(!$isCustomArticle && !$videoUrl)
                 @foreach($termNames as $term)
                 <span class="button button--small button--blue">{{$term}}</span>
                 @endforeach
             @else
-                <span class="button button--small button--blue">{{$siteName}}</span>
+                <span class="source-presse"><i class="far fa-newspaper"></i> A Lire sur <strong><span class="youtube">Youtube</span>{{$siteName}}</strong></span>
             @endif
             </div>
             <h2 class="article__title">{{$title}}</h2>

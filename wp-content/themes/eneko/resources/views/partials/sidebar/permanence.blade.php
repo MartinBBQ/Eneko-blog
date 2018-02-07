@@ -24,22 +24,30 @@
 <div class="permanence" data-lng="{{$lng}}" data-lat="{{$lat}}" style="background-image: url({{$imageUrl}});">
     <img src="{{$imageUrl}}" class="visually-hidden">
     <div class="permanence__wrapper">
+      <div class="col-g">
         <h5 class="permanence__location">
             {{$title}}
         </h5>
         <p class="permanence__nextDate">
             @if(!$hasAddress)
             {{$nextDay['day']}}
-            @if($nextDay['hour'])
-                <span class="permanence__hours">
-                    {{$nextDay['hour']}}
-                </span>
-            @endif
-            @elseif(!empty($contact))
-                {{$title}} -
-                <a href="mailto:{{$contact}}">Prenez RDV</a>
-            @endif
         </p>
+      </div>
+      <div class="col-d">
+        @if($nextDay['hour'])
+            <span class="permanence__hours">
+                {{$nextDay['hour']}}
+            </span>
+        @endif
+        @elseif(!empty($contact))
+            {{$title}} -
+            <a href="mailto:{{$contact}}">Prenez RDV</a>
+        @endif
+      </div>
+
+
+
+
     </div>
     <div class="modal is-marginless">
         <div class="modal__main">

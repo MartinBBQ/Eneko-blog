@@ -6,14 +6,13 @@
 @endphp
 <aside class="sidebar">
     <div class="sidebar__group sidebar__group--contact">
-        @if(!empty($mail))
+
         <div class="sidebar__info">
-            <a href="mailto:{{$mail}}"><span>✉️</span> Écrire au député</a>
+            <a href="#"><span>✉️</span> Écrire au député</a>
         </div>
-        @endif
-        {{--<div class="sidebar__info js-trigger-newsletter">--}}
-            {{--<a href="#"><span>💡</span> S'inscrire à la newsletter </a>--}}
-        {{--</div>--}}
+        <div class="sidebar__info js-trigger-newsletter">
+            <a href="#"><span>💡</span> Recevez notre newsletter </a>
+        </div>
     </div>
     <div class="sidebar__group sidebar__group--twitter">
       <h4 class="sidebar__title">Flux Twitter</h4>

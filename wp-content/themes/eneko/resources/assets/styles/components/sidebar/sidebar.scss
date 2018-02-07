@@ -15,11 +15,27 @@
 	@include media('<600px'){
 		flex-basis: auto;
 	}
+	.sidebar__group--contact {
+    text-align: center!important;
+		.sidebar__info > * {
+			margin: auto
+		}
+
+		.sidebar__info {
+			border: 1px solid rgba(0,9,23,0.04);
+			border-radius: 4px;
+			color: #0F4392;
+			font-weight: 600;
+			line-height: 20px;
+			background-color: #EEF5FF;
+			box-shadow: 0 1px 1px 0 rgba(174,196,228,0.26);
+		}
+	}
 	&__title {
 		margin-top: 0;
 		margin-bottom: 2.8rem;
 		font-weight: normal;
-		font-size: 1.6rem;
+		font-size: 1.7rem;
 		font-family: $sf--bold;
 		color: $blue;
 		text-transform: uppercase;
@@ -48,7 +64,7 @@
 		font-family: $font--main;
 		background-color: $black-blue;
 		color: $white;
-		padding: 1.4rem 1.4rem 1.4rem 2.4rem;
+		padding: 1.4rem 2.4rem 1.4rem 2.4rem;
 		&.js-trigger-newsletter {
 			cursor: pointer;
 		}
@@ -59,6 +75,41 @@
 		}
 		span {
 			margin-right: 1rem;
+		}
+	}
+	.sidebar__group {
+		.permanence {
+			.permanence__wrapper {
+				width: 100%!important;
+				display: flex;
+				justify-content: space-between;
+			}
+
+			span.permanence__hours {
+				top: 24px!important;
+				color:  #0068FF;
+			}
+
+			.col-d {
+				display:flex;
+				margin: auto 0;
+			}
+
+			h5.permanence__location {
+				margin-top: .2em;
+				font-size: 18px;
+				font-weight: bold;
+				line-height: 16px;
+				text-shadow: 0 1px 2px 0 rgba(0,0,0,0.09);
+			}
+
+			p.permanence__nextDate {
+				color: #000917;
+				font-family: "San Francisco Text";
+				font-size: 12px;
+				font-weight: 600;
+				line-height: 16px;
+			}
 		}
 	}
 }
