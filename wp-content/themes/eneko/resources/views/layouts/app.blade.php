@@ -2,6 +2,10 @@
 <html @php(language_attributes())>
   @include('partials.head')
   <body @php(body_class())>
+    {{--Modal IE--}}
+    <div id="ie-check">
+      @include('partials.ie')
+    </div>
     @php(do_action('get_header'))
     @if(is_front_page())
     @include('partials.header')
