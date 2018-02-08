@@ -1,9 +1,93 @@
 .header {
-    height: 85vh;
-    background-color: $black-blue;
-    padding-top: 5rem;
-	font-size: 1.4rem;
-	position: relative;
+  #burger {
+    display: none;
+  }
+  @media (min-width: 1250px){
+    .burger {
+      display: none;
+    }
+  }
+  @media (max-width: 1249px){
+    ul#menu-menu-perso {
+      flex-direction: row;
+      flex-wrap:  wrap;
+    }
+    ul#menu-menu-perso :nth-child(4),
+    ul#menu-menu-perso :nth-child(5),
+    ul#menu-menu-perso :nth-child(6){
+      display:none;
+    }
+    .header__rightCol {
+    }
+    .burger {
+      margin: auto 15px;
+      padding: 11px 0
+    }
+    input#burger:checked ~ nav ul#menu-menu-perso{
+      flex-wrap: nowrap;
+      flex-direction: column;
+    }
+    input#burger:checked ~ nav ul#menu-menu-perso li {
+      display: flex!important;
+    }
+    input#burger:checked ~ .header__rightCol {
+      display:flex;
+    }
+    .header__rightCol {
+      display:none;
+    }
+    label.burger {
+      position: absolute;
+      right:0;
+    }
+    .header__container {
+      position:  relative;
+    }
+  }
+
+  @media (max-width: 555px){
+    ul#menu-menu-perso :nth-child(3){
+      display:none;
+    }
+  }
+  @media (max-width: 380px){
+    ul#menu-menu-perso :nth-child(2){
+      display:none;
+    }
+  }
+  @media all and (max-width: 767px) {
+    padding-top: 28rem;
+    &__menuContainer {
+      margin-top:  0px;
+    }
+  }
+  @media all and (min-width: 768px) and (max-width: 991px) {
+    padding-top: 40rem;
+    &__menuContainer {
+      margin-top: 0px;
+    }
+  }
+  @media all and (min-width: 992px) and (max-width: 1249px) {
+    padding-top: 40rem;
+    &__menuContainer {
+      margin-top: 0px;
+    }
+  }
+  @media all and (max-width: 427px) {
+    .informations {
+      margin: 15px 0!important;
+    }
+  }
+  @media all and (min-width:428px) and (max-width: 767px){
+    &Profile__rightCol {
+      text-align: center;
+    }
+  }
+  height: 85vh;
+  background-color: $black-blue;
+  padding-top: 5rem;
+  font-size: 1.4rem;
+  position: relative;
 	@extend %regular-background;
 	@include media('<large'){
 		height: auto;

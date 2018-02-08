@@ -167,7 +167,7 @@
 		}
 		.article__title {
 			font-size: 4rem;
-			line-height: 4.8rem;
+			line-height: 40px;
 			margin-top: 3.2rem;
 			margin-bottom: 3rem;
 			position: relative;
@@ -185,13 +185,20 @@
 			margin: 0 2rem;
 		}
 		.article__content {
+			img.size-large.aligncenter {
+				height:  auto;
+				margin:  0;
+			}
+			.button.button-border-caution {
+				display: none;
+			}
 			margin-top: 3.4rem;
 			a {
 				@include link-color($black);
 			}
 			p {
 				font-size: 1.6rem;
-				line-height: 2.6rem;
+				line-height: 2.2rem;
 				&:first-child {
 					margin-top: 0;
 				}
@@ -230,6 +237,9 @@
 			.article__head {
 				justify-content: flex-start;
 				flex-wrap: wrap;
+				.article__buttonContainer .button {
+					margin-top: 0 !important;
+				}
 			}
 			.article__title {
 				margin-top: 0.7rem;
@@ -289,6 +299,24 @@
 				@extend .button--semiBlue;
 			}
 		}
+		@media (min-width: 400px){
+			.article__bottom {
+				position: absolute;
+				right: 40px!important;
+				margin-top: 12px!important;
+			}
+		}
+		.article__wrapper {
+			padding-bottom: 40px;
+		}
+		span.button.button--small.button--blue {
+			background: none!important;
+			border-color: #fff!important;
+			color: #fff;
+		}
+		.article__more {
+			display: none;
+		}
 		.article__title {
 			color: $white;
 			font-size: 3.2rem;
@@ -318,7 +346,7 @@
 		border-radius: $standard-radius;
 		@extend %regular-background;
 		.is-first & {
-			opacity: .5;
+			opacity: .2;
 		}
 	}
 	.button {
@@ -429,6 +457,25 @@
 		align-items: center;
 	}
 	&__comments {
-		margin-top: 6.5rem;
+		/*margin-top: 6.5rem;*/
 	}
+	#wpusb-container-default {
+		margin-top: 40px;
+  	margin-bottom: 40px;
+		&:before {
+			content: "Partager";
+			font-size: 14px;
+			margin-right: 10px;
+			color: grey;
+		}
+		.wpusb-item > a {
+			border: none!important;
+			box-shadow: none!important;
+		}
+	}
+
+}
+.is-video-article span.source-presse.src-presse,
+.category-presse span.source-presse.src-youtube {
+	display: none!important;
 }

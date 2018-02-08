@@ -8,10 +8,14 @@
     <div class="sidebar__group sidebar__group--contact">
 
         <div class="sidebar__info">
-            <a href="#"><span>✉️</span> Écrire au député</a>
+            <a href="#"><span>
+              <img src="{{\App\asset_path('images/crayon.png')}}" alt="">
+            </span> Écrire au député</a>
         </div>
         <div class="sidebar__info js-trigger-newsletter">
-            <a href="#"><span>💡</span> Recevez notre newsletter </a>
+            <a href="#"><span>
+              <img src="{{\App\asset_path('images/mail.svg')}}" alt="">
+            </span> Recevez notre newsletter </a>
         </div>
     </div>
     <div class="sidebar__group sidebar__group--twitter">
@@ -20,28 +24,8 @@
          echo do_shortcode('[custom-twitter-feeds]');
       @endphp
     </div>
-    @php
-        $authorId = \App\getOwnerId();
-        $mail = get_the_author_meta('user_email', $authorId);
-        $loop = App\getCustomQuery(['post_type'=> 'employees', 'posts_per_page' => -1])
-    @endphp
-    @if($loop->have_posts())
-        <div class="sidebar__group sidebar__group--team">
-            <h4 class="sidebar__title">L'équipe</h4>
-            @include('partials.sidebar.contact', ['owner' => true])
-            @while ($loop->have_posts()) @php($loop->the_post())
-                @if(get_field('isOnSidebar'))
-                    @include('partials.sidebar.contact', ['id' => get_post()->ID])
-                @endif
-            @endwhile
-        </div>
-    @else
-        <div class="sidebar__group sidebar__group--team">
-            <h4 class="sidebar__title">L'équipe</h4>
-            @include('partials.sidebar.contact', ['owner' => true])
-        </div>
-    @endif
-    {{wp_reset_query()}}
+
+
     @php($loop = App\getCustomQuery(['post_type'=> 'permanencies', 'posts_per_page' => -1]))
         @if($loop->have_posts())
             <div class="sidebar__group">
@@ -60,7 +44,10 @@
         {{wp_reset_postdata()}}
         @if($loop->have_posts())
             <div class="sidebar__group sidebar__group--temporary">
-                <h3 class="sidebar__title">{{$tempTitle}}</h3>
+                <h3 class="sidebar__title">
+                  <!--{{--$tempTitle--}}-->
+                  NOUS VENONS À VOTRE RENCONTRE
+                </h3>
                 @while ($loop->have_posts()) @php($loop->the_post())
                     @php
                         $term = get_the_terms(get_the_ID(), 'types')[0];

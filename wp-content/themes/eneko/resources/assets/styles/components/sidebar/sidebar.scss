@@ -68,6 +68,10 @@
 		&.js-trigger-newsletter {
 			cursor: pointer;
 		}
+		img {
+			width: 16px!important;
+			height: 16px!important;
+		}
 		@extend %flex-center-y;
 		border-radius: $standard-radius;
 		> a {
@@ -75,7 +79,9 @@
 		}
 		span {
 			margin-right: 1rem;
+
 		}
+
 	}
 	.sidebar__group {
 		.permanence {

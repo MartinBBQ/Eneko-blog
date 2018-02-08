@@ -34,16 +34,24 @@
                     <div class="bio__group">
                         <h5 class="bio__label">Commission</h5>
                         @php($loop = App\getCustomQuery(['post_type'=> 'commissions', 'posts_per_page' => -1]))
-                            @while ($loop->have_posts()) @php($loop->the_post())
-                                <span>{{get_the_title()}}</span>
-                                @endwhile
-                                {{wp_reset_query()}}
+                        @while ($loop->have_posts()) @php($loop->the_post())
+                        <span>{{get_the_title()}}</span>
+                        @endwhile
+                        {{wp_reset_query()}}
                     </div>
-                </div>
-                <div class="bio__title">L'équipe</div>
-                @php($loop = App\getCustomQuery(['post_type'=> 'employees', 'posts_per_page' => -1]))
-                    @while ($loop->have_posts()) @php($loop->the_post())
-                        @php
+                    <div class=" bio__contact">
+                      <a href="#" class="contact__info">
+                        <img draggable="false" class="emoji emoji-twitter" alt="twitter" src="{{content_url()}}/themes/eneko/dist/images/twitter.png">
+                      </a>
+                      <a href="#" class="contact__info">
+                        <img draggable="false" class="emoji emoji-facebook" alt="facebook" src="{{content_url()}}/themes/eneko/dist/images/facebook.png">
+                      </a>
+                    </div>
+                  </div>
+                  <div class="bio__title">L'équipe</div>
+                  @php($loop = App\getCustomQuery(['post_type'=> 'employees', 'posts_per_page' => -1]))
+                  @while ($loop->have_posts()) @php($loop->the_post())
+                  @php
                             $category = get_the_terms(get_the_ID(),'roles');
                             $email = get_field('mail');
                             $twitter = get_field('twitter');
@@ -58,24 +66,20 @@
                             <div class="bio__block is-secondary">
                                 <div class="bio__group">
                                     <h5 class="bio__label">{{$categoryName}}</h5>
+                                    <div class="separator"></div>
                                     <span class="bio__member">{{get_field('name')}}</span>
                                     <span class="bio__sentence">{{get_field('description')}}</span>
-                                    <div class="bio__socials">
-                                        @if(!empty($email))
-                                            <a href="mailto:{{$email}}">
-                                                <i class="material-icons">email</i>
-                                            </a>
-                                        @endif
-                                        @if(!empty($twitter))
+                                    <div class="bio__socials bio__contact">
+
+                                        {{--@if(!empty($twitter))--}}
                                             <a href="{{$twitter}}" target="_blank">
                                                 <img src="{{\App\asset_path('images/twitter.png')}}"
-                                                     alt="Icône Twitter">
+                                                     alt="Icône Twitter" class="twitter">
                                             </a>
-                                        @endif
-                                        @if(!empty($linkedin))
-                                            <a href="{{$linkedin}}">
-                                                <img src="{{\App\asset_path('images/linkedin.png')}}"
-                                                     alt="Icône Linkedin">
+                                        {{--@endif--}}
+                                        @if(!empty($email))
+                                            <a href="mailto:{{$email}}">
+                                                <img width="24px" src="{{\App\asset_path('images/mail.svg')}}" alt="" class="mail">
                                             </a>
                                         @endif
                                     </div>

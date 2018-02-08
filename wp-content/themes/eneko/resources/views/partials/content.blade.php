@@ -42,7 +42,10 @@
                 <span class="button button--small button--blue">{{$term}}</span>
                 @endforeach
             @else
-                <span class="source-presse"><i class="far fa-newspaper"></i> A Lire sur <strong><span class="youtube">Youtube</span>{{$siteName}}</strong></span>
+
+                <span class="source-presse src-presse"><i class="far fa-newspaper"></i> A Lire sur <strong>{{$siteName}}</strong></span>
+                <span class="source-presse src-youtube"><img src="{{\App\asset_path('images/play.png')}}" alt=""></i> A Voir sur <strong><span class="youtube">Youtube</span></strong></span>
+
             @endif
             </div>
             <h2 class="article__title">{{$title}}</h2>

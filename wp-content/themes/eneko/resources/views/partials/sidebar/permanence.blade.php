@@ -30,13 +30,13 @@
         </h5>
         <p class="permanence__nextDate">
             @if(!$hasAddress)
-            {{$nextDay['day']}}
+            RENCONTRE À VENIR
         </p>
       </div>
       <div class="col-d">
         @if($nextDay['hour'])
             <span class="permanence__hours">
-                {{$nextDay['hour']}}
+                HORRAIRES
             </span>
         @endif
         @elseif(!empty($contact))
