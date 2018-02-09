@@ -191,6 +191,18 @@
 			pointer-events: none;
 			background: linear-gradient(85deg, $white 30%, $white 40%, transparentize($white, 0.3) 80%);
 		}
+		.article {
+			&__wrapper > * {
+				text-shadow: 0 1px 1px rgba(0,9,23,0.08);
+			}
+			&__title,
+			&__bottom {
+				font-family: $sf--bold;
+			}
+		}
+		.button {
+    	border-color: rgba(15, 66, 145,.5);
+		}
 	}
 	&.is-hidden {
 		display: none;
