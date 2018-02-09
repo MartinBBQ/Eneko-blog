@@ -9,11 +9,21 @@
 	pointer-events: none;
 	opacity: 0;
     @extend %flex-center;
+	-webkit-transition: opacity 0.35s ease;
 	transition: opacity 0.35s ease;
 	font-size: 1rem;
 	@include media('<phone-lg') {
 		font-size: 0.95rem;
 	}
+
+  &#modal-ie {
+    display: none;
+    @media all and (-ms-high-contrast: none){
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex
+    }
+  }
 	&.is-marginless {
 		.modal__main,.modal__inner {
 			padding: 0;
@@ -22,15 +32,18 @@
 	&.is-open {
 		pointer-events: auto;
 		opacity: 1;
+		-webkit-transition: opacity 0.15s ease;
 		transition: opacity 0.15s ease;
 		&::before {
 			background-color: transparentize($white,0.15);
 		}
 		.modal__main {
-			transform: translate3d(0,0,0);
+			-webkit-transform: translate3d(0,0,0);
+			        transform: translate3d(0,0,0);
 			opacity: 1;
 			.is-ie & {
-				transform: translate3d(-50%,0,0);
+				-webkit-transform: translate3d(-50%,0,0);
+				        transform: translate3d(-50%,0,0);
 			}
 		}
 	}
@@ -38,6 +51,7 @@
         content: '';
         @include modal-background($white,0.15);
 		background-color: transparent;
+		-webkit-transition: background-color .3s $easeInOutSine;
 		transition: background-color .3s $easeInOutSine;
     }
     &.is-small {
@@ -56,7 +70,8 @@
     &__main {
         @extend %container;
         border-radius: $standard-radius;
-        box-shadow: 0 0 2.5rem 0.4rem transparentize($black,0.9);
+        -webkit-box-shadow: 0 0 2.5rem 0.4rem transparentize($black,0.9);
+                box-shadow: 0 0 2.5rem 0.4rem transparentize($black,0.9);
         width: 75vw;
 		max-height: 85vh;
 		overflow: auto;
@@ -64,8 +79,12 @@
         background-color: $white;
         cursor: auto;
 		opacity: 0;
-		transform: translate3d(0,4rem,0);
+		-webkit-transform: translate3d(0,4rem,0);
+		        transform: translate3d(0,4rem,0);
+		-webkit-transition: opacity .6s $easeInOutQuart, -webkit-transform .6s $easeInOutQuart;
+		transition: opacity .6s $easeInOutQuart, -webkit-transform .6s $easeInOutQuart;
 		transition: transform .6s $easeInOutQuart, opacity .6s $easeInOutQuart;
+		transition: transform .6s $easeInOutQuart, opacity .6s $easeInOutQuart, -webkit-transform .6s $easeInOutQuart;
 		@include media('<tablet-xs') {
 			width: 85vw;
 		}
@@ -79,8 +98,13 @@
 		@extend %regular-background;
 	}
     &__content {
+		display: -webkit-box;
+		display: -ms-flexbox;
 		display: flex;
-		flex-direction: column;
+		-webkit-box-orient: vertical;
+		-webkit-box-direction: normal;
+		    -ms-flex-direction: column;
+		        flex-direction: column;
         p:not(.modal__info):not(.modal__nextLabel) {
             margin-top: 0;
             margin-bottom: 3rem;
@@ -109,8 +133,11 @@
 		}
     }
     &__buttons {
+        display: -webkit-box;
+        display: -ms-flexbox;
         display: flex;
-        flex-wrap: wrap;
+        -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
         > .button {
             margin-right: 1.6rem;
         }
@@ -119,9 +146,13 @@
 		right: 8rem;
 		top: 100%;
 		position: absolute;
-		transform: translate3d(0,-#{$modal--ctaSize/2},0);
+		-webkit-transform: translate3d(0,-#{$modal--ctaSize/2},0);
+		        transform: translate3d(0,-#{$modal--ctaSize/2},0);
 		@extend %flex-center-y;
-		flex-direction: column;
+		-webkit-box-orient: vertical;
+		-webkit-box-direction: normal;
+		    -ms-flex-direction: column;
+		        flex-direction: column;
 	}
 	&__mapLabel {
 		color: $blue--grey;
@@ -134,7 +165,8 @@
 		height: $modal--ctaSize;
 		border-radius: 100%;
 		background-color: $blue;
-		box-shadow: 0 1px 3px 0 transparentize($blue,0.7);
+		-webkit-box-shadow: 0 1px 3px 0 transparentize($blue,0.7);
+		        box-shadow: 0 1px 3px 0 transparentize($blue,0.7);
 		color: white;
 		@extend %flex-center;
 		i {
@@ -207,12 +239,20 @@
 			span {
 				display: block;
 			}
-			flex-direction: column;
+			-webkit-box-orient: vertical;
+			-webkit-box-direction: normal;
+			    -ms-flex-direction: column;
+			        flex-direction: column;
 		}
 	}
 	&__group {
+		display: -webkit-box;
+		display: -ms-flexbox;
 		display: flex;
-		flex-direction: column;
+		-webkit-box-orient: vertical;
+		-webkit-box-direction: normal;
+		    -ms-flex-direction: column;
+		        flex-direction: column;
 		margin-top: 5.2rem;
 		&--newsletter {
 			margin-top: 0;

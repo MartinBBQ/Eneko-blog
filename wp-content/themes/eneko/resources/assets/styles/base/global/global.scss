@@ -1,13 +1,16 @@
 *, *::before, *::after {
-	box-sizing: inherit;
-	transform-origin: 50% 50%;
+	-webkit-box-sizing: inherit;
+	        box-sizing: inherit;
+	-webkit-transform-origin: 50% 50%;
+	        transform-origin: 50% 50%;
     letter-spacing: normal;
 }
 
 html {
 	font-size: 62.5%;
 	min-height: 100%;
-	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	        box-sizing: border-box;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 }
@@ -65,8 +68,11 @@ p {
 
 .main-wrapper {
 	margin-bottom: 14rem;
+	display: -webkit-box;
+	display: -ms-flexbox;
 	display: flex;
-	flex-wrap: wrap;
+	-ms-flex-wrap: wrap;
+	    flex-wrap: wrap;
 	.page:not(.page-template-about) &, .home &, .search & {
 		margin-top: 8rem;
 		@extend %container;
@@ -74,17 +80,33 @@ p {
 }
 
 .content {
+	display: -webkit-box;
+	display: -ms-flexbox;
 	display: flex;
-	justify-content: center;
-	align-items: flex-start;
-	flex-direction: column;
+	-webkit-box-pack: center;
+	    -ms-flex-pack: center;
+	        justify-content: center;
+	-webkit-box-align: start;
+	    -ms-flex-align: start;
+	        align-items: flex-start;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	    -ms-flex-direction: column;
+	        flex-direction: column;
 }
 
 .u-main {
-	flex-grow: 1;
+	-webkit-box-flex: 1;
+	    -ms-flex-positive: 1;
+	        flex-grow: 1;
+	display: -webkit-box;
+	display: -ms-flexbox;
 	display: flex;
 	@include media('<tablet'){
-		flex-direction: column;
+		-webkit-box-orient: vertical;
+		-webkit-box-direction: normal;
+		    -ms-flex-direction: column;
+		        flex-direction: column;
 	}
 }
 
@@ -110,7 +132,8 @@ p {
 	-moz-osx-font-smoothing: grayscale;
 
 	/* Support for IE. */
-	font-feature-settings: 'liga';
+	-webkit-font-feature-settings: 'liga';
+	        font-feature-settings: 'liga';
 }
 
 .is-hidden {

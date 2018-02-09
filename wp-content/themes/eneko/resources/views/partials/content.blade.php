@@ -43,8 +43,8 @@
                 @endforeach
             @else
 
-                <span class="source-presse src-presse"><i class="far fa-newspaper"></i> A Lire sur <strong>{{$siteName}}</strong></span>
-                <span class="source-presse src-youtube"><img src="{{\App\asset_path('images/play.png')}}" alt=""></i> A Voir sur <strong><span class="youtube">Youtube</span></strong></span>
+                <span class="source-presse src-presse"><img src="{{\App\asset_path('images/newspaper.svg')}}" alt="">A Lire sur <strong>{{$siteName}}</strong></span>
+                <span class="source-presse src-youtube"><img src="{{\App\asset_path('images/play.png')}}" alt="Youtube">A Voir sur <strong><span class="youtube">Youtube</span></strong></span>
 
             @endif
             </div>

@@ -45,3 +45,12 @@ export default class Modal {
 		}
 	}
 }
+
+document.getElementById('modal-ie').onclick = closeIepopup;
+function closeIepopup() {
+	let modalIe = document.getElementById('modal-ie');
+
+	if(modalIe.className === 'modal is-open'){
+    		modalIe.className = 'modal';
+	}
+}

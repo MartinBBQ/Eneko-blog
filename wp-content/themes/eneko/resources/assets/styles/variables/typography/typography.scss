@@ -1,9 +1,11 @@
 // Font variables
 $sf: "sf-regular";
+$sf-text: "sf-text-regular";
 $sf--italic: "sf-italic";
 $sf--bold: "sf-bold";
 $sf--semiBold: "sf-semiBold";
 $sf--uiBold: "sf-uiBold";
 
 $font--main: $sf;
-$material: 'Material Icons';
+$font--text: $sf-text;
+$material: 'MaterialIcons-Regular';
