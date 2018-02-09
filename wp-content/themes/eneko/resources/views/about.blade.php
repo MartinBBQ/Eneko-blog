@@ -74,13 +74,13 @@
 
                                         {{--@if(!empty($twitter))--}}
                                             <a href="{{$twitter}}" target="_blank">
-                                                <img src="{{\App\asset_path('images/twitter.png')}}"
+                                                <img src="{{\App\asset_path('images/twitter.svg')}}"
                                                      alt="Icône Twitter" class="twitter">
                                             </a>
                                         {{--@endif--}}
                                         @if(!empty($email))
                                             <a href="mailto:{{$email}}">
-                                                <img width="24px" src="{{\App\asset_path('images/mail.svg')}}" alt="" class="mail">
+                                                <img width="24px" src="{{\App\asset_path('images/mail_filled.svg')}}" alt="" class="mail">
                                             </a>
                                         @endif
                                     </div>
