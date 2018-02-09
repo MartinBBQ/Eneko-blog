@@ -8,8 +8,8 @@
     <div class="sidebar__group sidebar__group--contact">
 
         <div class="sidebar__info">
-            <a href="#"><span>
-              <img src="{{\App\asset_path('images/crayon.png')}}" alt="">
+            <a href="mailto:{{$contact}}"><span>
+              <img src="{{\App\asset_path('images/pen.svg')}}" alt="">
             </span> Écrire au député</a>
         </div>
         <div class="sidebar__info js-trigger-newsletter">
