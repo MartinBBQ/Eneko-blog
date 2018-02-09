@@ -157,8 +157,8 @@
 	&__mapLabel {
 		color: $blue--grey;
 		font-size: 1.4rem;
-		font-family: $sf--bold;
 		margin-top: 1rem;
+    font-family: $sf-text;
 	}
 	&__cta {
 		width: $modal--ctaSize;
@@ -168,6 +168,9 @@
 		-webkit-box-shadow: 0 1px 3px 0 transparentize($blue,0.7);
 		        box-shadow: 0 1px 3px 0 transparentize($blue,0.7);
 		color: white;
+    img {
+      width:  24px;
+    }
 		@extend %flex-center;
 		i {
 			@extend %flex-center;
@@ -176,6 +179,7 @@
 	}
 	&__externalContent {
 		padding: 4rem;
+    color: #000917;
 	}
 	&__location {
 		font-size: 3.2em;
@@ -200,7 +204,7 @@
 		}
 	}
 	&__label {
-		font-family: $font--main;
+		font-family: $sf--bold;
 	}
 	&__description {
 		margin-top: 2.6rem;

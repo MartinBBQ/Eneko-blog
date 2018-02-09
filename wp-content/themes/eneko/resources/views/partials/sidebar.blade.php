@@ -9,12 +9,12 @@
 
         <div class="sidebar__info">
             <a href="mailto:{{$contact}}"><span>
-              <img src="{{\App\asset_path('images/pen.svg')}}" alt="">
+              <img src="{{\App\asset_path('images/pen.svg')}}" alt="contact">
             </span> Écrire au député</a>
         </div>
         <div class="sidebar__info js-trigger-newsletter">
             <a href="#"><span>
-              <img src="{{\App\asset_path('images/mail.svg')}}" alt="">
+              <img src="{{\App\asset_path('images/mail.svg')}}" alt="newsletter">
             </span> Recevez notre newsletter </a>
         </div>
     </div>
@@ -34,7 +34,9 @@
     @php($loop = App\getCustomQuery(['post_type'=> 'permanencies', 'posts_per_page' => -1]))
         @if($loop->have_posts())
             <div class="sidebar__group">
-                <h3 class="sidebar__title">{{$permaTitle}}</h3>
+                <h3 class="sidebar__title">
+                  {{$permaTitle}}
+                </h3>
                 @while ($loop->have_posts()) @php($loop->the_post())
                     @php
                         $term = get_the_terms(get_the_ID(), 'types')[0];
