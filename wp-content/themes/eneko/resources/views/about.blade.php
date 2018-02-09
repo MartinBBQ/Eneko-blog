@@ -23,6 +23,7 @@
                         {{$fullName}}
                     </h3>
                     <p class="bio__description">{{$description}}</p>
+                    <div class="bio__separator"></div>
                     <div class="bio__group">
                         <h5 class="bio__label">Fonction</h5>
                         {{get_the_author_meta('description', $authorId)}}
@@ -40,10 +41,10 @@
                         {{wp_reset_query()}}
                     </div>
                     <div class=" bio__contact">
-                      <a href="#" class="contact__info">
-                        <img draggable="false" class="emoji emoji-twitter" alt="twitter" src="{{content_url()}}/themes/eneko/dist/images/twitter.png">
+                      <a href="{{$twitter}}" target="_blank" class="contact__info">
+                        <img draggable="false" class="emoji emoji-twitter" alt="twitter" src="{{content_url()}}/themes/eneko/dist/images/twitter.svg">
                       </a>
-                      <a href="#" class="contact__info">
+                      <a href="{{$twitter}}" target="_blank" class="contact__info">
                         <img draggable="false" class="emoji emoji-facebook" alt="facebook" src="{{content_url()}}/themes/eneko/dist/images/facebook.png">
                       </a>
                     </div>
