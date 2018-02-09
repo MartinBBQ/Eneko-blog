@@ -23,6 +23,11 @@
       @php
          echo do_shortcode('[custom-twitter-feeds]');
       @endphp
+      <div class="f_w">
+        <a href="{{$twitter}}" target="_blank" class="btn ctf-more" id="twitter_activity">
+          <span>Voir toute mon activité sur Twitter</span>
+        </a>
+      </div>
     </div>
 
 
