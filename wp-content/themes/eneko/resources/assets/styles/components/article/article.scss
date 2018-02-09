@@ -371,34 +371,57 @@
 	&.is-url-article,&.is-video-article {
 		background-color: $color--main;
 		border: none;
-		.button {
-			background-color: transparent;
-			border-color: $white;
+		.article {
+			.button {
+				background-color: transparent;
+				border-color: $white;
+			}
+			&__wrapper {
+				padding: 40px;
+			}
+			&__title,&__bottom,.button {
+				color: $white;
+			}
+			&_image {
+				display: none;
+			}
+			&__bottom {
+				margin-top: 1.6rem;
+			}
+			&__extract {
+				margin-bottom: 1.6rem;
+				color: $white;
+				font-family: $font--text;
+			}
+			&__title {
+				margin-bottom: 1.6rem;
+				font-family: $sf--bold;
+			}
+			&__bg {
+				opacity: .2;
+			}
 		}
-		.article__title,.article__bottom,.button {
-			color: $white;
-		}
-		.article_image {
-			display: none;
-		}
-		.article__bottom {
-			margin-top: 1.6rem;
-		}
-		.article__extract {
-			margin-bottom: 1.6rem;
-			color: $white;
-			font-family: $font--text;
-		}
-		.article__title {
-			margin-bottom: 1.6rem;
-			font-family: $sf--bold;
-		}
-		.article__bg {
-			opacity: .2;
-		}
+
 	}
 	&.is-video-article {
 		background-color: $yellow;
+		.article {
+			&__wrapper > * {
+				text-shadow: 0 1px 1px rgba(0,9,23,0.1);
+			}
+			&__title {
+				margin: 0;
+			}
+			&__extract {
+				margin: 48px 0;
+			}
+			&__bottom {
+				margin: 0;
+			}
+			&__buttonContainer .source-presse.source-presse {
+				margin: -5px;
+			}
+		}
 	}
 	&.is-first:not(.is-url-article):not(.is-video-article ):not(.is-single) {
 		-webkit-box-shadow: 0 5px 15px -2px rgba(15,67,146,0.4);
