@@ -36,6 +36,9 @@
 	}
 	&__group {
 		margin-top: 6.2rem;
+    &:first-child {
+      margin-top: 11.5rem;
+    }
 		.contact {
 			&:first-child {
 				margin-top: 0;
