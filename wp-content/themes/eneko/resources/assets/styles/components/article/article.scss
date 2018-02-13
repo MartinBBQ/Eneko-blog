@@ -39,9 +39,9 @@
     h1 { font-family : San Francisco Text Bold; font-size : 32px; line-height : 40px; }
     h2 { font-family : San Francisco Text Bold; font-size : 22px; line-height : 36px; }
     h3 { font-family : San Francisco Text Semibold; font-size : 16px; line-height : 26px; }
-    p { font-family : San Francisco Text Regular; font-size : 16px; line-height : 22px; }
+    p { font-family : San Francisco Text Regular; font-size : 16px; line-height : 26px; }
 		.article__container {
-			padding: 0;
+      padding: 0 7rem;;
 			@include container(true,62rem);
 			@include media('<tablet') {
 				padding: 4rem;
@@ -396,6 +396,7 @@
 		font-family: $sf--semiBold;
 	}
 	&__titleContainer {
+    padding: 0 7rem;
 		@include container(true, 62rem);
 		display: flex;
 		align-items: flex-start;
