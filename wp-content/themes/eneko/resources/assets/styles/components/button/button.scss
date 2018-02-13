@@ -68,4 +68,32 @@
 		color: $white;
 		border: 1px solid;
 	}
+  &--info {
+    border: 1px solid rgba(0,9,23,0.04);
+    border-radius: 4px;
+    color: #0F4392;
+    font-weight: 600;
+    line-height: 20px;
+    background-color: #EEF5FF;
+    padding: 0 20px;
+    margin-bottom: 20px;
+    text-align: center;
+    -webkit-box-shadow: 0 1px 1px 0 rgba(174,196,228,0.26);
+            box-shadow: 0 1px 1px 0 rgba(174,196,228,0.26);
+    a {
+      display: flex;
+      justify-content: center;
+      img {
+        margin-right: 15px;
+      }
+      .button--text {
+        font-size: 14px;
+        font-weight: normal;
+      }
+    }
+  }
+}
+
+.rbs_gallery_button {
+  display : none;
 }

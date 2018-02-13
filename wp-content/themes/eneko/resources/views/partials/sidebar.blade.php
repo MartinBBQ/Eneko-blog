@@ -5,42 +5,38 @@
     $permaTitle = !empty($permaOption) ? $permaOption : 'Permanences';
 @endphp
 <aside class="sidebar">
-    <div class="sidebar__group sidebar__group--contact">
-        @if(!empty($mail))
-        <div class="sidebar__info">
-            <a href="mailto:{{$mail}}"><span>✉️</span> Écrire au député</a>
-        </div>
-        @endif
-        {{--<div class="sidebar__info js-trigger-newsletter">--}}
-            {{--<a href="#"><span>💡</span> S'inscrire à la newsletter </a>--}}
-        {{--</div>--}}
+  <div class="sidebar__group sidebar__group--contact">
+    <div class="button--info">
+        <a href="mailto:{{$contact}}">
+          <img src="{{\App\asset_path('images/pen.svg')}}" alt="contact">
+          <p class="button--text">Écrire au député</p>
+       </a>
     </div>
+    <div class="button--info js-trigger-newsletter" data-target="#modal-newsletter">
+        <a href="">
+          <img src="{{\App\asset_path('images/mail.svg')}}" alt="newsletter">
+          <p class="button--text">Recevez notre newsletter</p>
+        </a>
+    </div>
+  </div>
+  <div class="sidebar__group sidebar__group--twitter">
+    <h4 class="sidebar__title">Flux Twitter</h4>
     @php
-        $authorId = \App\getOwnerId();
-        $mail = get_the_author_meta('user_email', $authorId);
-        $loop = App\getCustomQuery(['post_type'=> 'employees', 'posts_per_page' => -1])
+       echo do_shortcode('[custom-twitter-feeds]');
     @endphp
-    @if($loop->have_posts())
-        <div class="sidebar__group sidebar__group--team">
-            <h4 class="sidebar__title">L'équipe</h4>
-            @include('partials.sidebar.contact', ['owner' => true])
-            @while ($loop->have_posts()) @php($loop->the_post())
-                @if(get_field('isOnSidebar'))
-                    @include('partials.sidebar.contact', ['id' => get_post()->ID])
-                @endif
-            @endwhile
-        </div>
-    @else
-        <div class="sidebar__group sidebar__group--team">
-            <h4 class="sidebar__title">L'équipe</h4>
-            @include('partials.sidebar.contact', ['owner' => true])
-        </div>
-    @endif
-    {{wp_reset_query()}}
+    <div class="more-twitter-link">
+      <a href="{{$twitter}}" target="_blank" class="btn ctf-more" id="twitter_activity">
+        <span>Voir toute mon activité sur Twitter</span>
+      </a>
+    </div>
+  </div>
+
     @php($loop = App\getCustomQuery(['post_type'=> 'permanencies', 'posts_per_page' => -1]))
         @if($loop->have_posts())
             <div class="sidebar__group">
-                <h3 class="sidebar__title">{{$permaTitle}}</h3>
+                <h3 class="sidebar__title">
+                  {{$permaTitle}}
+                </h3>
                 @while ($loop->have_posts()) @php($loop->the_post())
                     @php
                         $term = get_the_terms(get_the_ID(), 'types')[0];
@@ -55,7 +51,9 @@
         {{wp_reset_postdata()}}
         @if($loop->have_posts())
             <div class="sidebar__group sidebar__group--temporary">
-                <h3 class="sidebar__title">{{$tempTitle}}</h3>
+                <h3 class="sidebar__title">
+                  NOUS VENONS À VOTRE RENCONTRE
+                </h3>
                 @while ($loop->have_posts()) @php($loop->the_post())
                     @php
                         $term = get_the_terms(get_the_ID(), 'types')[0];

@@ -23,17 +23,17 @@
     @endif
     <div class="section__list">
         @while ($loop->have_posts()) @php($loop->the_post())
-           @php
-               $predicates = \App\isUrlOrVideo();
-               $isUrlOrVideo = $predicates['url'] || $predicates['video'];
-               $post = get_post();
-           @endphp
-            @if($i == 1 && !$displayed)
-                @include('partials.newsletter.subscribe')
-                @php($displayed = true)
-            @endif
-            @include('partials.content', ['isFirst' => $i == 0])
-            @php($i++)
+          @php
+            $predicates = \App\isUrlOrVideo();
+            $isUrlOrVideo = $predicates['url'] || $predicates['video'];
+            $post = get_post();
+          @endphp
+          @if($i == 1 && !$displayed)
+            @include('partials.newsletter.subscribe')
+            @php($displayed = true)
+          @endif
+          @include('partials.content', ['isFirst' => $i == 0])
+          @php($i++)
         @endwhile
     </div>
     <div class="section__nav">

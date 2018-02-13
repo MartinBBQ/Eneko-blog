@@ -5,9 +5,11 @@
 	flex-grow: 1;
 	position: relative;
 	transition: box-shadow 0.25s ease;
-	&:hover {
-    transform: scale(1.05);
-	}
+  &:not(.is-single) {
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
 	&:not(.is-single):not(.is-url-article):not(.is-first):not(.is-video-article) {
 		&:before {
 			content: '';
@@ -34,6 +36,10 @@
 		justify-content: inherit;
 		box-shadow: none;
 		border: none;
+    h1 { font-family : San Francisco Text Bold; font-size : 32px; line-height : 40px; }
+    h2 { font-family : San Francisco Text Bold; font-size : 22px; line-height : 36px; }
+    h3 { font-family : San Francisco Text Semibold; font-size : 16px; line-height : 26px; }
+    p { font-family : San Francisco Text Regular; font-size : 16px; line-height : 26px; }
 		.article__container {
 			padding: 0;
 			@include container(true,62rem);
@@ -73,8 +79,6 @@
 			}
 		}
 		.article__title {
-			font-size: 4rem;
-			line-height: 4.8rem;
 			margin-top: 3.2rem;
 			margin-bottom: 3rem;
 			position: relative;
@@ -97,8 +101,6 @@
 				@include link-color($black);
 			}
 			p {
-				font-size: 1.6rem;
-				line-height: 2.6rem;
 				&:first-child {
 					margin-top: 0;
 				}
@@ -127,6 +129,7 @@
 		}
 		.article__additionnal {
 			margin-left: 1.6rem;
+      margin-top: 7px;
 		}
 	}
 	&.has-post-thumbnail {

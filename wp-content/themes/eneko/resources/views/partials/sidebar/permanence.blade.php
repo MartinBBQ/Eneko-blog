@@ -21,25 +21,29 @@
     $hasAddress = (int) get_option( 'contactEnabled') !== 0;
     $contact = get_option('dutyAddress');
 @endphp
-<div class="permanence" data-lng="{{$lng}}" data-lat="{{$lat}}" style="background-image: url({{$imageUrl}});">
-    <img src="{{$imageUrl}}" class="visually-hidden">
+<div style="background-image: url({{$imageUrl}});background-size: cover;" class="permanence__img"></div>
+<div class="permanence" data-lng="{{$lng}}" data-lat="{{$lat}}">
     <div class="permanence__wrapper">
+      <div class="col-g">
         <h5 class="permanence__location">
             {{$title}}
         </h5>
         <p class="permanence__nextDate">
             @if(!$hasAddress)
-            {{$nextDay['day']}}
-            @if($nextDay['hour'])
-                <span class="permanence__hours">
-                    {{$nextDay['hour']}}
-                </span>
-            @endif
-            @elseif(!empty($contact))
-                {{$title}} -
-                <a href="mailto:{{$contact}}">Prenez RDV</a>
-            @endif
+            OUVERT AUJOURD'HUI
         </p>
+      </div>
+      <div class="col-d">
+        @if($nextDay['hour'])
+            <span class="permanence__hours">
+                HORAIRES
+            </span>
+        @endif
+        @elseif(!empty($contact))
+            {{$title}} -
+            <a href="mailto:{{$contact}}">Prenez RDV</a>
+        @endif
+      </div>
     </div>
     <div class="modal is-marginless">
         <div class="modal__main">
@@ -52,7 +56,7 @@
                         @if(!empty($lat) && !empty($lng))
                             <a target="_blank" href="//google.com/maps/?q={{$fullAddress['address']}}" class="modal__locate">
                                 <div class="modal__cta">
-                                    <i class="material-icons">directions_car</i>
+                                    <img src="{{\App\asset_path('images/car.svg')}}" alt="">
                                 </div>
                                 <span class="modal__mapLabel">Itinéraire</span>
                             </a>
