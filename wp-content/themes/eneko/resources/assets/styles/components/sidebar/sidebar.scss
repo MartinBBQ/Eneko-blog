@@ -81,7 +81,7 @@
       span.permanence__hours {
         top: 24px!important;
         color:  #0068FF;
-        font-family:  $sf--bold;
+        font-family:  $sf;
       }
 
       .col-d {
@@ -92,7 +92,7 @@
       }
 
       h5.permanence__location {
-        font-family: $sf--bold;
+        font-family: $sf;
         margin: 0 0 8px 0;
         font-size: 18px;
         line-height: 16px;
@@ -101,7 +101,7 @@
 
       p.permanence__nextDate {
         color: #000917;
-        font-family: $sf--bold;
+        font-family: $sf;
         font-size: 12px;
         font-weight: 600;
         line-height: 16px;
