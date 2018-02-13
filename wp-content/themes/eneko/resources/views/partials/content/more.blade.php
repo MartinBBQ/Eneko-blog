@@ -1,3 +1,3 @@
-<div class="article__more">
+<!-- <div class="article__more">
     Lire la suite →
-</div>
+</div> -->
