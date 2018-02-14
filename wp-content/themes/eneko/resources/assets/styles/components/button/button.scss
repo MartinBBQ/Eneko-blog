@@ -80,16 +80,14 @@
     text-align: center;
     -webkit-box-shadow: 0 1px 1px 0 rgba(174,196,228,0.26);
             box-shadow: 0 1px 1px 0 rgba(174,196,228,0.26);
-    a {
-      display: flex;
-      justify-content: center;
-      img {
-        margin-right: 15px;
-      }
-      .button--text {
-        font-size: 14px;
-        font-weight: normal;
-      }
+    display: flex;
+    justify-content: center;
+    img {
+      margin-right: 15px;
+    }
+    .button--text {
+      font-size: 14px;
+      font-weight: normal;
     }
   }
 }

@@ -9,7 +9,7 @@
 		height: auto;
 	}
 	@include media('<tablet-xs'){
-		padding-top: 4rem;
+		padding-top: 10rem;
 	}
 	&.is-secondary {
 		height: auto;
@@ -131,8 +131,6 @@
 	&__rightCol {
 		@extend %flex-center-y;
 		svg {
-			max-width: 2.5rem;
-			max-height: 2.5rem;
 			&:first-child {
 				margin-right: 3.2rem;
 			}
@@ -141,8 +139,8 @@
 			margin: 1.5rem 0;
 		}
 	}
-    .informations {
-        // On the model, 64px but I need the next component to have 40px margin-top. Can't play with nth-child.
-        margin-top: 4rem;
-    }
+  .informations {
+      // On the model, 64px but I need the next component to have 40px margin-top. Can't play with nth-child.
+      margin-top: 4.8rem;
+  }
 }
