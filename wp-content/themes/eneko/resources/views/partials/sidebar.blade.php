@@ -3,20 +3,18 @@
     $permaOption = get_option('permanence');
     $tempTitle = !empty($tempOption) ? $tempOption : 'Rencontrer le député';
     $permaTitle = !empty($permaOption) ? $permaOption : 'Permanences';
+
 @endphp
 <aside class="sidebar">
   <div class="sidebar__group sidebar__group--contact">
     <div class="button--info">
-        <a href="mailto:{{$contact}}">
-          <img src="{{\App\asset_path('images/pen.svg')}}" alt="contact">
-          <p class="button--text">Écrire au député</p>
-       </a>
+        <img src="{{\App\asset_path('images/pen.svg')}}" alt="contact">
+        <p class="button--text">Écrire au député</p>
     </div>
-    <div class="button--info js-trigger-newsletter" data-target="#modal-newsletter">
-        <a href="">
-          <img src="{{\App\asset_path('images/mail.svg')}}" alt="newsletter">
-          <p class="button--text">Recevez notre newsletter</p>
-        </a>
+    @include('layouts.modal')
+    <div class="button--info js-trigger-newsletter" >
+      <img src="{{\App\asset_path('images/mail.svg')}}" alt="newsletter">
+      <p class="button--text">Recevez notre newsletter</p>
     </div>
   </div>
   <div class="sidebar__group sidebar__group--twitter">
@@ -52,7 +50,7 @@
         @if($loop->have_posts())
             <div class="sidebar__group sidebar__group--temporary">
                 <h3 class="sidebar__title">
-                  NOUS VENONS À VOTRE RENCONTRE
+                  PROCHAINE RENCONTRE
                 </h3>
                 @while ($loop->have_posts()) @php($loop->the_post())
                     @php
