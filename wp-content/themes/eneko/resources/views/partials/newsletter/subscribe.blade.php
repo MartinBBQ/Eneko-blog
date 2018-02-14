@@ -38,7 +38,7 @@
                 ])
                 @include('partials.input', [
                 'type' => 'text',
-                'label' => 'Ville',il
+                'label' => 'Ville',
                 'placeholder' => 'Veuillez saisir votre ville',
                 'name' => 'cityRef'
                 ])
