@@ -61,7 +61,4 @@
             @endif
         </div>
     </a>
-    @if(!empty($thumb))
-        <div class="article__bg" ></div>
-    @endif
 </article>
