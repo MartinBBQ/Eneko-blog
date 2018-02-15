@@ -50,7 +50,7 @@
             @endif
             </div>
             <h2 class="article__title">{{$title}}</h2>
-
+            <!-- TRY -->
             @if(!$isFirst || $isCustomArticle || !empty($videoUrl))
                 @include('partials.content.extract', ['isCustomArticle' => $isCustomArticle])
                 @include('partials.content.bottom')
