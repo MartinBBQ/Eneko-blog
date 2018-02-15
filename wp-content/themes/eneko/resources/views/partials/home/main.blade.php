@@ -4,7 +4,7 @@
     $i = 0;
     $hasFoundFirstContent = false;
     $terms = !empty($terms) ? $terms : [];
-    $displayed = true;
+    $displayed = $displayed ?? false;
     $tplSlug = get_page_template_slug();
     $pressView = 'views/press.blade.php';
     $loop = !empty($loop) ? $loop : App\getCustomQuery(['post_type'=> 'post', 'posts_per_page' => 10]);
