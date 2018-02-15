@@ -18,34 +18,29 @@
                 @include('partials.input', [
                 'type' => 'text',
                 'label' => 'Prénom',
-                'placeholder' => 'Veuillez saisir votre prénom',
                 'required' => true,
                 'name' => 'firstName'
                 ])
                 @include('partials.input', [
                 'type' => 'text',
                 'label' => 'Nom',
-                'placeholder' => 'Veuillez saisir votre nom',
                 'required' => true,
                 'name' => 'lastName'
                 ])
                 @include('partials.input', [
                 'type' => 'email',
                 'label' => 'Adresse e-mail',
-                'placeholder' => 'Veuillez saisir votre adresse e-mail',
                 'required' => true,
                 'name' => 'email'
                 ])
                 @include('partials.input', [
                 'type' => 'text',
                 'label' => 'Ville',
-                'placeholder' => 'Veuillez saisir votre ville',
                 'name' => 'cityRef'
                 ])
                 @include('partials.input', [
                 'type' => 'text',
                 'label' => 'Pays',
-                'placeholder' => 'Veuillez saisir votre pays',
                 'name' => 'country'
                 ])
             </div>

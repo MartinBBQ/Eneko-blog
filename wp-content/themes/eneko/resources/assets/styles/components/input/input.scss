@@ -10,7 +10,7 @@
 		}
 	}
 	&__label {
-		color: $color--main;
+		color: #0068FF;
 		text-transform: uppercase;
 		font-size: 1.4rem;
 		margin-right: 1.2rem;
@@ -26,7 +26,7 @@
 	}
 	input {
 		padding: 1.2rem 1.6rem;
-		border: 1px solid $black;
+		border: 1px solid #AEC4E4;
 		border-radius: $standard-radius;
 		width: 100%;
 		font-size: 1.4rem;
@@ -34,7 +34,7 @@
 		max-height: 4rem;
 		transition: border-color .1s ease-out;
 		&:focus {
-			border-color: $blue;
+			border-color: $color--main;
 			outline: none;
 		}
 		&[type="number"] {

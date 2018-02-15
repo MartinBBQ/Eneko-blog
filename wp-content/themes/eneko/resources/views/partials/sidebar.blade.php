@@ -3,18 +3,22 @@
     $permaOption = get_option('permanence');
     $tempTitle = !empty($tempOption) ? $tempOption : 'Rencontrer le député';
     $permaTitle = !empty($permaOption) ? $permaOption : 'Permanences';
-
+    $displayed = $displayed ?? false;
 @endphp
 <aside class="sidebar">
   <div class="sidebar__group sidebar__group--contact">
     <div class="button--info">
         <img src="{{\App\asset_path('images/pen.svg')}}" alt="contact">
         <p class="button--text">Écrire au député</p>
+
     </div>
-    @include('layouts.modal')
     <div class="button--info js-trigger-newsletter" >
       <img src="{{\App\asset_path('images/mail.svg')}}" alt="newsletter">
       <p class="button--text">Recevez notre newsletter</p>
+        @if($i == 1 && !$displayed)
+          @include('partials.newsletter.subscribe')
+          @php($displayed = true)
+        @endif
     </div>
   </div>
   <div class="sidebar__group sidebar__group--twitter">
