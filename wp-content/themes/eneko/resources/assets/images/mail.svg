@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="11px" viewBox="0 0 16 11" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.2 (47327) - http://www.bohemiancoding.com/sketch -->
+    <title>icon</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="16" height="11" rx="1"></rect>
+    </defs>
+    <g id="Homepage-/-Filter" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-949.000000, -914.000000)">
+        <g id="Group-8" transform="translate(897.000000, 831.000000)">
+            <g id="newsletter-button" transform="translate(0.000000, 64.000000)">
+                <g id="label" transform="translate(52.000000, 14.000000)">
+                    <g id="icon" transform="translate(0.000000, 5.000000)">
+                        <g id="Rectangle-10">
+                            <use fill="#AEC4E4" fill-rule="evenodd" xlink:href="#path-1"></use>
+                            <rect stroke="#0F4392" stroke-width="1" x="0.5" y="0.5" width="15" height="10" rx="1"></rect>
+                        </g>
+                        <path d="M1.09823327,4.37298981 L7.96135508,10.5 L14.900585,4.37485748 C15.1076131,4.19211726 15.1273022,3.87614762 14.944562,3.66911955 C14.8496489,3.56159157 14.7131297,3.5 14.5697045,3.5 L1.43121765,3.5 C1.15507528,3.5 0.931217653,3.72385763 0.931217653,4 C0.931217653,4.14244428 0.991972739,4.27812637 1.09823327,4.37298981 Z" id="Path-2" stroke="#0F4392" fill="#AEC4E4" transform="translate(8.000464, 7.000000) scale(1, -1) translate(-8.000464, -7.000000) "></path>
+                        <path d="M1.10392605,1.35899977 L7.03843958,7.1120397 C7.55348532,7.61133568 8.3712549,7.61365111 8.88911977,7.11727971 L14.8946901,1.36096477 C15.0940454,1.16988348 15.1007529,0.853372059 14.9096716,0.654016718 C14.8153681,0.555629767 14.6849901,0.5 14.5487068,0.5 L1.45194784,0.5 C1.17580546,0.5 0.951947837,0.723857625 0.951947837,1 C0.951947837,1.13530036 1.00678045,1.26482482 1.10392605,1.35899977 Z" id="Path-2" stroke="#0F4392" fill="#FFFFFF"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

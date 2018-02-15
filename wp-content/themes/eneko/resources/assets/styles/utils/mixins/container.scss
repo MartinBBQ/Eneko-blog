@@ -1,19 +1,28 @@
-@mixin container($size: $container--maxSize) {
-    max-width: $size;
+@mixin container($force: false, $size: $container--maxSize) {
+	@include setWidth($size, $force);
     margin-left: auto;
     margin-right: auto;
     @include media('>desktop') {
-        max-width: $size + 10rem;
-    }
+		@include setWidth($size + 10rem, $force);
+	}
     @include media('>large') {
-        max-width: $size + 15rem;
-    }
+		@include setWidth($size + 15rem, $force);
+	}
     @include media('>1600px') {
-        max-width: $size + 25rem;
-    }
+		@include setWidth($size + 25rem, $force);
+	}
     @include media('<798px') {
         padding: 0 2rem;
+		width: auto;
     }
+}
+
+// Internal mixin.
+@mixin setWidth($size,$force) {
+	max-width: $size;
+	@if $force {
+		width: $size;
+	}
 }
 
 %container {

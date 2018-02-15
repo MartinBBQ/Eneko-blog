@@ -1,7 +1,12 @@
-<header class="header">
+<header class="header" style="background-image: url({{App\getHomeCover()}});">
     <div class="header__wrapper">
         @include('partials.header.profile')
         @include('partials.header.informations')
-        @include('partials.header.tabs')
+        <div class="header__menuContainer">
+            <div class="header__container">
+                @include('partials.header.tabs')
+                @include('partials.header.socials')
+            </div>
+        </div>
     </div>
 </header>

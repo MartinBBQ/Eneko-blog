@@ -1,5 +1,13 @@
 @php
-    $useLocalLoop = $useLocalLoop ?? false;
+    $useLocalLoop = $useLocalLoop ?? true;
+    $optionsLoop = $optionsLoop ?? [];
+    $i = 0;
+    $hasFoundFirstContent = false;
+    $terms = !empty($terms) ? $terms : [];
+    $displayed = $displayed ?? false;
+    $tplSlug = get_page_template_slug();
+    $pressView = 'views/press.blade.php';
+    $loop = !empty($loop) ? $loop : App\getCustomQuery(['post_type'=> 'post', 'posts_per_page' => 10]);
 @endphp
 <section class="section">
     <h1 class="section__title">
@@ -7,26 +15,34 @@
     </h1>
     @if (!have_posts())
         <div class="alert alert-warning">
-            {{ __('Sorry, no results were found.', 'sage') }}
+            Aucun résultat trouvé.
         </div>
         @include('partials.home.search')
     @else
-        @include('partials.filters')
+        @include('partials.filters', $terms)
     @endif
     <div class="section__list">
-        @php($loop = App\getCustomQuery(['post_type'=> 'post', 'posts_per_page' => 10]))
-            @while (!$useLocalLoop ? $loop->have_posts() : have_posts()) @php(!$useLocalLoop ? $loop->the_post() : the_post())
-                @include('partials.content')
-            @endwhile
-                {{wp_reset_query()}}
+        @while ($loop->have_posts()) @php($loop->the_post())
+          @php
+            $predicates = \App\isUrlOrVideo();
+            $isUrlOrVideo = $predicates['url'] || $predicates['video'];
+            $post = get_post();
+          @endphp
+          @if($i == 1 && !$displayed)
+            @include('partials.newsletter.subscribe')
+            @php($displayed = true)
+          @endif
+          @include('partials.content', ['isFirst' => $i == 0])
+          @php($i++)
+        @endwhile
     </div>
     <div class="section__nav">
         @if($loop->max_num_pages > 1)
             {!!
             paginate_links([
                 'base' => get_pagenum_link(1) . '%_%',
-                'format' => '/page/%#%',
-                'current' => get_query_var('page',1),
+                'format' => 'page/%#%',
+                'current' => get_query_var( 'page' ) ? intval( get_query_var( 'page' ) ) : 1,
                 'total' => $loop->max_num_pages,
                 'prev_text'    => __('←'),
                 'next_text'    => __('→'),])
@@ -34,4 +50,5 @@
         @endif
     </div>
 </section>
+{{wp_reset_query()}}
 @include('partials.sidebar')

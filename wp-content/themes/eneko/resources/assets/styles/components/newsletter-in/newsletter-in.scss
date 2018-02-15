@@ -1,0 +1,69 @@
+.newsletter-in {
+	padding: 2.5rem 4rem;
+	background-color: $blue--newsletter;
+  border: 1px solid rgba(0,9,23,0.04);
+  box-shadow: 0 1px 1px 0 rgba(174,196,228,.26);
+	display: flex;
+	flex-direction: column;
+	border-radius: $standard-radius;
+	position: relative;
+  margin: 5px;
+	@include media('<phone-lg') {
+		padding: 2.5rem 2rem;
+	}
+	.cross {
+    z-index: 1;
+	}
+	&__title {
+		font-size: 2.4rem;
+		color: $color--main;
+		font-family: $sf;
+		margin-top: 0;
+		margin-bottom: 1.3rem;
+	}
+	&__subtitle {
+		font-size: 1.4rem;
+		line-height: 1.6rem;
+		color: $color--main;
+		margin: 0;
+    font-family: $sf;
+	}
+	&__button  {
+		border: none;
+		border-radius: $standard-radius;
+		border-top-left-radius: 0;
+		border-bottom-left-radius: 0;
+		background-color: $color--main;
+		color: $white;
+		@extend .button--medium;
+	}
+	&__form {
+		margin-top: 2.2rem;
+		display: flex;
+	}
+	input {
+		border-radius: $standard-radius;
+		border-top-right-radius: 0;
+		border-bottom-right-radius: 0;
+		flex-grow: 1;
+		padding-left: 1.6rem;
+		font-size: 1.4rem;
+		border: 1px solid $blue--grey;
+		@include placeholder;
+    background: #FFFFFF;
+    border: 1px solid rgba(174,196,228,0.26);
+	}
+	&__response {
+		display: none;
+		font-size: 1.4rem;
+		color: $color--main;
+		margin-top: 1rem;
+		&.is-visible {
+			display: block;
+		}
+	}
+  &:hover {
+    box-shadow: 0 10px 30px -5px rgba(174, 196, 228, .1);
+    transition: box-shadow 150ms ease;
+  }
+}

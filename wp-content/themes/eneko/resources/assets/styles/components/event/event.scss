@@ -4,6 +4,9 @@
 	$radius: 0.4rem;
 	border: 1px solid $transparent-black;
 	cursor: pointer;
+	&.is-disabled {
+		filter: grayscale(0.8);
+	}
 	&.is-hidden {
 		display: none;
 	}
@@ -33,7 +36,7 @@
 		@extend %flex-center;
 		flex-direction: column;
 		flex-grow: 0;
-		color: $blue--light;
+		color: $color--main;
 		margin-right: 9rem;
 		font-size: 1rem;
 		@include media('<tablet') {
@@ -48,11 +51,11 @@
 	}
 	&__day {
 		font-size: 4.8em;
-		font-family: $graphik--semiBold;
+		font-family: $font--main;
 	}
 	&__month {
 		font-size: 2.4em;
-		font-family: $graphik--semiBold;
+		font-family: $font--main;
 		text-transform: uppercase;
 	}
 	&__header {
@@ -61,7 +64,7 @@
 	&__title {
 		font-size: 2.4rem;
 		text-transform: uppercase;
-		font-family: $graphik--semiBold;
+		font-family: $font--main;
 		margin-top: 0;
 		margin-bottom: 1.6rem;
 		@include media('<tablet') {
@@ -81,6 +84,7 @@
 	}
 	&__background {
 		height: 35rem;
+		margin-bottom: 3.2rem;
 		@extend %regular-background;
 	}
 	&__content, &__col {
@@ -100,7 +104,7 @@
 		}
 		h1,h2,h3,h4,h5,h6 {
 			margin-top: 0;
-			font-family: $graphik--semiBold;
+			font-family: $font--main;
 			font-weight: normal;
 			margin-bottom: 1.2rem;
 		}

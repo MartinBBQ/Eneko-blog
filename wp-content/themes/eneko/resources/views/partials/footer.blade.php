@@ -106,4 +106,13 @@
 		})
 	}
 </script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-61351438-6"></script>
+<script>
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+
+	gtag('config', 'UA-61351438-6');
+</script>`
 <script async defer src="https://maps.googleapis.com/maps/api/js?key={{get_option('google_api_key')}}&callback=initMap"></script>

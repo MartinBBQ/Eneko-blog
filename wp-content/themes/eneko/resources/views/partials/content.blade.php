@@ -1,65 +1,64 @@
 @php
-    $articleUrl = CFS()->get('url');
+    global $post;
+    $cfs = CFS();
+    $url = $cfs->get('url');
+    $videoUrl = get_field('video');
     $isCustomArticle = false;
     $terms = get_the_terms(get_post(),'category');
     $termSlugs = [];
     $termNames = [];
     $siteName = '';
-    foreach($terms as $term) {
-        array_push($termSlugs,$term->slug);
+    $thumb = get_the_post_thumbnail_url(get_post(),'full');
+    $title = get_the_title();
+    if(!empty($terms) && count($terms)) {
+        foreach($terms as $term) {
+        $slug = $term->slug;
+        $parentId = $term->parent;
+        if(!empty($parentId) && $parentId !== 0) {
+            $parent = get_term_by('id', $parentId, 'category');
+            $slug = $slug.'-'.$parent->slug;
+        }
+        array_push($termSlugs, $slug);
         array_push($termNames,$term->name);
     }
-    if(!empty($articleUrl)) {
-        $url = $articleUrl;
-        $result = wp_remote_get('http://back.eneko.co/api/openGraph/url?url='.$url);
-        $parsedUrl = parse_url($articleUrl);
-        if(!empty($parsedUrl['host'])) {
-           $siteName = $parsedUrl['host'];
-        } else {
-           $siteName = $parsedUrl['path'];
-           $siteName = explode('/',$siteName)[0];
-        }
-        $siteName = str_replace('www.','', $siteName);
-        if(!$result instanceof WP_Error) {
-            $title = $result['http_response']->get_response_object()->body;
-            $title = json_decode($title)->response->title ?? 'Article de presse';
-        } else {
-            $title = '';
-            $result = false;
-        }
-        // To get external links.
-        $url = '//'.$url;
+    }
+    if(!empty($url)) {
         $isCustomArticle = true;
+        $siteName = $cfs->get('source');
+    } elseif (!empty($videoUrl)) {
+        $url = $videoUrl;
     } else {
         $url = get_the_permalink();
-        $title = get_the_title();
     }
-    $videoUrl = get_field('video');
 @endphp
-<article data-category="{{implode(' ',$termSlugs)}}" @php(post_class(\App\getArticleClasses()))>
-    @if(empty($videoUrl))
-        <a {{$isCustomArticle ? 'target="_blank"' : ''}} href="{{$url}}">
-            <div class="article__wrapper">
-                @if(!$isCustomArticle)
-                    @foreach($termNames as $term)
-                        @include('partials.content.buttonContainer', ['label' => $term])
-                    @endforeach
-                @else
-                    @include('partials.content.buttonContainer', ['label' => $siteName])
-                @endif
-                <h2 class="article__title">{{$title}}</h2>
-                <div class="article__bottom">
-                    {{App\getArticleNameAndDate(true)}}
-                </div>
+<article
+    data-category="{{implode(' ',$termSlugs)}}"
+    @php(post_class(\App\getArticleClasses(['is-first' => $isFirst])))>
+    <a {{$isCustomArticle || !empty($videoUrl) ? 'target="_blank"' : ''}} href="{{$url}}" style="background-image: url({{$thumb}}); background-size:cover; border-radius:4px;"">
+        <div class="article__wrapper">
+            <div class="article__buttonContainer">
+            @if(!$isCustomArticle)
+              @foreach($termNames as $term)
+              <span class="button button--small button--blue">{{$term}}</span>
+              @endforeach
+            @else
+              @if(!empty($videoUrl))
+                <span class="source-presse src-youtube"><img src="{{\App\asset_path('images/play.svg')}}" alt="Youtube">A Voir sur <strong><span class="youtube">Youtube</span></strong></span>
+              @else
+                <span class="source-presse src-presse"><img src="{{\App\asset_path('images/newspaper.svg')}}" alt="">A Lire sur <strong>{{$siteName}}</strong></span>
+              @endif
+            @endif
             </div>
-            @php($thumb = get_the_post_thumbnail_url(get_post(),'full'))
-                @isset($thumb)
-                    <div class="article__image" style="background-image: url({{$thumb}});">
-                        <img src="{{$thumb}}" class="visually-hidden">
-                    </div>
-                @endisset
-        </a>
-    @else
-        <iframe src="{{$videoUrl}}" frameborder="0" class="article__video"></iframe>
-    @endif
+            <h2 class="article__title">{{$title}}</h2>
+            <!-- TRY -->
+            @if(!$isFirst || $isCustomArticle || !empty($videoUrl))
+                @include('partials.content.extract', ['isCustomArticle' => $isCustomArticle])
+                @include('partials.content.bottom')
+            @elseif($isFirst)
+                @include('partials.content.bottom')
+                @include('partials.content.extract', ['isCustomArticle' => $isCustomArticle])
+                @include('partials.content.more')
+            @endif
+        </div>
+    </a>
 </article>

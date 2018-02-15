@@ -160,11 +160,25 @@ function getHomeCover() {
 	return $thumb[0];
 }
 
-function getArticleNameAndDate($excludeName = false) {
-	$fullName = get_the_author_meta('first_name').' '.get_the_author_meta('last_name');
-	$date = get_the_date('d M Y');
-	if(!empty($fullName) && !$excludeName) {
-		return $fullName.' - '.$date;
+function getBottomInformations($excludeComments = false) {
+	$excludeComments = (bool) $excludeComments;
+	if(!$excludeComments) {
+		$comments = get_comments(array(
+			'post_id' => get_the_ID(),
+			'status' => 'approve',
+		));
+		$commentsLength = count($comments);
+		if($commentsLength == 0) {
+			$commentsLabel = '';
+		} elseif ($commentsLength == 1) {
+			$commentsLabel = '1 COMMENTAIRE';
+		} else {
+			$commentsLabel = $commentsLength.' COMMENTAIRES';
+		}
+	}
+	$date = get_the_date();
+	if(!$excludeComments && $commentsLength > 0) {
+		return $date.' • '.$commentsLabel;
 	} else {
 		return $date;
 	}
@@ -176,8 +190,8 @@ function scrapeImage($text) {
 	$link = $link[1];
 	$link = urldecode($link);
 	return $link;
-
 }
+
 function getOwnerId() {
 	$admins = get_users([
 		'roles' => 'administrator'
@@ -273,7 +287,7 @@ function getNextPermanenceDate($dates = [], $isPermanent = false) {
 			$afternoonEnd = $date['afternoon_end_hour'] ?? '';
 			if($pickedDayIndex==$dayIndex) {
 				$nextDay = [
-					'day' => $pickedDay,
+					'day' => "Ouvert aujourd'hui",
 					'hour' => $morningStart.' - '.$morningEnd.', '.$afternoonStart.' - '.$afternoonEnd
 				];
 				// If I got my day I return the array.
@@ -300,6 +314,18 @@ function getDateToString($date) {
 	];
 	return $sentence;
 }
+
+function isToday(string $day, bool $found): bool {
+	if($found) {
+		return false;
+	}
+	$days = [
+		"Lundi", "Mardi", "Mercredi", "Jeudi",
+		"Vendredi", "Samedi", "Dimanche"];
+	$dayIndex = array_search($day, $days) + 1;
+	$today = getdate()['wday'];
+	return $dayIndex === $today;
+}
 function getPermanenceDates($dates) {
 	if(empty($dates)) {
 		return [];
@@ -311,15 +337,78 @@ function getPermanenceDates($dates) {
 	}, $sortedDates,[]);
 }
 
-function getArticleClasses() {
-	$classes = ['article'];
+function isUrlOrVideo(): array {
 	$url = CFS()->get('url');
 	$video = get_field('video');
+	return [
+		'url' => $url,
+		'video' => $video
+	];
+}
+function getArticleClasses(array $newClasses) {
+	$classes = ['article'];
+	$predicates = isUrlOrVideo();
+	$url = $predicates['url'];
+	$video = $predicates['video'];
 	if($url) {
 		array_push($classes, 'is-url-article');
 	}
 	if($video) {
-		array_push($classes, 'has-video');
+		array_push($classes, 'is-video-article');
+	}
+	foreach ($newClasses as $key => $class) {
+		if($newClasses[$key]) {
+			array_push($classes, $key);
+		}
 	}
 	return $classes;
+}
+
+function getCommentField() {
+	if(is_user_logged_in()) {
+		return '<textarea name="comment" maxlength="65525" required placeholder="Ajouter un commentaire..."></textarea>';
+	} else {
+		return '<a class="comment-field__register" href="'.wp_registration_url().'">Veuillez vous connecter pour pouvoir commenter</a>';
+	}
+
+}
+
+function getPageTerms(string $slug): array {
+	$parentTerm = get_term_by('slug', $slug, 'category');
+	$termsId = get_term_children($parentTerm->term_id,'category');
+	$terms = [];
+	foreach($termsId as $termId) {
+		$term = get_term_by('id', $termId, 'category');
+		$terms[] = $term;
+	}
+	return $terms;
+}
+
+function postHasFilter(array $terms): bool {
+	$postTerms = get_the_terms(get_post(),'category');
+	foreach ($terms as $term) {
+		foreach ($postTerms as $postTerm) {
+			$parentId = $term->parent;
+			if(!empty($parentId) && $parentId !== 0) {
+				$parent = get_term_by('id', $parentId, 'category');
+				if($postTerm->slug === $parent->slug) {
+					return true;
+				}
+			}
+			if($postTerm->slug === $term->slug) {
+				return true;
+			}
+		}
+	}
+	return false;
+}
+
+function isPressPost(): bool {
+	$postTerms = get_the_terms(get_post(),'category');
+	foreach ($postTerms as $term) {
+		if(strpos($term->slug, 'presse') !== false) {
+			return true;
+		}
+	}
+	return false;
 }

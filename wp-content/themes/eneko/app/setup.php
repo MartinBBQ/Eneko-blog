@@ -22,6 +22,7 @@ add_action('wp_enqueue_scripts', function () {
 	}
 }, 100);
 
+
 /**
  * Theme setup
  */
@@ -61,7 +62,7 @@ add_action('after_setup_theme', function () {
      * @link https://developer.wordpress.org/reference/functions/add_theme_support/#html5
      */
     add_theme_support('html5', ['caption', 'comment-form', 'comment-list', 'gallery', 'search-form']);
-
+	add_theme_support( 'custom-logo' );
     /**
      * Enable selective refresh for widgets in customizer
      * @link https://developer.wordpress.org/themes/advanced-topics/customizer-api/#theme-support-in-sidebars
@@ -134,3 +135,28 @@ add_action('after_setup_theme', function () {
     });
 });
 
+$default_terms = ['En circonscription', "A l'Assemblée",'Presse', 'Vidéos', 'Évènements'];
+foreach($default_terms as $default_term) {
+	if(!term_exists($default_term,'category')) {
+		wp_insert_term(
+			$default_term, // the term
+			'category'// the taxonomy
+		);
+	}
+}
+
+function insertTermChildren($slug, $children) {
+	$term = get_term_by('slug',$slug,'category');
+	foreach ($children as $child) {
+		if($term instanceof \WP_Term) {
+			wp_insert_term(
+				$child, // the term
+				'category', // the taxonomy
+				['parent' => $term->term_id ]
+			);
+		}
+	}
+}
+
+insertTermChildren(DISTRICT_CATEGORY_SLUG, ['Presse', 'Évènements','Vidéos']);
+insertTermChildren(DIPLOMATIC_WORK_CATEGORY_SLUG, ['Affaires européennes', 'Défense', 'Autres', 'Vidéos', 'Question écrite']);

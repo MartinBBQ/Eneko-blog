@@ -3,6 +3,7 @@
     $fullAddress = get_field('fulladdress');
     $cityRef = get_field('city_ref');
     $phone = get_field('phone');
+    $mail = get_field('mail');
     $imageUrl = get_the_post_thumbnail_url();
     $location = \App\getPermanenceLocation($fullAddress);
     $address =  \App\getPermanenceAddress($fullAddress);
@@ -15,23 +16,34 @@
         $nextDay = \App\getNextPermanenceDate($schedule,true);
     }
     $lng = $fullAddress['lng'];
-    $lat = $fullAddress['lat']
+    $lat = $fullAddress['lat'];
+    $title = get_the_title();
+    $hasAddress = (int) get_option( 'contactEnabled') !== 0;
+    $contact = get_option('dutyAddress');
 @endphp
-<div class="permanence" data-lng="{{$lng}}" data-lat="{{$lat}}" style="background-image: url({{$imageUrl}});">
-    <img src="{{$imageUrl}}" class="visually-hidden">
+<div style="background-image: url({{$imageUrl}});background-size: cover;" class="permanence__img"></div>
+<div class="permanence" data-lng="{{$lng}}" data-lat="{{$lat}}">
     <div class="permanence__wrapper">
+      <div class="col-g">
         <h5 class="permanence__location">
-            {{$location}}
+            {{$title}}
         </h5>
-        <p class="permanence__address">
-            {{$address}}
-        </p>
         <p class="permanence__nextDate">
-            {{$nextDay['day']}}
-            @if($nextDay['hour'])
-                - {{$nextDay['hour']}}
-            @endif
+            @if(!$hasAddress)
+            OUVERT AUJOURD'HUI
         </p>
+      </div>
+      <div class="col-d">
+        @if($nextDay['hour'])
+            <span class="permanence__hours">
+                HORAIRES
+            </span>
+        @endif
+        @elseif(!empty($contact))
+            {{$title}} -
+            <a href="mailto:{{$contact}}">Prenez RDV</a>
+        @endif
+      </div>
     </div>
     <div class="modal is-marginless">
         <div class="modal__main">
@@ -44,25 +56,31 @@
                         @if(!empty($lat) && !empty($lng))
                             <a target="_blank" href="//google.com/maps/?q={{$fullAddress['address']}}" class="modal__locate">
                                 <div class="modal__cta">
-                                    <i class="material-icons">directions</i>
+                                    <img src="{{\App\asset_path('images/car.svg')}}" alt="">
                                 </div>
-                                <span class="modal__mapLabel">S'y rendre</span>
+                                <span class="modal__mapLabel">Itinéraire</span>
                             </a>
                         @endif
                     </div>
                     <div class="modal__externalContent">
                         <h5 class="modal__location">
-                            {{$location}}
+                            {{$title}}
                         </h5>
                         <p class="modal__info">
                             <span class="modal__label">Adresse : </span>
-                            <span>{{$address}}, {{$cityRef}} {{$location}}</span>
+                            <span>{{$fullAddress['address']}}</span>
                         </p>
-                        @if(!empty(phone))
+                        @if(!empty($phone))
                         <p class="modal__info">
                             <span class="modal__label">Téléphone : </span>
                             <span>{{$phone}}</span>
                         </p>
+                        @endif
+                        @if(!empty($mail))
+                            <p class="modal__info">
+                                <span class="modal__label">Email : </span>
+                                <span>{{$mail}}</span>
+                            </p>
                         @endif
                         <div class="modal__description">
                             {{get_the_content()}}

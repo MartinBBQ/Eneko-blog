@@ -14,7 +14,7 @@ html {
 
 body {
 	font-size: 1rem;
-	font-family: $font--main;
+	font-family: $font--main, 'Arial';
 	background-color: $bg-body;
 	width: 100%;
 	height: 100%;
@@ -64,10 +64,13 @@ p {
 }
 
 .main-wrapper {
-	margin-top: 8rem;
 	margin-bottom: 14rem;
 	display: flex;
-	@extend %container;
+	flex-wrap: wrap;
+	.page:not(.page-template-about) &, .home &, .search & {
+		margin-top: 8rem;
+		@extend %container;
+	}
 }
 
 .content {
@@ -112,4 +115,8 @@ p {
 
 .is-hidden {
 	display: none;
+}
+
+.flex-center {
+	@extend %flex-center;
 }

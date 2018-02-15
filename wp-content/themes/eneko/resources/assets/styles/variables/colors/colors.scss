@@ -2,15 +2,16 @@
 $white: white;
 $original-black: black;
 $red: #EB5079;
-$yellow: #f6a623;
+$yellow: #F3A712;
 $gold: #e3c442;
 $green: #7ed321;
 $red--dark: #d0011b;
 $red--flash: #ff4375;
 $black: #222222;
-$black-blue: #1F2532;
+$black--secondary: #000912;
+$black-blue: #0F4291;
 $blue--light: #01B2FB;
-$blue: $blue--light;
+$blue: $black-blue;
 $blue--dark: #6A85B6;
 $blue--darker:#3542d1;
 $grey--lightest: #f6f6f6;
@@ -21,13 +22,21 @@ $grey--boxLink: #F7F8FA;
 $grey--datebook: #979797;
 $grey--about: #f0f0f0;
 $grey--aboutLabel: #8F8F8F;
-$grey--separator: #DEDEDE;
-$article--border: #E5E5E5;
+$grey--separator: #DFE7F4;
 $grey: #A3A3A3;
 $grey--modalContent: #777777;
 $grey--modalLine: #DCDCDC;
+$grey--comments: #F7F7F8;
+$blue--grey: #AEC4E4;
+$blue--newsletter: #EEF5FF;
+$blue--lighter:#9FB6DD;
+$blue--placeholder: $blue--lighter;
+$article--border: $blue--grey;
 
 $transparent-black: transparentize($black,0.9);
 
 // Symbols
-$bg-body: #F7F8FA;
+$bg-body: #F9F9FB;
+
+// Main
+$color--main: $blue;

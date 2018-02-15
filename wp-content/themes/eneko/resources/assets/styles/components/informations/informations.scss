@@ -1,56 +1,50 @@
 .informations {
-    display: flex;
+	display: flex;
+	align-items: flex-end;
 	justify-content: space-between;
     flex-wrap: wrap;
+	position: relative;
+	z-index: $layer--2;
+	@include container(true);
 	@include media('<large'){
-		//flex-direction: column;
 		margin-bottom: 4rem;
-	}
-	&__tags {
-		a {
-			display: block;
-		}
+		align-items: flex-start;
+		flex-direction: column;
 	}
     &__title {
         color: $white;
-        font-size: 1rem;
+        font-size: 1.6rem;
         text-transform: uppercase;
-        margin-bottom: 0.8rem;
         margin-top: 0;
-        font-weight: normal;
-        font-family: $graphik--medium;
-    }
-    &__group {
-        margin-top: 4rem;
-		margin-right: 2rem;
-        .informations__buttonContainer {
-            &:not(:first-child) {
-                margin-top: 0.8rem;
-            }
-        }
-    }
-    &__more {
-        color: $white;
-        opacity: 0.8;
-        font-size: 1.4rem;
-        margin-top: 1.6rem;
-        cursor: pointer;
-		&:only-child {
-			display: none;
-		}
-    }
-	&__buttonContainer {
+        font-family: $sf--semiBold;
 		display: flex;
-		background-repeat: no-repeat;
-		&.is-hidden {
-			display: none;
+		flex-wrap: wrap;
+		align-items: center;
+		> * {
+			margin-top: 0.8rem;
 		}
-		a {
-			display: block;
+    }
+	&__hours {
+		@include box-hours($white,$white);
+		margin-left: 1.6rem;
+		padding: 8px;
+		&--small {
+			font-size: 1.4rem;
 		}
 	}
-	.button {
-		text-align: left;
+	&__wrapper {
+		@include media('<large'){
+			margin-top: 1.6rem;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+		}
 	}
-
+	&__logo {
+		max-width: 25rem;
+		max-height: 15rem;
+		@include media('<large'){
+			margin-top: 3rem;
+		}
+	}
 }

@@ -1,0 +1,49 @@
+.comment-field {
+	display: flex;
+	flex-direction: column;
+	&__label {
+		font-size: 1.6rem;
+		font-family: $sf--semiBold;
+		margin-bottom: 1.2rem;
+	}
+
+	&__register {
+		font-size: 1.6rem;
+		font-family: $sf--semiBold;
+		color: $color--main;
+	}
+	&__buttonContainer {
+		margin-top: 1.6rem;
+	}
+	.submit {
+		@extend .button;
+		@extend .button--medium;
+		@extend .button--filled-blue;
+	}
+	textarea {
+		width: 100%;
+		border: 1px solid $color--main;
+		border-radius: $standard-radius;
+		min-height: 7rem;
+		height: auto;
+		padding: 1.4rem 2.4rem;
+		display: flex;
+		align-items: center;
+		&::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+			color: $color--main;
+			font-size: 1.4rem;
+		}
+		&:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+			color: $color--main;
+			opacity:  1;
+			font-size: 1.4rem;
+		}
+		&:-ms-input-placeholder { /* Internet Explorer 10-11 */
+			color: $color--main;
+			font-size: 1.4rem;
+		}
+		resize: none;
+		font-size: 1.4rem;
+		background-color: transparent;
+	}
+}

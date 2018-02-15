@@ -1,53 +1,61 @@
 <div class="informations">
     @php
+        $cfs = CFS();
         $authorId = App\getOwnerId();
         $politicalGroup = get_the_author_meta('group',$authorId);
         $linkPolitical = get_the_author_meta('url',$authorId) ?? '#';
+        $query = \App\getCustomQuery(['post_type' => 'permanencies', 'posts_per_page' => -1]);
+        $hasOne = false;
+        $custom_logo_id = get_theme_mod( 'custom_logo' );
+        $logo = wp_get_attachment_image_src( $custom_logo_id , 'full' )[0];
+        $hasAddress = (int) get_option( 'contactEnabled') !== 0;
+        $contact = get_option('dutyAddress');
     @endphp
-    @if(!empty($politicalGroup))
-        <div class="informations__group">
-            <h5 class="informations__title">
-                <a href="{{$linkPolitical}}" target="_blank">Groupe politique</a>
-            </h5>
-            <div class="informations__tags">
-                <a href="{{$linkPolitical}}" class="button button--light-blue button--tag disabled-hover">{{$politicalGroup}}</a>
-            </div>
-        </div>
-    @endif
-    @php($loop = App\getCustomQuery(['post_type'=> 'commissions', 'posts_per_page' => -1]))
-        <div class="informations__group">
-            <h5 class="informations__title">Commission</h5>
-            <div class="informations__tags">
-                @while ($loop->have_posts()) @php($loop->the_post())
-                    <div class="informations__buttonContainer">
-                        <a target="_blank" href="{{get_the_excerpt()}}" class="button button--white button--tag disabled-hover">{{get_the_title()}}</a>
+        @if($query->have_posts())
+            @while($query->have_posts() && !$hasOne)
+            @php
+                $query->the_post();
+                $term = get_the_terms(get_the_ID(), 'types')[0];
+                $termSlug = $term ? $term->slug : '';
+            @endphp
+            @if($termSlug=='permanente')
+                @php
+                    $hasOne = true;
+                    $found = false;
+                    $fullAddress = get_field('fulladdress');
+                    $location = \App\getPermanenceLocation($fullAddress);
+                    $schedule = $cfs->get('ouvertures');
+                    $nextDay = \App\getNextPermanenceDate($schedule,true);
+                    foreach($schedule as $day) {
+                        $dayString = reset($day['day']);
+                        $isToday = \App\isToday($dayString, $found);
+                    }
+                @endphp
+                <div class="informations__title">
+                    @if(!$hasAddress)
+                    <span>
+                        Permanence de {{get_the_title()}} • {{!empty($nextDay['hour']) ? "ouverte aujourd'hui" : "Fermée"}}
+                    </span>
+                    @if(!empty($nextDay['hour']))
+                    <div class="informations__wrapper">
+                        <span class="informations__hours">
+                            {{$nextDay['hour']}}
+                        </span>
                     </div>
-                    @endwhile
-                    {{wp_reset_query()}}
-            </div>
-        </div>
-        @php
-            $loop = App\getCustomQuery(['post_type'=> 'stats', 'posts_per_page' => -1]);
-            $i = 0;
-        @endphp
-        <div class="informations__group">
-            <h5 class="informations__title">Travail parlementaire</h5>
-            <div class="informations__tags">
-                @while ($loop->have_posts())
-                    @php($loop->the_post())
-                        @if($i<2)
-                            <div class="informations__buttonContainer">
-                                <a target="_blank" href="{{get_the_excerpt()}}" class="button button--white button--tag disabled-hover">{{get_the_title()}}</a>
-                            </div>
-                        @else
-                            <div class="informations__buttonContainer is-hidden">
-                                <a target="_blank" href="{{get_the_excerpt()}}" class="button button--white button--tag disabled-hover">{{get_the_title()}}</a>
-                            </div>
-                        @endif
-                        @php($i++)
-                            @endwhile
-                            {{wp_reset_query()}}
-                            <div class="informations__more">Voir plus de statistiques…</div>
-            </div>
-        </div>
+                    @endif
+                    @elseif(!empty($contact))
+                        <span>
+                            Permanence de {{get_the_title()}}
+                        </span>
+                        <span class="informations__hours informations__hours--small">
+                        <a href="mailto:{{$contact}}">Gardons contact</a>
+                        </span>
+                    @endif
+                </div>
+            @endif
+            @endwhile
+        @endif
+    @if(!empty($logo))
+    <img src="{{$logo}}" class="informations__logo" />
+    @endif
 </div>

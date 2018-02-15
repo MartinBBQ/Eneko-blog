@@ -76,6 +76,9 @@ add_filter('user_contactmethods', function ($fields) {
 	$fields['twitter'] = 'Twitter';
 	$fields['facebook'] = 'Facebook';
 	$fields['group'] = 'Groupe Politique';
+	$fields['tinyName'] = 'Abbréviation du nom';
+	$fields['shortDescription'] = 'Description sidebar';
+	$fields['dutyAddress'] = 'Adresse de contact de la permanence';
 	return $fields;
 });
 
@@ -133,6 +136,15 @@ function htmlandcms_select_one_category($args) {
 	}
 	return $args;
 }
+
+add_filter( 'comment_form_logged_in', function () {
+    return '';
+});
+
+
+
+
+
 
 class Walker_Category_Radios extends \Walker {
 	var $tree_type = 'category';

@@ -40,7 +40,7 @@ function add_employees() {
 	$args = array(
 		'label'                 => __( 'Membre', 'text_domain' ),
 		'labels'                => $labels,
-		'supports'              => array( ),
+		'supports'              => array('thumbnail'),
 		'taxonomies'            => array( 'category', 'post_tag' ),
 		'hierarchical'          => false,
 		'public'                => false,

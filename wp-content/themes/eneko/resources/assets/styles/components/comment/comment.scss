@@ -1,0 +1,42 @@
+.comment {
+	padding: 2.6rem 2.4rem;
+	background-color: transparentize($grey--modalLine, 0.75);
+	&:not(:first-child) {
+		margin-top: 2.4rem;
+	}
+	&-content {
+		margin-left: 4.8rem;
+		p {
+			font-family: $sf--italic;
+			font-size: 1.4rem;
+		}
+	}
+	&-author {
+		display: flex;
+		align-items: center;
+		img {
+			border-radius: 100%;
+		}
+		.fn {
+			margin-left: 1.6rem;
+			font-family: $sf--semiBold;
+			font-size: 1.6rem;
+		}
+	}
+	&-metadata {
+		time {
+			font-size: 1.4rem;
+			font-family: $sf--semiBold;
+		}
+	}
+	&-meta {
+		display: flex;
+		justify-content: space-between;
+	}
+	.says {
+		display: none;
+	}
+	.comment-reply-link {
+		font-size: 1.2rem;
+	}
+}

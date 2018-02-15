@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.2 (47327) - http://www.bohemiancoding.com/sketch -->
+    <title>icon</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Homepage-/-Filter" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-978.000000, -847.000000)">
+        <g id="Group-8" transform="translate(897.000000, 831.000000)" fill="#0F4392" fill-rule="nonzero">
+            <g id="écrire">
+                <g id="label" transform="translate(81.000000, 14.000000)">
+                    <g id="icon" transform="translate(0.000000, 2.000000)">
+                        <circle id="Oval" cx="0.96" cy="15.04" r="1"></circle>
+                        <polygon id="Shape" points="1.37792 12.89792 0.66432 14.91776 1.07008 15.3408 3.10272 14.62272"></polygon>
+                        <path d="M14.72,4.48 L15.62496,3.57504 C16.1248,3.0752 16.1248,2.26496 15.62496,1.76512 L14.23488,0.37504 C13.73504,-0.1248 12.9248,-0.1248 12.42496,0.37504 L11.52,1.28 L14.72,4.48 Z" id="Shape"></path>
+                        <polygon id="Shape" points="10.24 2.56 2.56 10.24 3.52 10.56 3.84 12.16 5.44 12.48 5.76 13.44 13.44 5.76"></polygon>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

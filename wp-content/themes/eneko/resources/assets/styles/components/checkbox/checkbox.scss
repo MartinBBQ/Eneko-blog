@@ -1,6 +1,7 @@
 .checkbox {
     $size: 0.8rem;
     width: $size;
+	min-width: $size;
     height: $size;
     background-color: $grey--lightest;
     border-radius: $box-radius;

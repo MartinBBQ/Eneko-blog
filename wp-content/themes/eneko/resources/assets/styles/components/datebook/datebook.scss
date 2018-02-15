@@ -1,9 +1,9 @@
 .datebook {
 	flex-grow: 1;
 	&__month {
-		color: $blue--light;
+		color: $color--main;
 		font-size: 4.8rem;
-		font-family: $graphik--semiBold;
+		font-family: $font--main;
 		margin: 0;
 		text-transform: uppercase;
 		span {

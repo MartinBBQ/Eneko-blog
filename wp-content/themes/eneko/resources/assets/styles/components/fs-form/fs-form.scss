@@ -1,0 +1,100 @@
+.fs-form {
+	$icon--width: 'ok';
+	pointer-events: none;
+	opacity: 0;
+	transition: opacity 0.35s ease;
+	width: 100%;
+	height: 100vh;
+	left: 0;
+	top: 0;
+	z-index: $layer--6;
+	position: fixed;
+	background-color: transparentize($color--main,0.04);
+	@extend %flex-center;
+	&.is-open {
+		pointer-events: auto;
+		opacity: 1;
+		transition: opacity 0.15s ease;
+	}
+	@include media('<tablet-xs') {
+		.fs-form__icon {
+			margin-right: 0;
+		}
+		.fs-form__label {
+			margin-left: 0;
+		}
+		.input {
+			font-size: 2.5rem;
+		}
+	}
+	&__main {
+		display: flex;
+		flex-direction: column;
+		.is-ie & {
+			transform: translate3d(-50%,0,0);
+		}
+	}
+	.cross {
+		position: relative;
+		top: inherit;
+		right: inherit;
+	}
+	svg {
+		filter: invert(1);
+		opacity: 0.8;
+	}
+	&__icon {
+		margin-right: 3.3rem;
+	}
+	&__head {
+		display: flex;
+		justify-content: space-between;
+		margin-bottom: 1.5rem;
+	}
+	&__input {
+		@extend %flex-center;
+		svg {
+			$size: 1.8rem;
+			width: $size;
+			height: $size;
+		}
+	}
+	&__field {
+		flex-grow: 1;
+	}
+	&__label {
+		font-size: 1.4rem;
+		text-transform: uppercase;
+		color: $blue--grey;
+		margin-left: 5.1rem;
+	}
+	input {
+		$color: $white;
+		font-family: $sf--bold;
+		border: none;
+		background-color: transparent;
+		font-size: 3.2rem;
+		width: 100%;
+		color: $color;
+		&::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+			color: $color;
+		}
+		&:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+			color: $color;
+			opacity:  1;
+		}
+		&:-ms-input-placeholder { /* Internet Explorer 10-11 */
+			color: $color;
+		}
+	}
+	&__bottom {
+		color: $blue--grey;
+		margin-top: 3rem;
+		font-size: 1rem;
+		display: flex;
+		justify-content: flex-end;
+	}
+	&__wrapper {
+		@include container(true, 50rem)
+	}
+}
