@@ -10,8 +10,11 @@
     <div class="button--info">
         <img src="{{\App\asset_path('images/pen.svg')}}" alt="contact">
         <p class="button--text">Écrire au député</p>
-
     </div>
+
+    @php
+      echo do_shortcode('[contact-form-7 id="535" title="Contact form 1"]');
+    @endphp
     <div class="button--info js-trigger-newsletter" >
       <img src="{{\App\asset_path('images/mail.svg')}}" alt="newsletter">
       <p class="button--text">Recevez notre newsletter</p>

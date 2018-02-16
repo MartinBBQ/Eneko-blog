@@ -35,9 +35,13 @@
       </div>
       <div class="col-d">
         @if($nextDay['hour'])
-            <span class="permanence__hours">
-                HORAIRES
-            </span>
+          <span class="permanence__hours">
+              HORAIRES
+          </span>
+        @else
+        <div class="permanence__hours">
+          <span class="permanence__date__day">11</span><span class="permanence__date__month">/12</span>
+        </div>
         @endif
         @elseif(!empty($contact))
             {{$title}} -

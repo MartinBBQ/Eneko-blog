@@ -89,6 +89,10 @@
       font-size: 14px;
       font-weight: normal;
     }
+    &:hover {
+      box-shadow: 0 10px 30px -5px rgba(174, 196, 228, .1);
+      transition: box-shadow 150ms ease;
+    }
   }
 }
 
