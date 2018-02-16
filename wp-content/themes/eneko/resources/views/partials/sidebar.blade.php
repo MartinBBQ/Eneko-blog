@@ -13,7 +13,7 @@
     </div>
 
     @php
-      echo do_shortcode('[contact-form-7 id="535" title="Contact form 1"]');
+      echo do_shortcode('[contact-form-7 id="565" title="Contact form 1"]');
     @endphp
     <div class="button--info js-trigger-newsletter" >
       <img src="{{\App\asset_path('images/mail.svg')}}" alt="newsletter">
