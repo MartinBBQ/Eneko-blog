@@ -1,3 +1,4 @@
 wp-content/uploads/
 .idea/
+.htaccess
 wp-config.php

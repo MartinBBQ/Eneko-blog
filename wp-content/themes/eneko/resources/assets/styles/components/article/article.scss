@@ -226,18 +226,22 @@
 			margin-bottom: 1.6rem;
 			font-family: $sf--bold;
 		}
-    .source-presse {
-      position: absolute;
-      bottom: 40px;
-      right: 35px;
-      color: white;
-      font-size: 14px;
-      img {
-        height: auto;
-        margin: 0 10px -2px 0;
-        &.src-presse {
-          width: 17px;
-        }
+		.source-presse {
+			position: absolute;
+			bottom: 40px;
+			bottom: 35px;
+			right: 35px;
+			color: white;
+			font-size: 14px;
+			text-transform: uppercase;
+			img {
+				height: auto;
+				margin: 0 10px -2px 0;
+				margin: 0px 10px -5px 0;
+				&.src-presse {
+					width: 17px;
+				}
+
         &.src-youtube {
           width: 15px;
         }
