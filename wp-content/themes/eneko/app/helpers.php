@@ -310,7 +310,8 @@ function getDateToString($date) {
 	$endHour = $date['ending_hour'];
 	$sentence = [
 		'day' => $dayFr,
-		'hour' => $startHour.' - '.$endHour
+		'hour' => $startHour.' - '.$endHour,
+		'originalDate' => $date
 	];
 	return $sentence;
 }

@@ -231,7 +231,7 @@
 	&__title {
 		color: $color--main;
 		font-size: 3.2rem;
-		font-family: $sf;
+		font-family: $sf--bold;
 		margin-bottom: 2.4rem;
 		@include media('<phone-lg') {
 			font-size: 2.7rem;

@@ -5,34 +5,23 @@
 	flex-grow: 1;
 	position: relative;
 	transition: box-shadow 0.25s ease;
+  background-color: white;
   &.is-first:not(.is-url-article):not(.is-video-article ):not(.is-single) {
-    a {
-      background-position: 50% 50%;
-      background-repeat: no-repeat;
-      box-shadow: 0 5px 15px -2px rgba(15,67,146,0.4);
-      -webkit-transition: all 200ms ease;
-              transition: all 200ms ease;
-      margin: 5px;
-      &:hover {
-        margin: 0px;
-        box-shadow: 0 60px 120px -10px rgba(15, 67, 146, .2);
-        transition: all 200ms ease;
+    box-shadow: 0 5px 15px -2px rgba(15,67,146,0.4);
+    -webkit-transition: all 200ms ease;
+    transition: all 200ms ease;
+    &:hover {
+      margin: -5px -5px 45px -5px;
+      box-shadow: 0 60px 120px -10px rgba(15, 67, 146, .2);
+      transition: all 200ms ease;
+      .article__bg {
+        opacity: .5;
       }
     }
-    .article__wrapper {
-      background-color: rgba(15,67,146,.65);
-      border-radius: $standard-radius;
-      transition: all 200ms ease;
-      &:hover{
-        background-color:  rgba(15,67,146,.5);
-        padding: 40px;
-        transition: all 200ms ease;
-        .article__bottom {
-          top: 22px;
-          right: 45px;
-          transition: all 200ms ease;
-        }
-      }
+    .article__bg {
+      border-radius: $standard-radius ;
+      background-image: linear-gradient(to bottom right,#0F4392,#0F4392);
+      opacity: .65;
     }
     .article__buttonContainer {
       .button {
@@ -60,26 +49,22 @@
     }
     .article__bottom {
       color: $white;
-      margin-top: 27px;
+      margin-top: 2.6rem;
       font-size: 1.4rem;
       position: absolute;
       top: 17px;
       right: 40px;
-      transition: all 200ms ease;
     }
   }
 	&:not(.is-single):not(.is-url-article):not(.is-first):not(.is-video-article) {
-    a {
-      background-color: $color--main;
-      box-shadow: 0 1px 1px 0 rgba(0, 9, 23, .16);
-  		.article__wrapper {
-  			border-radius: $standard-radius;
-  			background: linear-gradient(85deg, $white 30%, $white 40%, transparentize($white, 0.3) 80%);
-  		}
-      &:hover {
-        box-shadow: 0 10px 30px -5px rgba(0, 9, 23, .1);
-        transition: box-shadow 150ms ease;
-      }
+    box-shadow: 0 1px 1px 0 rgba(0, 9, 23, .16);
+		.article__bg {
+			border-radius: $standard-radius;
+			background: linear-gradient(85deg, $white 30%, $white 40%, transparentize($white, 0.3) 80%);
+		}
+    &:hover {
+      box-shadow: 0 10px 30px -5px rgba(0, 9, 23, .1);
+      transition: box-shadow 150ms ease;
     }
 	}
 	&.is-hidden {
@@ -217,6 +202,7 @@
 		}
 	}
 	&.is-url-article,&.is-video-article {
+		background-color: $color--main;
 		border: none;
 		.button {
 			background-color: transparent;
@@ -242,14 +228,13 @@
 		}
     .source-presse {
       position: absolute;
-      bottom: 35px;
+      bottom: 40px;
       right: 35px;
       color: white;
       font-size: 14px;
-      text-transform: uppercase;
       img {
         height: auto;
-        margin: 0px 10px -5px 0;
+        margin: 0 10px -2px 0;
         &.src-presse {
           width: 17px;
         }
@@ -260,34 +245,38 @@
     }
   }
   &.is-url-article {
-    a {
-      background-color: $color--main;
-      box-shadow: 0 1px 1px 0 rgba(15, 67, 146, .3);
-      margin: 5px;
-      .article__wrapper {
-        border-radius: $standard-radius ;
-        background-color:rgba(15,67,146,.75);
-      }
-      &:hover {
-        transition: box-shadow 150ms ease;
-        box-shadow: 0 10px 30px -5px rgba(15, 67, 146, .35);
-      }
+    box-shadow: 0 1px 1px 0 rgba(15, 67, 146, .3);
+		.article__bg {
+			opacity: .75;
+      border-radius: $standard-radius ;
+      background-image: linear-gradient(to bottom right,#0F4392,#0F4392);
+		}
+    &:hover {
+      transition: box-shadow 150ms ease;
+      box-shadow: 0 10px 30px -5px rgba(15, 67, 146, .1);
     }
 	}
 	&.is-video-article {
-    a {
-      background-color: $color--main;
-      margin: 5px;
-      box-shadow: 0 1px 1px 0 rgba(15, 67, 146, .3);
-      &:hover {
-        box-shadow: 0 10px 30px -5px rgba(238, 173, 62, .1);
-        transition: box-shadow 150ms ease;
-      }
-      .article__wrapper {
-        border-radius: $standard-radius ;
-        background-color:rgba(238,173,62,.75);
-      }
+    &:hover {
+      box-shadow: 0 10px 30px -5px rgba(238, 173, 62, .1);
+      transition: box-shadow 150ms ease;
     }
+    .article__bg {
+      border-radius: $standard-radius ;
+      background-image: linear-gradient(to bottom right,#EEAD3E,#EEAD3E);
+      opacity: .75;
+    }
+	}
+
+	&__bg {
+		pointer-events: none;
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		left: 0;
+		top: 0;
+		border-radius: $standard-radius;
+		@extend %regular-background;
 	}
 	.button {
 		text-transform: uppercase;
@@ -300,7 +289,6 @@
 		position: relative;
 		justify-content: space-between;
 		width: 100%;
-    margin: 5px;
 	}
 	p {
 		line-height: 2.6rem;
@@ -311,7 +299,8 @@
 	}
 	&__wrapper {
 		padding: 35px;
-    z-index: $layer--1;
+		padding-top: 3.2rem;
+		z-index: $layer--1;
 		display: flex;
 		width: 100%;
 		flex-direction: column;

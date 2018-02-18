@@ -41,16 +41,14 @@
               @foreach($termNames as $term)
               <span class="button button--small button--blue">{{$term}}</span>
               @endforeach
-            @else
-              @if(!empty($videoUrl))
+            @endif
+            @if(!empty($videoUrl))
                 <span class="source-presse src-youtube"><img src="{{\App\asset_path('images/play.svg')}}" alt="Youtube">A Voir sur <strong><span class="youtube">Youtube</span></strong></span>
-              @else
+            @elseif(!empty($siteName))
                 <span class="source-presse src-presse"><img src="{{\App\asset_path('images/newspaper.svg')}}" alt="">A Lire sur <strong>{{$siteName}}</strong></span>
-              @endif
             @endif
             </div>
             <h2 class="article__title">{{$title}}</h2>
-            <!-- TRY -->
             @if(!$isFirst || $isCustomArticle || !empty($videoUrl))
                 @include('partials.content.extract', ['isCustomArticle' => $isCustomArticle])
                 @include('partials.content.bottom')

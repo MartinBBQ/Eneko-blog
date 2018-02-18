@@ -5,6 +5,7 @@ export default class NewsletterModal extends Modal {
 		super.setProps(props);
 		this.$form = this.$el.querySelector('form');
 		this.$trigger = props.$trigger;
+		this.$paragraph = this.$el.querySelector('.modal__bottom p');
 	}
 	setListeners() {
 		super.setListeners();
@@ -30,18 +31,24 @@ export default class NewsletterModal extends Modal {
 	}
 	register(ev) {
 		ev.preventDefault();
-		const url = `crm.${location.origin}/api/external/addContact`
+		const url = `${location.protocol}//crm.${location.host}/api/external/addContact`
 		const config = {
 			method: 'POST',
 			body: this.getBody()
 		}
-		// console.log(this.getBody());
+		const close = () => {
+			setTimeout(() => {
+				this.close();
+			},4500)
+		}
 		fetch(url, config)
 			.then(response => {
-				this.close();
+				this.$paragraph.textContent = 'Votre inscription a bien été prise en compte';
+				close();
 			})
 			.catch(error => {
-
+				this.$paragraph.textContent = 'Il y a eu une erreur lors de votre inscription';
+				close();
 			});
 	}
 }

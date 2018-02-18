@@ -4,17 +4,20 @@
     $tempTitle = !empty($tempOption) ? $tempOption : 'Rencontrer le député';
     $permaTitle = !empty($permaOption) ? $permaOption : 'Permanences';
     $displayed = $displayed ?? false;
+    $shortCode = sprintf( '[contact-form-7 id="%d" title="Contact form 1"]', get_option('id-contact-form') ?? 1);
 @endphp
 <aside class="sidebar">
   <div class="sidebar__group sidebar__group--contact">
-    <div class="button--info">
+    <div class="button--info js-trigger-contact">
         <img src="{{\App\asset_path('images/pen.svg')}}" alt="contact">
         <p class="button--text">Écrire au député</p>
     </div>
-
-    @php
-      echo do_shortcode('[contact-form-7 id="565" title="Contact form 1"]');
-    @endphp
+      @extends('layouts.modal', ['innerModifier' => 'contact', 'isSmall' => true, 'content' => 'contact-modal'])
+      @section('contact-modal')
+          @php
+              echo do_shortcode($shortCode);
+          @endphp
+      @endsection
     <div class="button--info js-trigger-newsletter" >
       <img src="{{\App\asset_path('images/mail.svg')}}" alt="newsletter">
       <p class="button--text">Recevez notre newsletter</p>

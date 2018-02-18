@@ -36,16 +36,17 @@
                 @include('partials.input', [
                 'type' => 'text',
                 'label' => 'Ville',
-                'name' => 'cityRef'
+                'name' => 'ville'
                 ])
                 @include('partials.input', [
                 'type' => 'text',
                 'label' => 'Pays',
-                'name' => 'country'
+                'name' => 'pays'
                 ])
             </div>
-            <div class="flex-center">
-                <button class="button button--medium button--filled-blue">Valider votre inscription</button>
+            <div class="modal__bottom">
+                <input type="submit" value="Valider votre inscription" class="button button--medium button--filled-blue is-submit" />
+                <p></p>
             </div>
         </form>
     @endsection

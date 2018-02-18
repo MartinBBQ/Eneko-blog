@@ -20,34 +20,44 @@
     $title = get_the_title();
     $hasAddress = (int) get_option( 'contactEnabled') !== 0;
     $contact = get_option('dutyAddress');
+    $isPermanent = $isPermanent ?? false;
+    $originalDateString = !empty($nextDay['originalDate']) ? $nextDay['originalDate']['day'] : null;
+    $originalDate = $originalDateString ? new DateTime($originalDateString): null;
 @endphp
 <div style="background-image: url({{$imageUrl}});background-size: cover;" class="permanence__img"></div>
 <div class="permanence" data-lng="{{$lng}}" data-lat="{{$lat}}">
     <div class="permanence__wrapper">
-      <div class="col-g">
-        <h5 class="permanence__location">
-            {{$title}}
-        </h5>
-        <p class="permanence__nextDate">
-            @if(!$hasAddress)
-            OUVERT AUJOURD'HUI
-        </p>
-      </div>
-      <div class="col-d">
-        @if($nextDay['hour'])
-          <span class="permanence__hours">
-              HORAIRES
-          </span>
-        @else
-        <div class="permanence__hours">
-          <span class="permanence__date__day">11</span><span class="permanence__date__month">/12</span>
+        @if(!$hasAddress)
+        <div class="col-g">
+            <h5 class="permanence__location">
+                {{$title}}
+            </h5>
+            <p class="permanence__nextDate">
+                    @if(!$isPermanent)
+                        Rencontrons-nous
+                    @else
+                        {{!empty($nextDay['hour']) ? 'Ouvert' : 'Fermé'}}
+                    @endif
+            </p>
         </div>
-        @endif
+        <div class="col-d">
+            <div class="permanence__hours">
+            @if(!$isPermanent && !empty($originalDate))
+                <span class="permanence__date__day">{{$originalDate->format('d/m')}}</span>
+            @else
+                HORAIRES
+            @endif
+            </div>
+        </div>
         @elseif(!empty($contact))
-            {{$title}} -
-            <a href="mailto:{{$contact}}">Prenez RDV</a>
+            <h5 class="permanence__location">
+                {{$title}}
+            </h5>
+            <p class="permanence__nextDate">
+                {{$title}} -
+                <a href="mailto:{{$contact}}">Prenez RDV</a>
+            </p>
         @endif
-      </div>
     </div>
     <div class="modal is-marginless">
         <div class="modal__main">
@@ -58,7 +68,8 @@
                         <div class="modal__map"></div>
                         <img src="{{$imageUrl}}" class="visually-hidden">
                         @if(!empty($lat) && !empty($lng))
-                            <a target="_blank" href="//google.com/maps/?q={{$fullAddress['address']}}" class="modal__locate">
+                            <a target="_blank" href="//google.com/maps/?q={{$fullAddress['address']}}"
+                               class="modal__locate">
                                 <div class="modal__cta">
                                     <img src="{{\App\asset_path('images/car.svg')}}" alt="">
                                 </div>
@@ -75,10 +86,10 @@
                             <span>{{$fullAddress['address']}}</span>
                         </p>
                         @if(!empty($phone))
-                        <p class="modal__info">
-                            <span class="modal__label">Téléphone : </span>
-                            <span>{{$phone}}</span>
-                        </p>
+                            <p class="modal__info">
+                                <span class="modal__label">Téléphone : </span>
+                                <span>{{$phone}}</span>
+                            </p>
                         @endif
                         @if(!empty($mail))
                             <p class="modal__info">

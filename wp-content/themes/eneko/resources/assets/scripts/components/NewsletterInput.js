@@ -30,14 +30,4 @@ export default class NewsletterInput {
 		this.modal.setEmail(this.$input.value);
 		this.modal.open();
 	}
-	displayMessage({success = false} = {}) {
-		let text, modifier;
-		if(success) {
-			text = 'Votre inscription a bien été prise en compte';
-		} else {
-			text = 'Il y a eu une erreur lors de votre inscription';
-		}
-		this.$responseEl.classList.add('is-visible');
-		this.$responseEl.textContent = text;
-	}
 }

@@ -1,5 +1,6 @@
 import DutyModal from '../components/DutyModal';
 import Dropdown from '../components/Dropdown';
+import ContactModal from '../components/ContactModal';
 import List from '../components/List';
 import NewsletterInput from '../components/NewsletterInput';
 
@@ -13,6 +14,9 @@ export default {
 		Array.from(document.querySelectorAll('.permanence .modal')).forEach($el => {
 			new DutyModal({$el});
 		});
+		const $contactModal = document.body.querySelector('.modal--contact');
+		console.log(document.body.querySelector('.js-trigger-contact'));
+		$contactModal && new ContactModal({$el: $contactModal, $trigger: document.body.querySelector('.js-trigger-contact')});
 		this.initDropdown();
 		this.initList();
 		this.$form = document.querySelector('.search-form');

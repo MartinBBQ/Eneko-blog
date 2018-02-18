@@ -27,8 +27,18 @@ class Add_Settings_Field {
 		$this->registerTemporaryDuty();
 		$this->registerDutyAddress();
 		$this->registerCheckbox();
+		$this->registerContactFormId();
 	}
 
+	public function registerContactFormId(  ) {
+		register_setting( 'general', 'idContactForm', 'esc_attr' );
+		add_settings_field(
+			'idContactForm',
+			'<label for="idContactForm">' . __( "Id shortcode Contact Form" , 'idContactForm' ) . '</label>',
+			array( $this, 'idContactForm' ),
+			'general'
+		);
+	}
 	public function registerCheckbox(  ) {
 		register_setting( 'general', 'contactEnabled', 'esc_attr' );
         add_settings_field('contactEnabled', '<label for="contactEnabled">'.__("Utiliser l'adresse de contact pour les permanences" , 'contactEnabled' ).'</label>' , array($this, 'checkbox_html') , 'general' );
@@ -37,6 +47,11 @@ class Add_Settings_Field {
 	public function checkbox_html(  ) {
 		$value = get_option( 'contactEnabled');
 		echo '<input type="checkbox" name="contactEnabled" value="1" '. checked(1, $value, false) .'/> ';
+	}
+
+	public function idContactForm(  ) {
+		$value = get_option( 'idContactForm', '' );
+		echo '<input type="text" id="idContactForm" name="idContactForm" value="' . esc_attr( $value ) . '" />';
 	}
 	public function registerDutyAddress(  ) {
 		register_setting( 'general', 'dutyAddress', 'esc_attr' );

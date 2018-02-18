@@ -1,3 +1,9 @@
+@php
+    $value = $value ?? '';
+    $placeholder = $placeholder ?? '';
+    $type = $type ?? '';
+    $name = $name ?? '';
+@endphp
 <div class="input">
     <div class="input__head">
         <div class="input__label">
