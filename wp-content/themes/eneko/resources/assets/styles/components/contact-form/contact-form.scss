@@ -1,4 +1,18 @@
+
 .wpcf7-form {
+  &__title {
+    font-size: 2.4rem !important;
+    color: $color--main;
+    font-family: $sf;
+    margin-top: 0 !important;
+    margin-bottom: 1.3rem !important;
+  }
+  &__subtitle {
+    font-size: 1.4rem;
+    line-height: 1.6rem;
+    color: $color--main;
+    font-family: $sf;
+  }
 	label {
 		color: #0068FF;
 		text-transform: uppercase;

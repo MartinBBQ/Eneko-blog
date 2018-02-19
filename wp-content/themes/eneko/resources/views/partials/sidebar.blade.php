@@ -14,6 +14,8 @@
     </div>
       @extends('layouts.modal', ['innerModifier' => 'contact', 'isSmall' => true, 'content' => 'contact-modal'])
       @section('contact-modal')
+        <h2 class="modal__title">Gardons le contact</h2>
+        <p class="modal__excerpt">Restez informé(e) de l’actualité de votre territoire et de ses évènements.</p>
           @php
               echo do_shortcode($shortCode);
           @endphp
