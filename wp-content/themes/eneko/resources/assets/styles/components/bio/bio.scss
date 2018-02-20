@@ -58,6 +58,9 @@
     h1 {
       font-size: 3rem;
     }
+    @include media('<tablet') {
+      margin-top: 5rem;
+    }
   }
   &__block {
     background-color: #FFFFFF;

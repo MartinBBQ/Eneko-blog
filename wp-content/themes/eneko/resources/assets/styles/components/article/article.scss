@@ -13,24 +13,28 @@
       -webkit-transition: all 200ms ease;
               transition: all 200ms ease;
       margin: 5px;
-      &:hover {
-        margin: 0px;
-        box-shadow: 0 60px 120px -10px rgba(15, 67, 146, .2);
-        transition: all 200ms ease;
+      @include media('>tablet'){
+        &:hover {
+          margin: 0px;
+          box-shadow: 0 60px 120px -10px rgba(15, 67, 146, .2);
+          transition: all 200ms ease;
+        }
       }
     }
     .article__wrapper {
       background-color: rgba(15,67,146,.65);
       border-radius: $standard-radius;
       transition: all 200ms ease;
-      &:hover{
-        background-color:  rgba(15,67,146,.5);
-        padding: 40px;
-        transition: all 200ms ease;
-        .article__bottom {
-          top: 22px;
-          right: 45px;
+      @include media('>tablet'){
+        &:hover{
+          background-color: rgba(15,67,146,.5);
+          padding: 40px;
           transition: all 200ms ease;
+          .article__bottom {
+            top: 22px;
+            right: 45px;
+            transition: all 200ms ease;
+          }
         }
       }
     }
@@ -51,12 +55,23 @@
       line-height: 4rem;
       font-weight: bold;
       margin-bottom: 0;
+      @include media('<tablet') {
+        font-size: 2.2rem;
+      }
+      @include media('<phone-lg') {
+        font-size: 2rem;
+        margin-top: 4rem;
+        line-height: 3.2rem;
+      }
     }
     .article__extract {
       color: $white;
       margin-bottom: 0;
       margin-top: 4rem;
       font-size: 1.6rem;
+      @include media('<tablet'){
+        margin-top: 2rem;
+      }
     }
     .article__bottom {
       color: $white;
@@ -66,11 +81,20 @@
       top: 17px;
       right: 40px;
       transition: all 200ms ease;
+      @include media('<tablet') {
+        top: 80px;
+        left: 35px;
+        margin-top: 0;
+      }
+      @include media('<phone-lg') {
+        left: 2rem;
+      }
+
     }
   }
   &:not(.is-single):not(.is-url-article):not(.is-first):not(.is-video-article) {
     a {
-      background-color: $color--main;
+      background-color: $white;
       box-shadow: 0 1px 1px 0 rgba(0, 9, 23, .16);
       .article__wrapper {
         border-radius: $standard-radius;
@@ -230,11 +254,17 @@
     }
     .article__bottom {
       margin-top: 1.6rem;
+      @include media('<large') {
+        margin-bottom: 5rem;
+      }
     }
     .article__extract {
       margin-bottom: 1.6rem;
       margin-top: 4rem;
       color: $white;
+      @include media('<tablet') {
+        margin-top: 2rem;
+      }
     }
     .article__title {
       margin-bottom: 1.6rem;
@@ -243,9 +273,7 @@
     .source-presse {
       position: absolute;
       bottom: 35px;
-      right: 35px;
       color: white;
-      font-size: 14px;
       text-transform: uppercase;
       img {
         height: auto;
@@ -256,6 +284,13 @@
         &.src-youtube {
           width: 15px;
         }
+      }
+      @include media('>tablet'){
+        right: 35px;
+        font-size: 14px;
+      }
+      @include media('<tablet'){
+        font-size: 12px;
       }
     }
   }
