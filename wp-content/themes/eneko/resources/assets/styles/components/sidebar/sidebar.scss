@@ -38,6 +38,9 @@
 		margin-top: 6.2rem;
     &:first-child {
       margin-top: 11.5rem;
+      @include media('<large') {
+        margin-top: 0;
+      }
     }
 		.contact {
 			&:first-child {
@@ -95,7 +98,7 @@
       }
 
       h5.permanence__location {
-        font-family: $sf;
+        font-family: $sf--bold;
         margin: 0 0 8px 0;
         font-size: 18px;
         line-height: 16px;
@@ -104,7 +107,7 @@
 
       p.permanence__nextDate {
         color: #000917;
-        font-family: $sf;
+        font-family: $sf--bold;
         font-size: 11px;
         font-weight: 600;
         line-height: 16px;
@@ -138,7 +141,7 @@
         position: absolute;
         right: 15px;
         top: 15px;
-	background-image: url('/wp-content/themes/eneko/resources/images/fil-twitter.svg');
+	      background-image: url('/wp-content/themes/eneko/resources/images/fil-twitter.svg');
         background-position: center;
         background-position: center;
         background-size: contain;
@@ -169,6 +172,10 @@
     .ctf-tweet-content {
       margin-bottom: 10px;
       font-family: $sf;
+      @include media('>phone'){
+        margin-top: 10px;
+        margin-left: 0;
+      }
       .ctf-tweet-text {
         line-height: 20px;
       }
