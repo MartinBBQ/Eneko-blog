@@ -19,7 +19,8 @@ export default class NewsletterModal extends Modal {
 			if (name) {
 				body[name] = $input.value;
 			}
-		})
+		});
+		console.log(body);
 		return body;
 	}
 	setEmail(value) {
@@ -34,7 +35,10 @@ export default class NewsletterModal extends Modal {
 		const url = `${location.protocol}//crm.${location.host}/api/external/addContact`
 		const config = {
 			method: 'POST',
-			body: this.getBody()
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify(this.getBody())
 		}
 		const close = () => {
 			setTimeout(() => {
